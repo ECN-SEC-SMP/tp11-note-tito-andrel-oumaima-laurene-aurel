@@ -19,9 +19,11 @@ public:
     bool getFini();
 
     // Mutateurs
-    void startDecompte();
     void setTemps(int temps);
     void setFini();
     void setFini(bool etat);
-    void decompte();    
+
+    // Méthodes
+    void startDecompte();
+    void decompte();  
 };

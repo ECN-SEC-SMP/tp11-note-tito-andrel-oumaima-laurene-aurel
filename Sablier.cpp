@@ -2,8 +2,7 @@
 #include <thread>
 #include <chrono>
 
-// Constructeur
-
+// Constructeurs
 Sablier::Sablier(){
     // Initialisation du sablier à 60 secondes
     temps = 60;
@@ -19,7 +18,6 @@ Sablier::Sablier(int temps){
 }
 
 // Accesseurs
-
 int Sablier::getTemps(){
     return temps;
 }
@@ -29,15 +27,6 @@ bool Sablier::getFini(){
 }
 
 // Mutateurs
-void Sablier::startDecompte(){
-    // Lancer un thread qui décrémente automatiquement le sablier
-    std::thread([this]() {
-        while (!this->getFini()) {
-            this->decompte();
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-        }
-    }).detach(); // détache le thread pour qu'il fonctionne en arrière-plan
-}
 void Sablier::setTemps(int temps){
     this->temps = temps;
 }
@@ -48,6 +37,17 @@ void Sablier::setFini(){
 
 void Sablier::setFini(bool etat){
     this->fini = etat;
+}
+
+// Méthodes
+void Sablier::startDecompte(){
+    // Lancer un thread qui décrémente automatiquement le sablier
+    std::thread([this]() {
+        while (!this->getFini()) {
+            this->decompte();
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        }
+    }).detach(); // détache le thread pour qu'il fonctionne en arrière-plan
 }
 
 void Sablier::decompte(){
