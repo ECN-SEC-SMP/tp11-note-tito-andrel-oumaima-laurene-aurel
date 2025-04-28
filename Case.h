@@ -1,18 +1,20 @@
 #ifndef __secsmp_case_h
 #define __secsmp_case_h
 
-// Bibliothèques
+/// Bibliothèques
 #include <string>
 #include <iostream>
 #include "stdlib.h"
 #include "Plateau.h"
 using namespace std;
 
-// Classe Case, héritée de la classe Plateau
+/// Classe Case, héritée de la classe Plateau
 class Case : public Plateau
 {
 
-private:
+//private
+
+protected:
     bool bas;
     bool haut;
     bool gauche;
@@ -24,9 +26,9 @@ public:
     int y;
 
     // Constructeurs
-    Case(int x, int  y);
-    Case(int x, int y, bool haut, bool bas, bool gauche, bool droit);
-    Case(int x, int y, string couleur);
+    Case(int X, int  Y);
+    Case(int X, int Y, bool Haut, bool Bas, bool Gauche, bool Droit);
+    Case(int X, int Y, string Couleur);
 
     // Accesseurs
     getBordHaut();
