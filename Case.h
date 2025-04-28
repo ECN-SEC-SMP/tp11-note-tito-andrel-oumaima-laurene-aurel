@@ -31,23 +31,25 @@ public:
     Case(int X, int Y, string Couleur);
 
     // Accesseurs
-    getBordHaut();
-    getBordBas();
-    getBordGauche();
-    getBordDroit();
-    getCouleur();
-    getX();
-    getY();
+    bool getBordHaut();
+    bool getBordBas();
+    bool getBordGauche();
+    bool getBordDroit();
+    string getCouleur();
+    int getX();
+    int getY();
 
     // Mutateurs
-    setBordsHaut();
-    setBordsBas();
-    setBordsGauche();
-    setBordsDroit();
-    setCouleur();
-    setX();
-    setY();
-    
+    void setBordsHaut(bool setHaut);
+    void setBordsBas(bool setBas);
+    void setBordsGauche(bool setGauche);
+    void setBordsDroit(bool setDroit);
+    void setCouleur(string setCouleur);
+    void setX(int setX);
+    void setY(int setY);
+
+    // Méthodes
+    void AffichageCase(int X, int Y);
 };
 
 #endif

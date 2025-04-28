@@ -3,70 +3,83 @@
 #include "stdlib.h"
 #include "Plateau.h"
 
+// Constructeurs
 Case::Case(int X, int Y)
 {
-    X = x;
-    Y = y;
-    bas = false;
-    haut = false;
-    droit = false;
-    gauche = false;
-    couleur = "incolore";
+    this->x = X;
+    this->y = Y;
+    this->bas = false;
+    this->haut = false;
+    this->droit = false;
+    this->gauche = false;
+    this->couleur = "incolore";
 }
 
 Case::Case(int X, int Y, bool Haut, bool Bas, bool Gauche, bool Droit)
 {
-    X = x;
-    Y = y;
-    Bas = bas;
-    Haut = haut;
-    Droit = droit;
-    Gauche = gauche;
-    couleur = "incolore";
+    this->x = X;
+    this->y = Y;
+    this->bas = Bas;
+    this->haut = Haut;
+    this->droit = Droit;
+    this->gauche = Gauche;
+    this->couleur = "incolore";
 }
 
-Case::Case(int x, int y, string couleur)
+Case::Case(int X, int Y, string Couleur)
 {
-
+    this->y = X;
+    this->x = Y;
+    this->bas = false;
+    this->haut = false;
+    this->droit = false;
+    this->gauche = false;
+    this->couleur = Couleur;
 }
 
-// On récupère la valeur de l'attaque (0, 1 ou 2)
-int Attaque::getAttaque() const
-{
-    return type;
-}
+// Accesseurs
+bool Case::getBordHaut() { return this->haut; }
+bool Case::getBordBas() { return this->bas; }
+bool Case::getBordGauche() { return this->gauche; }
+bool Case::getBordDroit() { return this->droit; }
+bool Case::getCouleur() { return this->couleur; }
+bool Case::getX() { return this->x; }
+bool Case::getY() { return this->y; }
 
-// Vérification de l'attaque, renvoie true si l'attaque est réussie, sinon false
-bool Attaque::resoudreAttaque(Attaque &a) const
-{
-    // Comparaison des 3 cas ou la fonction peut renvoyer true, sinon false
-    if (this->type == 0 && a.type == 2 || this->type == 2 && a.type == 1 || this->type == 1 && a.type == 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
+// Mutateurs
+void Case::setBordsHaut(bool setHaut) { this->haut = setHaut; }
+void Case::setBordsBas(bool setBas) { this->bas = setBas; }
+void Case::setBordsGauche(bool setGauche) { this->gauche = setGauche; }
+void Case::setBordsDroit(bool setDroit) { this->droit = setDroit; }
+void Case::setCouleur(string setCouleur) { this->couleur = setCouleur; }
+void Case::setX(int setX) { this->x = setX; }
+void Case::setY(int setY) { this->y = setY; }
 
-// On récupère le nom de l'attaque en fonction de la valeur du type
-string Attaque::getNomAttaque() const
+// Méthodes
+void Case::AffichageCase()
 {
-    if (type == 0)
+    if (this->haut == true)
     {
-        return "Pierre";
+        case[0][1] = '_';
+    } else {
+        case[0][1] = ' ';
     }
-    else if (type == 1)
-    {
-        return "Feuille";
+
+    if (this->bas == true) {
+        case[2][1] = '_';
+    }else {
+        case[2][1] = ' ';
     }
-    else if (type == 2)
-    {
-        return "Ciseaux";
+
+    if (this->gauche == true) {
+        case[1][2] = '_';
+    }else {
+        case[1][2] = '_';
     }
-    else
-    {
-        return 0;
+
+    if (this->droit == true) {
+        case[1][2] = '_';
+    }else {
+        
     }
 }
