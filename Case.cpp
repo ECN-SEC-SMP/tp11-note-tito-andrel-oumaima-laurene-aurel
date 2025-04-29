@@ -58,28 +58,54 @@ void Case::setY(int setY) { this->y = setY; }
 // Méthodes
 void Case::AffichageCase()
 {
-    if (this->haut == true)
-    {
+case[0][0] = '.';
+    case[0][2] = '.';
+    case[2][0] = '.';
+    case[2][2] = '.';
+    if (this->haut == true) {
         case[0][1] = '_';
     } else {
-        case[0][1] = ' ';
+        case[0][1] = '.';
     }
 
-    if (this->bas == true) {
-        case[2][1] = '_';
-    }else {
-        case[2][1] = ' ';
-    }
+if (this->bas == true) {
+    case[2][1] = '_';
+} else {
+    case[2][1] = '.';
+}
 
-    if (this->gauche == true) {
-        case[1][2] = '_';
-    }else {
-        case[1][2] = '_';
-    }
+if (this->gauche == true) {
+    case[1][0] = '|';
+} else {
+    case[1][0] = '.';
+}
 
-    if (this->droit == true) {
-        case[1][2] = '_';
-    }else {
-        
+if (this->droit == true) {
+    case[1][2] = '|';
+} else {
+    case[1][2] = '.';
+}
+
+case (couleur) {
+    case "incolore":
+case[1][1] = 'I';
+
+    case "bleu":
+case[1][1] = 'B';
+
+    case "jaune":
+case[1][1] = 'J';
+
+    case "rouge":
+case[1][1] = 'R';
+
+    case "vert":
+case[1][1] = 'V';
+
+    case "multicolore":
+case[1][1] = 'M';
+
+    default:
+        case[1][1] = 'I';
     }
 }
