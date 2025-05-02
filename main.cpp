@@ -20,7 +20,7 @@ int main() {
     case1.setCouleur("rouge");
     //case1.setBordsDroit(true);
     case1.AffichageCase(x,y);
-    case1.setCouleur("bleu");
-    case1.AffichageCase(x1,y1);
+    //case1.setCouleur("bleu");
+    //case1.AffichageCase(x1,y1);
     return 0;
 }

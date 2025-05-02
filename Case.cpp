@@ -128,7 +128,10 @@ void Case::AffichageCase(int X, int Y)
     affcase[X+2][Y] = '.';
     affcase[X+2][Y+2] = '.';
 
-    cout << affcase[X][Y] << affcase[X][Y+1] << affcase[X][Y+2] << endl;
-    cout << affcase[X+1][Y] << affcase[X+1][Y+1] << affcase[X+1][Y+2] << endl;
-    cout << affcase[X+2][Y] << affcase[X+2][Y+1] << affcase[X+2][Y+2] << endl;
+    for (int i = 0; i < X+3; i ++) {
+        for (int j = 0; j < Y+3; j++) {
+            cout << affcase[i][j];
+        }
+        cout << endl;
+    }
 }
