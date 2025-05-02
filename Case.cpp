@@ -1,7 +1,9 @@
+#include <string>
 #include <iostream>
 #include <string>
 #include "stdlib.h"
-#include "Plateau.h"
+#include "Case.h"
+// #include "Plateau.h"
 
 // Constructeurs
 Case::Case(int X, int Y)
@@ -42,9 +44,9 @@ bool Case::getBordHaut() { return this->haut; }
 bool Case::getBordBas() { return this->bas; }
 bool Case::getBordGauche() { return this->gauche; }
 bool Case::getBordDroit() { return this->droit; }
-bool Case::getCouleur() { return this->couleur; }
-bool Case::getX() { return this->x; }
-bool Case::getY() { return this->y; }
+string Case::getCouleur() { return this->couleur; }
+int Case::getX() { return this->x; }
+int Case::getY() { return this->y; }
 
 // Mutateurs
 void Case::setBordsHaut(bool setHaut) { this->haut = setHaut; }
@@ -56,56 +58,76 @@ void Case::setX(int setX) { this->x = setX; }
 void Case::setY(int setY) { this->y = setY; }
 
 // Méthodes
-void Case::AffichageCase()
+void Case::AffichageCase(int X, int Y)
 {
-case[0][0] = '.';
-    case[0][2] = '.';
-    case[2][0] = '.';
-    case[2][2] = '.';
-    if (this->haut == true) {
-        case[0][1] = '_';
-    } else {
-        case[0][1] = '.';
+    char affcase[2][2];
+
+    affcase[0][0] = '.';
+    affcase[0][2] = '.';
+    affcase[2][0] = '.';
+    affcase[2][2] = '.';
+    if (this->haut == true)
+    {
+        affcase[0][1] = '_';
+    }
+    else
+    {
+        affcase[0][1] = '.';
     }
 
-if (this->bas == true) {
-    case[2][1] = '_';
-} else {
-    case[2][1] = '.';
-}
+    if (this->bas == true)
+    {
+        affcase[2][1] = '_';
+    }
+    else
+    {
+        affcase[2][1] = '.';
+    }
 
-if (this->gauche == true) {
-    case[1][0] = '|';
-} else {
-    case[1][0] = '.';
-}
+    if (this->gauche == true)
+    {
+        affcase[1][0] = '|';
+    }
+    else
+    {
+        affcase[1][0] = '.';
+    }
 
-if (this->droit == true) {
-    case[1][2] = '|';
-} else {
-    case[1][2] = '.';
-}
+    if (this->droit == true)
+    {
+        affcase[1][2] = '|';
+    }
+    else
+    {
+        affcase[1][2] = '.';
+    }
 
-case (couleur) {
-    case "incolore":
-case[1][1] = 'I';
-
-    case "bleu":
-case[1][1] = 'B';
-
-    case "jaune":
-case[1][1] = 'J';
-
-    case "rouge":
-case[1][1] = 'R';
-
-    case "vert":
-case[1][1] = 'V';
-
-    case "multicolore":
-case[1][1] = 'M';
-
-    default:
-        case[1][1] = 'I';
+    if (this->couleur == "incolore")
+    {
+        affcase[1][1] = 'I';
+    }
+    else if (this->couleur == "rouge")
+    {
+        affcase[1][1] = 'R';
+    }
+    else if (this->couleur == "vert")
+    {
+        affcase[1][1] = 'V';
+    }
+    else if (this->couleur == "jaune")
+    {
+        affcase[1][1] = 'J';
+    }
+    else if (this->couleur == "bleu")
+    {
+        affcase[1][1] = 'B';
+    }
+    else if (this->couleur == "multicolore")
+    {
+        affcase[1][1] = 'M';
+    }
+    else
+    {
+        affcase[1][1] = 'I';
     }
 }

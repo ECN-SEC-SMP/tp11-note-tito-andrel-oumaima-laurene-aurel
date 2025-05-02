@@ -5,11 +5,11 @@
 #include <string>
 #include <iostream>
 #include "stdlib.h"
-#include "Plateau.h"
+//#include "Plateau.h"
 using namespace std;
 
 /// Classe Case, héritée de la classe Plateau
-class Case : public Plateau
+class Case
 {
 
 //private
@@ -18,7 +18,7 @@ protected:
     bool bas;
     bool haut;
     bool gauche;
-    bool droite;
+    bool droit;
     string couleur;
 
 public:
