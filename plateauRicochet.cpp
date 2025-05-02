@@ -14,7 +14,7 @@ plateauRicochet::plateauRicochet(int x, int y) {
     Max_Y = y;
     //Initialisation du plateau
     //Initialisation de chaque case
-    Plateau.resize(Max_X-1, std::vector<Case*>(Max_Y-1));
+    Plateau.resize(Max_X, std::vector<Case*>(Max_Y));
 
     for (int i = 0; i < Max_X; i++) {
         for (int j = 0; j < Max_Y; j++) {
