@@ -1,6 +1,6 @@
 #ifndef PLATEAU_H
 #define PLATEAU_H
-#include <Case.h>
+#include "Case.h"
 #include <string>
 #include <iostream>
 #include <vector>
@@ -17,7 +17,7 @@ class plateauRicochet
     public:
         plateauRicochet(int x, int y);
         ~plateauRicochet();
-        void Afficher();   
-}
+        //void Afficher();   
+};
 
 #endif

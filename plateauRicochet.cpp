@@ -52,11 +52,11 @@ plateauRicochet::plateauRicochet(int x, int y) {
     //Coin en haut à gauche du tableau
     for(int i=0; i<(Max_X-1)/2; i++) {
         for(int j=0; j<Max_Y; j++) {
-            if(Plateau[i][j]->GetObstacle()) {
-                Plateau[i][j]->SetObstacle(true);
+            // if(Plateau[i][j]->GetObstacle()) {
+            //     Plateau[i][j]->SetObstacle(true);
             }
         }
-    }
+    
     //Initialisation des robots
     for (int k = 0; k < 2; k++) { // Example for initializing 2 robots
         // Code to initialize robots goes here
@@ -71,4 +71,5 @@ plateauRicochet::~plateauRicochet() {
         
     }
     // Vectors themselves are automatically destroyed
+}
 }

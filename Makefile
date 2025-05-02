@@ -1,22 +1,16 @@
 all: main.out
 
-main.out: main.o Sablier.o Case.o Loup.o Pierre.o Ours.o
-	g++ -o main.out main.o Attaque.o Animal.o Loup.o Pierre.o Ours.o
+main.out: main.o Sablier.o Case.o plateauRicochet.o
+	g++ -o main.out main.o Sablier.o Case.o plateauRicochet.o
 
 main.o: main.cpp
 	g++ -c main.cpp
 
-Attaque.o: Attaque.cpp Attaque.h
-	g++ -c Attaque.cpp
+Sablier.o: Sablier.cpp Sablier.h
+	g++ -c Sablier.cpp
 
-Animal.o: Animal.cpp Animal.h
-	g++ -c Animal.cpp
+Case.o: Case.cpp Case.h
+	g++ -c Case.cpp
 
-Loup.o:	Loup.cpp Loup.h
-	g++ -c Loup.cpp 
-
-Ours.o:	Ours.cpp Ours.h
-	g++ -c Ours.cpp 
-
-Pierre.o:	Pierre.cpp Pierre.h
-	g++ -c Pierre.cpp 
+plateauRicochet.o: plateauRicochet.cpp plateauRicochet.h
+	g++ -c plateauRicochet.cpp
