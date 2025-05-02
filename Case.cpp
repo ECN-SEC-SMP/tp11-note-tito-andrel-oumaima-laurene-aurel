@@ -60,74 +60,75 @@ void Case::setY(int setY) { this->y = setY; }
 // Méthodes
 void Case::AffichageCase(int X, int Y)
 {
-    char affcase[2][2];
+    char affcase[X+2][Y+2];
 
-    affcase[0][0] = '.';
-    affcase[0][2] = '.';
-    affcase[2][0] = '.';
-    affcase[2][2] = '.';
-    if (this->haut == true)
+    if (this->getBordHaut() == true)
     {
-        affcase[0][1] = '_';
+        affcase[X][Y+1] = '_';
     }
     else
     {
-        affcase[0][1] = '.';
+        affcase[X][Y+1] = '.';
     }
 
-    if (this->bas == true)
+    if (this->getBordBas() == true)
     {
-        affcase[2][1] = '_';
+        affcase[X+2][Y+1] = '_';
     }
     else
     {
-        affcase[2][1] = '.';
+        affcase[X+2][Y+1] = '.';
     }
 
-    if (this->gauche == true)
+    if (this->getBordGauche() == true)
     {
-        affcase[1][0] = '|';
+        affcase[X+1][Y] = '|';
     }
     else
     {
-        affcase[1][0] = '.';
+        affcase[X+1][Y]  = '.';
     }
 
-    if (this->droit == true)
+    if (this->getBordDroit() == true)
     {
-        affcase[1][2] = '|';
+        affcase[X+1][Y+2]  = '|';
     }
     else
     {
-        affcase[1][2] = '.';
+        affcase[X+1][Y+2]  = '.';
     }
 
-    if (this->couleur == "incolore")
+    if (this->getCouleur() == "incolore")
     {
-        affcase[1][1] = 'I';
+        affcase[X+1][Y+1] = 'I';
     }
-    else if (this->couleur == "rouge")
+    else if (this->getCouleur() == "rouge")
     {
-        affcase[1][1] = 'R';
+        affcase[X+1][Y+1] = 'R';
     }
-    else if (this->couleur == "vert")
+    else if (this->getCouleur() == "vert")
     {
-        affcase[1][1] = 'V';
+        affcase[X+1][Y+1] = 'V';
     }
-    else if (this->couleur == "jaune")
+    else if (this->getCouleur() == "jaune")
     {
-        affcase[1][1] = 'J';
+        affcase[X+1][Y+1] = 'J';
     }
-    else if (this->couleur == "bleu")
+    else if (this->getCouleur() == "bleu")
     {
-        affcase[1][1] = 'B';
+        affcase[X+1][Y+1] = 'B';
     }
-    else if (this->couleur == "multicolore")
+    else if (this->getCouleur() == "multicolore")
     {
-        affcase[1][1] = 'M';
+        affcase[X+1][Y+1] = 'M';
     }
-    else
-    {
-        affcase[1][1] = 'I';
-    }
+
+    affcase[X][Y] = '.';
+    affcase[X][Y+2] = '.';
+    affcase[X+2][Y] = '.';
+    affcase[X+2][Y+2] = '.';
+
+    cout << affcase[X][Y] << affcase[X][Y+1] << affcase[X][Y+2] << endl;
+    cout << affcase[X+1][Y] << affcase[X+1][Y+1] << affcase[X+1][Y+2] << endl;
+    cout << affcase[X+2][Y] << affcase[X+2][Y+1] << affcase[X+2][Y+2] << endl;
 }
