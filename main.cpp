@@ -15,11 +15,12 @@ int main() {
     Case case1 = Case(x,y);
     case1.setBordsHaut(true);
     case1.setBordsBas(true);
-    case1.setBordsGauche(false);
+    case1.setBordsGauche(true);
     case1.setBordsDroit(true);
     case1.setCouleur("rouge");
     //case1.setBordsDroit(true);
     case1.AffichageCase(x,y);
+    //case1.AffichageCase(x,y);
     //case1.setCouleur("bleu");
     //case1.AffichageCase(x1,y1);
     return 0;
