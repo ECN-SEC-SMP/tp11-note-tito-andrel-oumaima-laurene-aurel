@@ -4,6 +4,7 @@
 #include "stdlib.h"
 #include "Case.h"
 #include "Sablier.h"
+#include "robot.h"
 
 using namespace std;
 
@@ -22,5 +23,11 @@ int main() {
     case1.AffichageCase(x,y);
     //case1.setCouleur("bleu");
     //case1.AffichageCase(x1,y1);
+
+    //test classe robot :
+    Robot robot1("bleu", 5, 5);
+    char dir = robot1.RecupereInfo();
+    robot1.Deplacement(dir);
+
     return 0;
 }

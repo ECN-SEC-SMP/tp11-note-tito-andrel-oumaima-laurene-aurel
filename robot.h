@@ -1,5 +1,6 @@
 
 #include <string>
+#include <vector>
 
 class Robot {
 private:
@@ -13,13 +14,19 @@ public:
 
     Robot(std::string c, int posX, int posY); // Constructeur
 
+    char RecupereInfo(); // recupere la direction du robot
     void Deplacement(char direction); // Bouger
+    void GenereRobot();
 
+    // Accesseur :
     int GetX() const;
     int GetY() const;
+    int GetNbDeplacement() const;
+    std::vector<int> GetPosition() const;
+
+    // Setteur :
     void SetX(int posX);
     void SetY(int posY);
-
-    int GetNbDeplacement() const;
     void SetNbDeplacement(int nb);
+    void SetPosition(int xpos, int ypos);
 };
