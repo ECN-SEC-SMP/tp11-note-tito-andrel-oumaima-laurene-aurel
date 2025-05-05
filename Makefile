@@ -1,7 +1,7 @@
 all: main.out
 
-main.out: main.o Sablier.o Case.o 
-	g++ -o main.out main.o Sablier.o Case.o 
+main.out: main.o Sablier.o Case.o plateauRicochet.o
+	g++ -o main.out main.o Sablier.o Case.o plateauRicochet.o
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -11,3 +11,6 @@ Sablier.o: Sablier.cpp Sablier.h
 
 Case.o: Case.cpp Case.h
 	g++ -c Case.cpp
+
+plateauRicochet.o: plateauRicochet.cpp plateauRicochet.h
+	g++ -c plateauRicochet.cpp

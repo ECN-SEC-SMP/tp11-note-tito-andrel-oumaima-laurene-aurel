@@ -5,7 +5,7 @@
 #include <string>
 #include <iostream>
 #include "stdlib.h"
-//#include "Plateau.h"
+//#include "plateauRicochet.h" 
 using namespace std;
 
 /// Classe Case, héritée de la classe Plateau
