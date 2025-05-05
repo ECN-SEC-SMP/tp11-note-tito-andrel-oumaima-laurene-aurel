@@ -18,6 +18,10 @@ class plateauRicochet
         plateauRicochet(int x, int y);
         ~plateauRicochet();
         void setObstacle(int x1, int x2, int y1, int y2);
+        void setBordsBas(int X, int Y);
+        void setBordsHaut(int X, int Y);
+        void setBordsGauche(int X, int Y);
+        void setBordsDroit(int X, int Y);
         //void Afficher();   
 };
 
