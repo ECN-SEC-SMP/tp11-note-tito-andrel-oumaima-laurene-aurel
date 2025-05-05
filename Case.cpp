@@ -3,7 +3,6 @@
 #include <string>
 #include "stdlib.h"
 #include "Case.h"
-// #include "Plateau.h"
 
 // Constructeurs
 Case::Case(int X, int Y)
@@ -60,78 +59,74 @@ void Case::setY(int setY) { this->y = setY; }
 // Méthodes
 void Case::AffichageCase(int X, int Y)
 {
-    char affcase[X+2][Y+2];
+    char affcase[X + 2][Y + 2];
+
+    affcase[X][Y] = '#';
+    affcase[X][Y + 2] = '#';
+    affcase[X + 2][Y] = '#';
+    affcase[X + 2][Y + 2] = '#';
 
     if (this->getBordHaut() == true)
     {
-        affcase[X][Y+1] = '_';
+        affcase[X][Y + 1] = '#';
     }
     else
     {
-        affcase[X][Y+1] = '.';
+        affcase[X][Y + 1] = '-';
     }
 
     if (this->getBordBas() == true)
     {
-        affcase[X+2][Y+1] = '_';
+        affcase[X + 2][Y + 1] = '#';
     }
     else
     {
-        affcase[X+2][Y+1] = '.';
+        affcase[X + 2][Y + 1] = '-';
     }
 
     if (this->getBordGauche() == true)
     {
-        affcase[X+1][Y] = '|';
+        affcase[X + 1][Y] = '#';
     }
     else
     {
-        affcase[X+1][Y]  = '.';
+        affcase[X + 1][Y] = '|';
     }
 
     if (this->getBordDroit() == true)
     {
-        affcase[X+1][Y+2]  = '|';
+        affcase[X + 1][Y + 2] = '#';
     }
     else
     {
-        affcase[X+1][Y+2]  = '.';
+        affcase[X + 1][Y + 2] = '|';
     }
 
     if (this->getCouleur() == "incolore")
     {
-        affcase[X+1][Y+1] = 'I';
+        affcase[X + 1][Y + 1] = 'I';
     }
     else if (this->getCouleur() == "rouge")
     {
-        affcase[X+1][Y+1] = 'R';
+        affcase[X + 1][Y + 1] = 'R';
     }
     else if (this->getCouleur() == "vert")
     {
-        affcase[X+1][Y+1] = 'V';
+        affcase[X + 1][Y + 1] = 'V';
     }
     else if (this->getCouleur() == "jaune")
     {
-        affcase[X+1][Y+1] = 'J';
+        affcase[X + 1][Y + 1] = 'J';
     }
     else if (this->getCouleur() == "bleu")
     {
-        affcase[X+1][Y+1] = 'B';
+        affcase[X + 1][Y + 1] = 'B';
     }
     else if (this->getCouleur() == "multicolore")
     {
-        affcase[X+1][Y+1] = 'M';
+        affcase[X + 1][Y + 1] = 'M';
     }
 
-    affcase[X][Y] = '.';
-    affcase[X][Y+2] = '.';
-    affcase[X+2][Y] = '.';
-    affcase[X+2][Y+2] = '.';
-
-    for (int i = 0; i < X+3; i ++) {
-        for (int j = 0; j < Y+3; j++) {
-            cout << affcase[i][j];
-        }
-        cout << endl;
-    }
+    cout << affcase[X + 1][Y + 1] << affcase[X + 1][Y + 2] << endl;
+    cout << affcase[X + 2][Y + 1] << affcase[X + 2][Y + 2] << endl;
 }
