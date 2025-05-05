@@ -1,7 +1,6 @@
 #include "Sablier.h"
 #include <thread>
 #include <chrono>
-
 // ---------- Constructeurs ----------
 
 // Initialisation d'un sablier de 60 secondes
