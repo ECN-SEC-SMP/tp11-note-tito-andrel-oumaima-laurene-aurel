@@ -22,7 +22,7 @@ class plateauRicochet
         void setBordsHaut(int X, int Y);
         void setBordsGauche(int X, int Y);
         void setBordsDroit(int X, int Y);
-        //void Afficher();   
+        void Afficher();   
 };
 
 #endif
