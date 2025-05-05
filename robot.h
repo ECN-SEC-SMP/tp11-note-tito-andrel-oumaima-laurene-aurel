@@ -17,6 +17,7 @@ public:
     char RecupereInfo(); // recupere la direction du robot
     void Deplacement(char direction); // Bouger
     void GenereRobot();
+    bool CaseDispo(int x, int y);
 
     // Accesseur :
     int GetX() const;

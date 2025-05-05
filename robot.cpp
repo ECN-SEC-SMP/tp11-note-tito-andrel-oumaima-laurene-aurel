@@ -30,21 +30,35 @@ void Robot::GenereRobot(){
     int i = rand()%4;
     int j = 0;
     std::string color;
+    int xinitial = 0;
+    int yinitial = 0;
 
-    // assigne une couleur au robot :
-    switch(i){
-        case 0 : color = "jaune"; j=1; break;
-        case 1 : color = "rouge"; j=1; break;
-        case 2 : color = "bleu"; j=1; break;
-        case 3 : color = "vert"; j=1; break;
-        case 4 : break;
-    }
+    xinitial, yinitial = rand()%16, rand()%16;
+    Robot::CaseDispo(xinitial, yinitial);
+    if(OK == 0) Robot robotB("bleu", xinitial, yinitial);
 
-    if(j==1) i = 4;
+    xinitial, yinitial = rand()%16, rand()%16;
+    Robot::CaseDispo(xinitial, yinitial);
+    if(OK == 0) Robot robotJ("jaune", xinitial, yinitial);
 
-    int xinitial = rand()%16;
-    int yinitial = rand()%16;
+    xinitial, yinitial = rand()%16, rand()%16;
+    Robot::CaseDispo(xinitial, yinitial);
+    if(OK == 0) Robot robotR("rouge", xinitial, yinitial);
+
+    xinitial, yinitial = rand()%16, rand()%16;
+    Robot::CaseDispo(xinitial, yinitial);
+    if(OK == 0) Robot robotV("vert", xinitial, yinitial);
+
     Robot::SetPosition(xinitial, yinitial);
+}
+
+bool Robot::CaseDispo(int x, int y){
+    for(int i = 0; i<=16; i++){
+        for(int j = 0; j<=16; j++){
+            OK = 0;
+        }
+    }
+    return OK;
 }
 
 // Accesseur :
@@ -84,3 +98,4 @@ void Robot::SetPosition(int xpos, int ypos){
     SetX(xpos);
     SetY(ypos);
 }
+
