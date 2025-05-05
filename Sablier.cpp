@@ -53,7 +53,7 @@ void Sablier::setFini(bool etat){
 void Sablier::startDecompte(){
     // Lancer un thread qui décrémente automatiquement le sablier
     std::thread([this]() {
-        while (!this->getFini()) {
+        while (!this->getFini()) { // Tant que sablier non fini
             this->decompte();
             std::this_thread::sleep_for(std::chrono::seconds(1));
         }
