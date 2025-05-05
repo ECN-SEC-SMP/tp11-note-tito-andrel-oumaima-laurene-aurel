@@ -17,6 +17,7 @@ class plateauRicochet
     public:
         plateauRicochet(int x, int y);
         ~plateauRicochet();
+        void setObstacle(int x1, int x2, int y1, int y2);
         //void Afficher();   
 };
 
