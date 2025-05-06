@@ -12,7 +12,7 @@ bool obstacle;
 // Constructeurs que j'utilise
 Robot::Robot(std::string c) {
     // Initialisation des attributs
-    srand(time(0));
+    //robot spawn au meme endroit
     this->x = rand()%16;
     this->y = rand()%16;
     this->couleur = c;
@@ -21,7 +21,6 @@ Robot::Robot(std::string c) {
 
 Robot::Robot(std::string c, int posX, int posY){
     // Initialisation des attributs
-    srand(time(0));
     x = rand()%16;
     y = rand()%16;
     couleur = c;

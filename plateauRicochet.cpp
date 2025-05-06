@@ -355,8 +355,10 @@ void plateauRicochet::DeplacerRobot(Robot* robot, char direction) {
 Plateau[Pos_X][Pos_Y]->setRobotHere(true);   
 }
 
-void plateauRicochet::InitRobot(Robot* robotRed, Robot* robotGreen) {
+void plateauRicochet::InitRobot(Robot* robotRed, Robot* robotGreen, Robot* robotBlue, Robot* robotYellow) {
     // Initialisation des robots
     Plateau[robotRed->GetX()][robotRed->GetY()]->setRobotHere(true);
     Plateau[robotGreen->GetX()][robotGreen->GetY()]->setRobotHere(true);
+    Plateau[robotBlue->GetX()][robotBlue->GetY()]->setRobotHere(true);
+    Plateau[robotYellow->GetX()][robotYellow->GetY()]->setRobotHere(true);
 }
