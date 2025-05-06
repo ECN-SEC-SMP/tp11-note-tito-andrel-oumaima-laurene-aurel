@@ -1,4 +1,6 @@
 #include "Robot.h"
+#include "Case.h"
+#include "plateauRicochet.h"
 #include <iostream>
 #include <vector>
 #include <list>
@@ -18,15 +20,15 @@ char Robot::RecupereInfo(){
 }
 
 void Robot::Deplacement(char direction) {
-    switch (direction) {
-        case 'U': while (obstacle==0) y--; break; // Up
-        case 'D': while (obstacle==0) y++; break; // Down
-        case 'L': while (obstacle==0) x--; break; // Left
-        case 'R': while (obstacle==0) x++; break; // Right
-    }
+    // switch (direction) {
+    //     case 'U': y--; break; // Up
+    //     case 'D': while (obstacle==0) y++; break; // Down
+    //     case 'L': while (obstacle==0) x--; break; // Left
+    //     case 'R': while (obstacle==0) x++; break; // Right
+    // }
 
-    //récupére le robot et la direction de deplacement
-    nbDeplacements++; // A chaque mouvement, on ajoute 1 déplacement
+    // //récupére le robot et la direction de deplacement
+    // nbDeplacements++; // A chaque mouvement, on ajoute 1 déplacement
 }
 
 void Robot::GenereRobot(){

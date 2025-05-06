@@ -21,7 +21,11 @@ class Master {
         int Max_Y;
         //std::vector<std::vector<Case*>> Plateau;
         plateauRicochet* Plateau;
-        Robot* robotRouge; 
+        //robots
+        Robot* robotRed; 
+        Robot* robotGreen;
+        Robot* robotBlue;
+        Robot* robotYellow;
         //class objectif??
         //std::vector<std::vector<Case*>> Plateau;
     public:

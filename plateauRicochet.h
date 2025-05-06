@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <iterator>
 #include "plateauRicochet.h"
+#include "Robot.h"
 class plateauRicochet
 {
     private:
@@ -23,6 +24,7 @@ class plateauRicochet
         void setBordsHaut(int X, int Y);
         void setBordsGauche(int X, int Y);
         void setBordsDroit(int X, int Y);
+        void DeplacerRobot(Robot* robot, char direction);
         void Afficher();   
 };
 
