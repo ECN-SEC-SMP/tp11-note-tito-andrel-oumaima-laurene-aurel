@@ -37,6 +37,8 @@ void Joueur::setScore(int score){
     this->score = score;
 }
 
+// ---------- Méthodes ----------
+
 // Incrémente le score du joueur
 void Joueur::incrementerScore(){
     this->score++;
