@@ -93,14 +93,19 @@ void Master::Afficher() {
         for (int j = 0; j < Max_Y; ++j) {
             if (Grille[i][j]->getBordGauche()) cout << "|";
             else cout << " ";
-            if(robotRed->GetX() == i && robotRed->GetY() == j) cout << " R  "; // Ici tu peux afficher un symbole pour le robot// Affiche la couleur de la case
-            else if(robotGreen->GetX() == i && robotGreen->GetY() == j) cout << " G  ";
-            else if(robotBlue->GetX() == i && robotBlue->GetY() == j) cout << " B  ";
-            else if(robotYellow->GetX() == i && robotYellow->GetY() == j) cout << " Y  ";
-
-
-            //rajouter affichage objectif/ case de couleurs ...
-            else cout << "    "; // Ici tu peux afficher un symbole pour robot/obstacle/couleur
+            
+            // Version avec smileys robots colorés SUR FOND COLORÉ
+            if(robotRed->GetX() == i && robotRed->GetY() == j)
+                cout << "\033[1;41m" << " 🤖 " << "\033[0m"; // Robot sur fond rouge
+            else if(robotGreen->GetX() == i && robotGreen->GetY() == j)
+                cout << "\033[1;42m" << " 🤖 " << "\033[0m"; // Robot sur fond vert
+            else if(robotBlue->GetX() == i && robotBlue->GetY() == j)
+                cout << "\033[1;44m" << " 🤖 " << "\033[0m"; // Robot sur fond bleu (était 34)
+            else if(robotYellow->GetX() == i && robotYellow->GetY() == j)
+                cout << "\033[1;43m" << " 🤖 " << "\033[0m";
+            //rajouter pour afficher les objectifs
+            else
+                cout << "    "; // Case vide
         }
         if (Grille[i][Max_Y-1]->getBordDroit()) cout << "|";
         cout << endl;
