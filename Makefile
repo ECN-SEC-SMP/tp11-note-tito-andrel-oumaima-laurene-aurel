@@ -1,7 +1,7 @@
 all: main.out
 
-main.out: main.o Sablier.o Case.o plateauRicochet.o Robot.o Master.o
-	g++ -std=c++11 -pthread -o main.out main.o Sablier.o Case.o plateauRicochet.o Robot.o Master.o
+main.out: main.o Sablier.o Case.o plateauRicochet.o Robot.o Master.o Objectif.o Joueur.o
+	g++ -std=c++11 -pthread -o main.out main.o Sablier.o Case.o plateauRicochet.o Robot.o Master.o Objectif.o Joueur.o
 
 main.o: main.cpp
 	g++ -std=c++11 -pthread -c main.cpp
@@ -23,6 +23,9 @@ Robot.o: Robot.cpp Robot.h
 
 Master.o: Master.cpp Master.h
 	g++ -std=c++11 -pthread -c Master.cpp
+
+Joueur.o: Joueur.cpp Joueur.h
+	g++ -std=c++11 -pthread -c Joueur.cpp
 
 clean:
 	rm -f *.o main.out
