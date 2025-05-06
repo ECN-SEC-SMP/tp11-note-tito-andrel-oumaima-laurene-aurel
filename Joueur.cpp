@@ -6,12 +6,14 @@
 Joueur::Joueur(){
     nom = nullptr;
     score = 0;
+    coups = 0;
 }
 
 // Création d'un joueur avec un nom
 Joueur::Joueur(string nom){
     this->nom = nom;
     score = 0;
+    coups = 0;
 }
 
 // ---------- Accesseurs ----------
@@ -24,6 +26,10 @@ string Joueur::getNom(){
 int Joueur::getScore(){
     return score;
 }
+// Renvoie le nombre de coups du joueur
+int Joueur::getCoups(){
+    return coups;
+}
 
 // ---------- Mutateurs ----------
 
@@ -35,6 +41,11 @@ void Joueur::setNom(string nom){
 // Modifie le score du joueur
 void Joueur::setScore(int score){
     this->score = score;
+}
+
+// Modifie le nombre de coups du joueur
+void Joueur::setCoups(int coups){
+    this->coups = coups;
 }
 
 // ---------- Méthodes ----------
