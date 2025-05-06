@@ -246,34 +246,34 @@ plateauRicochet::plateauRicochet(int x, int y) {
     }
 }
 
-void plateauRicochet::Afficher() {
-    for (int i = 0; i < Max_X; ++i) {
-        // Affiche les murs du haut
-        for (int j = 0; j < Max_Y; ++j) {
-            cout << "+";
-            if (Plateau[i][j]->getBordHaut()) cout << "----";
-            else cout << "    ";
-        }
-        cout << "+" << endl;
-        // Affiche les murs gauche et le contenu de la case
-        for (int j = 0; j < Max_Y; ++j) {
-            if (Plateau[i][j]->getBordGauche()) cout << "|";
-            else cout << " ";
-            if(Plateau[i][j]->getRobotHere()) cout << " R  "; // Ici tu peux afficher un symbole pour le robot// Affiche la couleur de la case
-            else cout << "    "; // Ici tu peux afficher un symbole pour robot/obstacle/couleur
-        }
-        if (Plateau[i][Max_Y-1]->getBordDroit()) cout << "|";
-        cout << endl;
-        // Mur droit de la dernière case
-    }
-    // Affiche la dernière ligne de murs bas
-    for (int j = 0; j < Max_Y; ++j) {
-        cout << "+";
-        if (Plateau[Max_X-1][j]->getBordBas()) cout << "----";
-        else cout << "    ";
-    }
-    cout << "+" << endl;
-}
+// void plateauRicochet::Afficher() {
+//     for (int i = 0; i < Max_X; ++i) {
+//         // Affiche les murs du haut
+//         for (int j = 0; j < Max_Y; ++j) {
+//             cout << "+";
+//             if (Plateau[i][j]->getBordHaut()) cout << "----";
+//             else cout << "    ";
+//         }
+//         cout << "+" << endl;
+//         // Affiche les murs gauche et le contenu de la case
+//         for (int j = 0; j < Max_Y; ++j) {
+//             if (Plateau[i][j]->getBordGauche()) cout << "|";
+//             else cout << " ";
+//             if(Plateau[i][j]->getRobotHere()) cout << " R  "; // Ici tu peux afficher un symbole pour le robot// Affiche la couleur de la case
+//             else cout << "    "; // Ici tu peux afficher un symbole pour robot/obstacle/couleur
+//         }
+//         if (Plateau[i][Max_Y-1]->getBordDroit()) cout << "|";
+//         cout << endl;
+//         // Mur droit de la dernière case
+//     }
+//     // Affiche la dernière ligne de murs bas
+//     for (int j = 0; j < Max_Y; ++j) {
+//         cout << "+";
+//         if (Plateau[Max_X-1][j]->getBordBas()) cout << "----";
+//         else cout << "    ";
+//     }
+//     cout << "+" << endl;
+// }
 // Destructeur
 plateauRicochet::~plateauRicochet() {
     for (int i = 0; i < Max_X; ++i) { 

@@ -26,7 +26,7 @@ class plateauRicochet
         void setBordsGauche(int X, int Y);
         void setBordsDroit(int X, int Y);
         void DeplacerRobot(Robot* robot, char direction);
-        void Afficher();   
+        //void Afficher();   
 };
 
 #endif
