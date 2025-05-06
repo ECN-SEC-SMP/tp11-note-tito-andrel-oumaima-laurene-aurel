@@ -15,6 +15,7 @@ class Case
 //private
 
 protected:
+    bool robotHere;
     bool bas;
     bool haut;
     bool gauche;
@@ -31,6 +32,7 @@ public:
     Case(int X, int Y, string Couleur);
 
     // Accesseurs
+    bool getRobotHere();
     bool getBordHaut();
     bool getBordBas();
     bool getBordGauche();
@@ -40,6 +42,7 @@ public:
     int getY();
 
     // Mutateurs
+    void setRobotHere(bool setRobotHere);
     void setBordsHaut(bool setHaut);
     void setBordsBas(bool setBas);
     void setBordsGauche(bool setGauche);

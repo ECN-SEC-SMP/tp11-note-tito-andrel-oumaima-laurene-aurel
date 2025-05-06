@@ -9,6 +9,9 @@ using namespace std;
 /**
  * @brief Constructeur de la classe Plateau
  */
+std::vector<std::vector<Case*>> plateauRicochet::getPlateau() {
+    return Plateau;
+}
 void plateauRicochet::setBordsBas(int X, int Y ) {
     if (X < 0 || X >= Max_X || Y < 0 || Y >= Max_Y) return; // Sécurité: Vérifie les indices
     Plateau[X][Y]->setBordsBas(true);
@@ -162,10 +165,7 @@ plateauRicochet::plateauRicochet(int x, int y) {
     }
    
     }
-    
-    //Initialisation des obstacles
-    //Initialisation du carré centrale
-        //Initilasation du centre : un carré avec bordures
+
     //Coin gauche
     setBordsHaut(Max_X/2 -1,Max_Y/2-1);
     setBordsGauche(Max_X/2-1,Max_Y/2-1);
@@ -246,39 +246,33 @@ plateauRicochet::plateauRicochet(int x, int y) {
     }
 }
 
-void plateauRicochet::Afficher() {
-    for (int i = 0; i < Max_X; ++i) {
-        // Affiche les murs du haut
-        for (int j = 0; j < Max_Y; ++j) {
-            cout << "╬";
-            if (Plateau[i][j]->getBordHaut()) cout << "════";
-            else cout << "    ";
-        }
-        cout << "+" << endl;
-        // Affiche les murs gauche et le contenu de la case
-        for (int j = 0; j < Max_Y; ++j) {
-            if (Plateau[i][j]->getBordGauche()) cout << "║";
-            else cout << " ";
-            cout << "    "; // Ici tu peux afficher un symbole pour robot/obstacle/couleur
-        }
-        if (Plateau[i][Max_Y-1]->getBordDroit()) cout << "║";
-        cout << endl;
-        // Mur droit de la dernière case
-    }
-    // Affiche la dernière ligne de murs bas
-    for (int j = 0; j < Max_Y; ++j) {
-        cout << "+";
-        if (Plateau[Max_X-1][j]->getBordBas()) cout << "════";
-        else cout << "    ";
-    }
-    cout << "+" << endl;
-}
-
-// void plateauRicochet::initialisationGrille() {
-//     // Constructeur par défaut
-//     Max_X = 0;
-//     Max_Y = 0;
-//     Plateau.resize(Max_X, std::vector<Case*>(Max_Y));
+// void plateauRicochet::Afficher() {
+//     for (int i = 0; i < Max_X; ++i) {
+//         // Affiche les murs du haut
+//         for (int j = 0; j < Max_Y; ++j) {
+//             cout << "+";
+//             if (Plateau[i][j]->getBordHaut()) cout << "----";
+//             else cout << "    ";
+//         }
+//         cout << "+" << endl;
+//         // Affiche les murs gauche et le contenu de la case
+//         for (int j = 0; j < Max_Y; ++j) {
+//             if (Plateau[i][j]->getBordGauche()) cout << "|";
+//             else cout << " ";
+//             if(Plateau[i][j]->getRobotHere()) cout << " R  "; // Ici tu peux afficher un symbole pour le robot// Affiche la couleur de la case
+//             else cout << "    "; // Ici tu peux afficher un symbole pour robot/obstacle/couleur
+//         }
+//         if (Plateau[i][Max_Y-1]->getBordDroit()) cout << "|";
+//         cout << endl;
+//         // Mur droit de la dernière case
+//     }
+//     // Affiche la dernière ligne de murs bas
+//     for (int j = 0; j < Max_Y; ++j) {
+//         cout << "+";
+//         if (Plateau[Max_X-1][j]->getBordBas()) cout << "----";
+//         else cout << "    ";
+//     }
+//     cout << "+" << endl;
 // }
 // Destructeur
 plateauRicochet::~plateauRicochet() {
@@ -289,4 +283,82 @@ plateauRicochet::~plateauRicochet() {
     }
     // Vectors themselves are automatically destroyed
 }
+}
+
+void plateauRicochet::DeplacerRobot(Robot* robot, char direction) {
+    // Code pour déplacer le robot sur le plateau
+    
+    int Pos_X = robot->GetX();
+    int Pos_Y = robot->GetY();
+    Plateau[Pos_X][Pos_Y]->setRobotHere(false); // Enlève le robot de la case actuelle
+    int Deplacement = robot->GetNbDeplacement();
+    robot->SetNbDeplacement(Deplacement + 1);
+    cout << "Robot position: " << Pos_X << ", " << Pos_Y << endl;
+    switch (direction) {
+
+        // Vérifier si la case est libre avant de déplacer
+        
+        case 'U'://Up
+            while(1) {
+               if (Plateau[Pos_X][Pos_Y]->getBordHaut() or Plateau[Pos_X+1][Pos_Y]->getRobotHere()){
+                robot->SetPosition(Pos_X, Pos_Y);
+
+                cout << "Robot moved to Up: " << Pos_X << ", " << Pos_Y << endl;
+                break;
+               }
+               else{
+                     Pos_X--;
+               }
+            }
+            break;
+            
+        case 'D': // Down
+            while(1) {
+               if (Plateau[Pos_X][Pos_Y]->getBordBas() or Plateau[Pos_X+1][Pos_Y]->getRobotHere()){
+                robot->SetPosition(Pos_X, Pos_Y);
+                cout << "Robot moved to Down: " << Pos_X << ", " << Pos_Y << endl;
+                break;
+               }
+               else{
+                     Pos_X++;
+               }
+            }
+        cout<<"end Down"<<endl;
+            break;
+            
+        case 'L':  // Left
+            while(1) {
+                if (Plateau[Pos_X][Pos_Y]->getBordGauche() or Plateau[Pos_X][Pos_Y-1]->getRobotHere()){
+                robot->SetPosition(Pos_X, Pos_Y);
+                cout << "Robot moved to: Left " << Pos_X << ", " << Pos_Y << endl;
+                break;
+                }
+                else{
+                    Pos_Y--;
+                }
+            }
+            break;
+        case 'R':  // Right
+            while(1) {
+                if (Plateau[Pos_X][Pos_Y]->getBordDroit() or Plateau[Pos_X][Pos_Y+1]->getRobotHere()){
+                robot->SetPosition(Pos_X, Pos_Y);
+                cout << "Robot moved to Right: " << Pos_X << ", " << Pos_Y << endl;
+                break;
+                }
+                else{
+                    Pos_Y++;
+                }
+            }
+            break;
+    
+}
+Plateau[Pos_X][Pos_Y]->setRobotHere(true);   
+}
+
+void plateauRicochet::InitRobot(Robot* robotRed, Robot* robotGreen, Robot* robotBlue, Robot* robotYellow) {
+    // Initialisation des robots
+    Plateau[robotRed->GetX()][robotRed->GetY()]->setRobotHere(true);
+    Plateau[robotGreen->GetX()][robotGreen->GetY()]->setRobotHere(true);
+    Plateau[robotBlue->GetX()][robotBlue->GetY()]->setRobotHere(true);
+    Plateau[robotYellow->GetX()][robotYellow->GetY()]->setRobotHere(true);
 }

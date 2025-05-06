@@ -1,3 +1,7 @@
+#ifndef ROBOT_H
+#define ROBOT_H
+
+
 #include <string>
 #include <vector>
 
@@ -12,6 +16,7 @@ public:
     int y;               // Position Y
 
     Robot(std::string c, int posX, int posY); // Constructeur
+    Robot(std::string c); // Constructeur par défaut
 
     char RecupereInfo(); // recupere la direction du robot
     void Deplacement(char direction); // Bouger
@@ -30,3 +35,5 @@ public:
     void SetNbDeplacement(int nb);
     void SetPosition(int xpos, int ypos);
 };
+
+#endif

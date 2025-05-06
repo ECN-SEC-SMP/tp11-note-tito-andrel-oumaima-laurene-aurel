@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <iterator>
 #include "plateauRicochet.h"
+#include "Robot.h"
 class plateauRicochet
 {
     private:
@@ -16,13 +17,16 @@ class plateauRicochet
      std::vector<std::vector<Case*>> Plateau; 
     public:
         plateauRicochet(int x, int y);
+        std::vector<std::vector<Case*>> getPlateau();
         ~plateauRicochet();
+        void InitRobot(Robot* robotRed, Robot* robotGreen, Robot* robotBlue, Robot* robotYellow);
         void setObstacle(int x1, int x2, int y1, int y2);
         void setBordsBas(int X, int Y);
         void setBordsHaut(int X, int Y);
         void setBordsGauche(int X, int Y);
         void setBordsDroit(int X, int Y);
-        void Afficher();   
+        void DeplacerRobot(Robot* robot, char direction);
+        //void Afficher();   
 };
 
 #endif

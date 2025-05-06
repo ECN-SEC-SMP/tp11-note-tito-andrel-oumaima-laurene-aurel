@@ -1,10 +1,32 @@
 #include "Robot.h"
+#include "Case.h"
+#include "plateauRicochet.h"
 #include <iostream>
 #include <vector>
 #include <list>
 
+#include <cstdlib> // Pour srand() et rand()
+#include <ctime>   // Pour time()
+bool OK = false; // Variable globale pour la disponibilité de la case
 bool obstacle;
-Robot::Robot(std::string c, int posX, int posY) : couleur(c), x(posX), y(posY), nbDeplacements(0), OK(false) {}
+// Constructeurs que j'utilise
+Robot::Robot(std::string c) {
+    // Initialisation des attributs
+    //robot spawn au meme endroit
+    this->x = rand()%16;
+    this->y = rand()%16;
+    this->couleur = c;
+    this->nbDeplacements = 0;
+}
+
+Robot::Robot(std::string c, int posX, int posY){
+    // Initialisation des attributs
+    x = rand()%16;
+    y = rand()%16;
+    couleur = c;
+    nbDeplacements = 0;
+    //OK = false;
+}
 
 char Robot::RecupereInfo(){
     char direction;
@@ -17,39 +39,43 @@ char Robot::RecupereInfo(){
 }
 
 void Robot::Deplacement(char direction) {
-    switch (direction) {
-        case 'U': while (obstacle==0) y--; break; // Up
-        case 'D': while (obstacle==0) y++; break; // Down
-        case 'L': while (obstacle==0) x--; break; // Left
-        case 'R': while (obstacle==0) x++; break; // Right
-    }
-    nbDeplacements++; // A chaque mouvement, on ajoute 1 déplacement
+    // switch (direction) {
+    //     case 'U': y--; break; // Up
+    //     case 'D': while (obstacle==0) y++; break; // Down
+    //     case 'L': while (obstacle==0) x--; break; // Left
+    //     case 'R': while (obstacle==0) x++; break; // Right
+    // }
+
+    // //récupére le robot et la direction de deplacement
+    // nbDeplacements++; // A chaque mouvement, on ajoute 1 déplacement
 }
 
 void Robot::GenereRobot(){
-    int i = rand()%4;
-    int j = 0;
-    std::string color;
-    int xinitial = 0;
-    int yinitial = 0;
+    //je pense que c'est plus compliqué de tous les générer en même temps
+    // //je pref les stocker un à un
+    // int i = rand()%4;
+    // int j = 0;
+    // std::string color;
+    // int xinitial = 0;
+    // int yinitial = 0;
 
-    xinitial, yinitial = rand()%16, rand()%16;
-    Robot::CaseDispo(xinitial, yinitial);
-    if(OK == 0) Robot robotB("bleu", xinitial, yinitial);
+    // xinitial, yinitial = rand()%16, rand()%16;
+    // Robot::CaseDispo(xinitial, yinitial);
+    // if(OK == 0) Robot robotB("bleu", xinitial, yinitial);
 
-    xinitial, yinitial = rand()%16, rand()%16;
-    Robot::CaseDispo(xinitial, yinitial);
-    if(OK == 0) Robot robotJ("jaune", xinitial, yinitial);
+    // xinitial, yinitial = rand()%16, rand()%16;
+    // Robot::CaseDispo(xinitial, yinitial);
+    // if(OK == 0) Robot robotJ("jaune", xinitial, yinitial);
 
-    xinitial, yinitial = rand()%16, rand()%16;
-    Robot::CaseDispo(xinitial, yinitial);
-    if(OK == 0) Robot robotR("rouge", xinitial, yinitial);
+    // xinitial, yinitial = rand()%16, rand()%16;
+    // Robot::CaseDispo(xinitial, yinitial);
+    // if(OK == 0) Robot robotR("rouge", xinitial, yinitial);
 
-    xinitial, yinitial = rand()%16, rand()%16;
-    Robot::CaseDispo(xinitial, yinitial);
-    if(OK == 0) Robot robotV("vert", xinitial, yinitial);
+    // xinitial, yinitial = rand()%16, rand()%16;
+    // Robot::CaseDispo(xinitial, yinitial);
+    // if(OK == 0) Robot robotV("vert", xinitial, yinitial);
 
-    Robot::SetPosition(xinitial, yinitial);
+    // Robot::SetPosition(xinitial, yinitial);
 }
 
 bool Robot::CaseDispo(int x, int y){

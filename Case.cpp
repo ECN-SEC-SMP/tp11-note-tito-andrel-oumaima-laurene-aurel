@@ -18,11 +18,13 @@ Case::Case(int X, int Y)
 {
     this->x = X;
     this->y = Y;
+    this->robotHere = false;
     this->bas = false;
     this->haut = false;
     this->droit = false;
     this->gauche = false;
     this->couleur = "incolore";
+
 }
 
 ///
@@ -34,6 +36,7 @@ Case::Case(int X, int Y)
 ///
 Case::Case(int X, int Y, bool Haut, bool Bas, bool Gauche, bool Droit)
 {
+    this->robotHere = false;
     this->x = X;
     this->y = Y;
     this->bas = Bas;
@@ -52,6 +55,7 @@ Case::Case(int X, int Y, bool Haut, bool Bas, bool Gauche, bool Droit)
 ///
 Case::Case(int X, int Y, string Couleur)
 {
+    this->robotHere = false;
     this->y = X;
     this->x = Y;
     this->bas = false;
@@ -70,6 +74,8 @@ bool Case::getBordHaut() { return this->haut; }
 bool Case::getBordBas() { return this->bas; }
 bool Case::getBordGauche() { return this->gauche; }
 bool Case::getBordDroit() { return this->droit; }
+bool Case::getRobotHere() { return this->robotHere; }
+
 string Case::getCouleur() { return this->couleur; }
 int Case::getX() { return this->x; }
 int Case::getY() { return this->y; }
@@ -86,6 +92,7 @@ void Case::setBordsDroit(bool setDroit) { this->droit = setDroit; }
 void Case::setCouleur(string setCouleur) { this->couleur = setCouleur; }
 void Case::setX(int setX) { this->x = setX; }
 void Case::setY(int setY) { this->y = setY; }
+void Case::setRobotHere(bool setRobotHere) { this->robotHere = setRobotHere; }
 
 ///
 /// @brief Méthode, Affichage Case
