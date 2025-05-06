@@ -1,10 +1,18 @@
+///
+/// @brief Bibliothèques
+/// @details Nécéssaires pour le bon focntionnement du projet.
+///
 #include <string>
 #include <iostream>
 #include <string>
 #include "stdlib.h"
 #include "Case.h"
 
-// Constructeurs
+///
+/// @brief Création d'une case en fonction des coordonnées X, Y
+/// @details On utilise ici l'ensemble des fonctions utilisées dans l'exercice. 
+/// @param[in]  X, Y entier
+///
 Case::Case(int X, int Y)
 {
     this->x = X;
