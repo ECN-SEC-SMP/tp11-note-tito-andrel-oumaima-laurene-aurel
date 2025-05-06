@@ -16,6 +16,7 @@ public:
     int y;               // Position Y
 
     Robot(std::string c, int posX, int posY); // Constructeur
+    Robot(std::string c); // Constructeur par défaut
 
     char RecupereInfo(); // recupere la direction du robot
     void Deplacement(char direction); // Bouger

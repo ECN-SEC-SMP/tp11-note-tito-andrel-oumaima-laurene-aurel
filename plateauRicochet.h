@@ -19,6 +19,7 @@ class plateauRicochet
         plateauRicochet(int x, int y);
         std::vector<std::vector<Case*>> getPlateau();
         ~plateauRicochet();
+        void InitRobot(Robot* robotRed, Robot* robotGreen);
         void setObstacle(int x1, int x2, int y1, int y2);
         void setBordsBas(int X, int Y);
         void setBordsHaut(int X, int Y);
