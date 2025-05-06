@@ -1,6 +1,11 @@
 #include <string>
 #include <iostream>
-#include <string>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+#include <list>
+#include <thread>
+#include <chrono>
 #include <vector>
 #include <cstdlib> // Pour srand() et rand()
 #include <ctime>   // Pour time()

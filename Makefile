@@ -12,6 +12,9 @@ Sablier.o: Sablier.cpp Sablier.h
 Case.o: Case.cpp Case.h
 	g++ -std=c++11 -pthread -c Case.cpp
 
+Objectif.o: Objectif.cpp Objectif.h
+	g++ -std=c++11 -pthread -c Objectif.cpp
+
 plateauRicochet.o: plateauRicochet.cpp plateauRicochet.h
 	g++ -std=c++11 -pthread -c plateauRicochet.cpp
 
