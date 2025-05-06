@@ -20,19 +20,14 @@ Master::Master(int X, int Y) {
     //Robot
     Plateau = new plateauRicochet(Max_X, Max_Y);
 
-    robotRed = new Robot("rouge", 0, 0);
-    robotRed->GenereRobot();
+    robotRed = new Robot("rouge");
+    robotGreen = new Robot("vert");
+    //robotBlue = new Robot("bleu");
+    //robotYellow = new Robot("jaune");
 
-    //generation ne fonctionne pas
-
-    
-    // robotGreen = new Robot("vert", 12, 10);
-    // robotGreen->GenereRobot();
-    // robotBlue = new Robot("bleu", 8, 3);
-    // robotBlue->GenereRobot();
     // robotYellow = new Robot("jaune", 4, 7);
     // robotYellow->GenereRobot();
-
+    Plateau->InitRobot(robotRed, robotGreen);
     Plateau->Afficher();
 
 }
@@ -73,13 +68,11 @@ void Master:: Tour() {
     } else {
         std::cout << "Robot non valide" << std::endl;
         Tour();
-        
-
     }
     
-    //deplacement
     //Objectif atteint?//Next player
     //afficher le plateau
     //next Turn
     //fin si tout les objectif sont atteint
+    Plateau->Afficher();
 }
