@@ -251,15 +251,15 @@ void plateauRicochet::Afficher() {
         // Affiche les murs du haut
         for (int j = 0; j < Max_Y; ++j) {
             cout << "+";
-            if (Plateau[i][j]->getBordHaut()) cout << "---";
-            else cout << "   ";
+            if (Plateau[i][j]->getBordHaut()) cout << "----";
+            else cout << "    ";
         }
         cout << "+" << endl;
         // Affiche les murs gauche et le contenu de la case
         for (int j = 0; j < Max_Y; ++j) {
             if (Plateau[i][j]->getBordGauche()) cout << "|";
             else cout << " ";
-            cout << "   "; // Ici tu peux afficher un symbole pour robot/obstacle/couleur
+            cout << "    "; // Ici tu peux afficher un symbole pour robot/obstacle/couleur
         }
         if (Plateau[i][Max_Y-1]->getBordDroit()) cout << "|";
         cout << endl;
@@ -268,8 +268,8 @@ void plateauRicochet::Afficher() {
     // Affiche la dernière ligne de murs bas
     for (int j = 0; j < Max_Y; ++j) {
         cout << "+";
-        if (Plateau[Max_X-1][j]->getBordBas()) cout << "---";
-        else cout << "   ";
+        if (Plateau[Max_X-1][j]->getBordBas()) cout << "----";
+        else cout << "    ";
     }
     cout << "+" << endl;
 }
