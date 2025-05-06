@@ -25,11 +25,25 @@ Master::~Master() {
     delete robotRouge; // Suppression du robot rouge
     delete Plateau;    // Suppression du plateau
 }
+
+char Master::select_Robot(){
+    char Rob;
+    std::cout<<"Sélection du robot: Red, Green, Blue, Yellow"<<std::endl;
+    std::cout<<"R/G/B/Y"<<std::endl;
+    std::cin>>Rob;
+    return Rob;
+}
 void Master:: Tour() {
-    //choisir le robot
-    //choisir la direction
+    //Joueurs Selection du joueurs
+
+    //choisir le robot entre les 4
+    char Rob=select_Robot();
+    if(Rob=='R'){
+        //choisir la direction   
+        robotRouge->Deplacement(robotRouge->RecupereInfo());
+    }
     //deplacement
-    //Objectif atteint?
+    //Objectif atteint?//Next player
     //afficher le plateau
     //next Turn
     //fin si tout les objectif sont atteint

@@ -3,6 +3,7 @@
 #include <vector>
 #include <list>
 
+
 bool obstacle;
 Robot::Robot(std::string c, int posX, int posY) : couleur(c), x(posX), y(posY), nbDeplacements(0), OK(false) {}
 
@@ -23,6 +24,8 @@ void Robot::Deplacement(char direction) {
         case 'L': while (obstacle==0) x--; break; // Left
         case 'R': while (obstacle==0) x++; break; // Right
     }
+
+    //récupére le robot et la direction de deplacement
     nbDeplacements++; // A chaque mouvement, on ajoute 1 déplacement
 }
 

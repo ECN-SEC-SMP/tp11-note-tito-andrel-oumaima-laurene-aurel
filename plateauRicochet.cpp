@@ -9,6 +9,9 @@ using namespace std;
 /**
  * @brief Constructeur de la classe Plateau
  */
+std::vector<std::vector<Case*>> plateauRicochet::getPlateau() {
+    return Plateau;
+}
 void plateauRicochet::setBordsBas(int X, int Y ) {
     if (X < 0 || X >= Max_X || Y < 0 || Y >= Max_Y) return; // Sécurité: Vérifie les indices
     Plateau[X][Y]->setBordsBas(true);

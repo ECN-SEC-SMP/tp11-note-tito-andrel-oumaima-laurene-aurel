@@ -13,12 +13,16 @@
 #include <ctime>   // Pour time()
 #include "Robot.h"
 
+
 class Master {
     protected:
         // Attributs
         int Max_X;
         int Max_Y;
-        std::vector<std::vector<Case*>> Plateau; 
+        //std::vector<std::vector<Case*>> Plateau;
+        plateauRicochet* Plateau;
+        Robot* robotRouge; 
+        //class objectif??
         //std::vector<std::vector<Case*>> Plateau;
     public:
         // Constructeurs
@@ -26,7 +30,9 @@ class Master {
         // Destructeur
         ~Master();
         void Tour();
-        void Afficher();
+        char select_Robot();
+        //void Afficher();
+        //void InitPlateau();
 };
 
 #endif
