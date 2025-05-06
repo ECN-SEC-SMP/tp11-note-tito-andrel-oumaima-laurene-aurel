@@ -293,3 +293,72 @@ plateauRicochet::~plateauRicochet() {
     // Vectors themselves are automatically destroyed
 }
 }
+
+void plateauRicochet::DeplacerRobot(Robot* robot, char direction) {
+    // Code pour déplacer le robot sur le plateau
+    
+    int Pos_X = robot->GetX();
+    int Pos_Y = robot->GetY();
+
+    int Deplacement = robot->GetNbDeplacement();
+    robot->SetNbDeplacement(Deplacement + 1);
+    cout << "Robot position: " << Pos_X << ", " << Pos_Y << endl;
+    switch (direction) {
+
+        // Vérifier si la case est libre avant de déplacer
+        
+        case 'U'://Up
+            while(1) {
+               if (Plateau[Pos_X][Pos_Y]->getBordHaut()){
+                robot->SetPosition(Pos_X, Pos_Y);
+                cout << "Robot moved to Up: " << Pos_X << ", " << Pos_Y << endl;
+                break;
+               }
+               else{
+                     Pos_X--;
+               }
+            }
+            break;
+            
+        case 'D': // Down
+            while(1) {
+               if (Plateau[Pos_X][Pos_Y]->getBordBas()){
+                robot->SetPosition(Pos_X, Pos_Y);
+                cout << "Robot moved to Down: " << Pos_X << ", " << Pos_Y << endl;
+                break;
+               }
+               else{
+                     Pos_X++;
+               }
+            }
+        cout<<"end Down"<<endl;
+            break;
+            
+        case 'L':  // Left
+            while(1) {
+                if (Plateau[Pos_X][Pos_Y]->getBordGauche()){
+                robot->SetPosition(Pos_X, Pos_Y);
+                cout << "Robot moved to: Left " << Pos_X << ", " << Pos_Y << endl;
+                break;
+                }
+                else{
+                    Pos_Y--;
+                }
+            }
+            break;
+        case 'R':  // Right
+            while(1) {
+                if (Plateau[Pos_X][Pos_Y]->getBordDroit()){
+                robot->SetPosition(Pos_X, Pos_Y);
+                cout << "Robot moved to Right: " << Pos_X << ", " << Pos_Y << endl;
+                break;
+                }
+                else{
+                    Pos_Y++;
+                }
+            }
+            break;
+    
+}
+    
+}
