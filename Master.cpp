@@ -28,7 +28,7 @@ Master::Master(int X, int Y) {
     // robotYellow = new Robot("jaune", 4, 7);
     // robotYellow->GenereRobot();
     Plateau->InitRobot(robotRed, robotGreen);
-    Plateau->Afficher();
+    Afficher();
 
 }
 Master::~Master() {
@@ -74,5 +74,42 @@ void Master:: Tour() {
     //afficher le plateau
     //next Turn
     //fin si tout les objectif sont atteint
-    Plateau->Afficher();
+    Afficher();
+}
+
+void Master::Afficher() {
+    std::vector<std::vector<Case*>> Grille = Plateau->getPlateau();
+    //cote haut de la case à afficher
+    for (int i = 0; i < Max_X; ++i) {
+        // Affiche les murs du haut
+        for (int j = 0; j < Max_Y; ++j) {
+            cout << "+";
+            if (Grille[i][j]->getBordHaut()) cout << "----";
+            else cout << "    ";
+        }
+        cout << "+" << endl;
+        // Affiche les murs gauche et le contenu de la case
+        for (int j = 0; j < Max_Y; ++j) {
+            if (Grille[i][j]->getBordGauche()) cout << "|";
+            else cout << " ";
+            if(robotRed->GetX() == i && robotRed->GetY() == j) cout << " R  "; // Ici tu peux afficher un symbole pour le robot// Affiche la couleur de la case
+            else if(robotGreen->GetX() == i && robotGreen->GetY() == j) cout << " G  ";
+            // else if(robotBlue->GetX() == i && robotBlue->GetY() == j) cout << " B  ";
+            // else if(robotYellow->GetX() == i && robotYellow->GetY() == j) cout << " Y  ";
+
+
+            //rajouter affichage objectif/ case de couleurs ...
+            else cout << "    "; // Ici tu peux afficher un symbole pour robot/obstacle/couleur
+        }
+        if (Grille[i][Max_Y-1]->getBordDroit()) cout << "|";
+        cout << endl;
+        // Mur droit de la dernière case
+    }
+    // Affiche la dernière ligne de murs bas
+    for (int j = 0; j < Max_Y; ++j) {
+        cout << "+";
+        if (Grille[Max_X-1][j]->getBordBas()) cout << "----";
+        else cout << "    ";
+    }
+    cout << "+" << endl;
 }

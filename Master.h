@@ -35,7 +35,7 @@ class Master {
         ~Master();
         void Tour();
         char select_Robot();
-        //void Afficher();
+        void Afficher();
         //void InitPlateau();
 };
 
