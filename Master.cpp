@@ -6,6 +6,8 @@
 #include <iterator>
 #include "plateauRicochet.h"
 #include "Master.h"
+#include <cstdlib> // Pour srand() et rand()
+#include <ctime>   // Pour time()
 using namespace std;
 // Master::Master() {
 //     Max_X = 0;
@@ -19,15 +21,14 @@ Master::Master(int X, int Y) {
     Max_Y = Y;
     //Robot
     Plateau = new plateauRicochet(Max_X, Max_Y);
-
     robotRed = new Robot("rouge");
     robotGreen = new Robot("vert");
-    //robotBlue = new Robot("bleu");
-    //robotYellow = new Robot("jaune");
+    robotBlue = new Robot("bleu");
+    robotYellow = new Robot("jaune"); 
 
     // robotYellow = new Robot("jaune", 4, 7);
     // robotYellow->GenereRobot();
-    Plateau->InitRobot(robotRed, robotGreen);
+    Plateau->InitRobot(robotRed, robotGreen, robotBlue, robotYellow);
     Afficher();
 
 }
@@ -94,8 +95,8 @@ void Master::Afficher() {
             else cout << " ";
             if(robotRed->GetX() == i && robotRed->GetY() == j) cout << " R  "; // Ici tu peux afficher un symbole pour le robot// Affiche la couleur de la case
             else if(robotGreen->GetX() == i && robotGreen->GetY() == j) cout << " G  ";
-            // else if(robotBlue->GetX() == i && robotBlue->GetY() == j) cout << " B  ";
-            // else if(robotYellow->GetX() == i && robotYellow->GetY() == j) cout << " Y  ";
+            else if(robotBlue->GetX() == i && robotBlue->GetY() == j) cout << " B  ";
+            else if(robotYellow->GetX() == i && robotYellow->GetY() == j) cout << " Y  ";
 
 
             //rajouter affichage objectif/ case de couleurs ...
