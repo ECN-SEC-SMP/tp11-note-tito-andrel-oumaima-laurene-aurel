@@ -26,15 +26,20 @@ void Objectif::setX(int setX) { this->x = setX; }
 void Objectif::setY(int setY) { this->y = setY; }
 
 // Méthodes
-void ObjectifAtteint(string Couleur, string Forme) {
-    if (this->getCouleur() == Couleur) {
-
-    } else {
-
+bool Objectif::ObjectifAtteint(string Couleur, string Forme)
+{
+    if (this->getCouleur() == Couleur && this->getForme() == Forme)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }
 
 // Destructeur
-Objectif::~Objectif() {
+Objectif::~Objectif()
+{
     delete this;
 }

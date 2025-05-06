@@ -35,7 +35,7 @@ public:
     void setY(int setY);
 
     // Méthodes
-    void ObjectifAtteint(string Couleur, string Forme);
+    bool ObjectifAtteint(string Couleur, string Forme);
 
     // Destructeur
     ~Objectif();
