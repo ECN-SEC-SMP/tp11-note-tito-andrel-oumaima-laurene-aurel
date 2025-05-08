@@ -44,70 +44,86 @@ void plateauRicochet::setBordsDroit(int X, int Y) {
     }
 }
 
-void plateauRicochet::setObstacle(int min_x, int max_x, int min_y,int max_y) {
+void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y) {
     // Initialisation des obstacles
-    // Partie haute gauche du tableau
-    // obstacles sur le plateau
-    int i=0;
+    int i = 0;
     string couleurs[4] = {"rouge", "vert", "jaune", "bleu"};
-    while(i<4){
-        int k = rand() % 4;
-        int x = min_x + rand() % (max_x - min_x );
-        int y = min_y + rand() % (max_y - min_y );
-        switch(k) {
-            case 0:
-                //coin haut gauche
-                if (Plateau[x][y]->getBordHaut() == false && Plateau[x][y]->getBordBas() == false 
-                && Plateau[x][y]->getBordGauche() == false && Plateau[x][y]->getBordDroit() == false) {
-                    //Plateau[x][y]->setBordsHaut(true);
-                    setBordsHaut(x,y);
-                    //Plateau[x][y]->setBordsGauche(true);
-                    setBordsGauche(x,y);
-                    Plateau[x][y]->setCouleur(couleurs[i]);
-                    i++;
-                }
-                break;
-            case 1:
-
-
-                if (Plateau[x][y]->getBordHaut() == false && Plateau[x][y]->getBordBas() == false 
-                && Plateau[x][y]->getBordGauche() == false && Plateau[x][y]->getBordDroit() == false) {
-                    //Plateau[x][y]->setBordsHaut(true);
-                    setBordsHaut(x,y);
-                    //Plateau[x][y]->setBordsDroit(true);
-                    setBordsDroit(x,y);
-                    Plateau[x][y]->setCouleur(couleurs[i]);
-                    i++;
-                }
-                break;
-            case 2:
-
-
-                if (Plateau[x][y]->getBordHaut() == false && Plateau[x][y]->getBordBas() == false 
-                && Plateau[x][y]->getBordGauche() == false && Plateau[x][y]->getBordDroit() == false) {
-                    //Plateau[x][y]->setBordsBas(true);
-                    setBordsBas(x,y);
-                    //Plateau[x][y]->setBordsGauche(true);
-                    setBordsGauche(x,y);
-                    Plateau[x][y]->setCouleur(couleurs[i]);
-                    i++;
-                }
-                break;
-            case 3:
-                if (Plateau[x][y]->getBordHaut() == false && Plateau[x][y]->getBordBas() == false 
-                && Plateau[x][y]->getBordGauche() == false && Plateau[x][y]->getBordDroit() == false) {
-                    Plateau[x][y]->setBordsBas(true);
-                    Plateau[x][y]->setBordsDroit(true);
-                    Plateau[x][y]->setCouleur(couleurs[i]);
-                    i++;
-                }
-                break;
-        }
+    // Garder trace des positions des obstacles placés
+    vector<pair<int, int>> obstaclesPlaces;
+    
+    while (i < 4) {
+        int k = rand() % 4; // Type de coin
+        int x = min_x + 1 + rand() % (max_x - min_x - 2);
+        int y = min_y + 1 + rand() % (max_y - min_y - 2);
         
+        // Vérifier si cette position est valide (cases adjacentes libres)
+        bool positionValide = true;
+        
+        // Vérifier que la case et celle 
 
+        if (Plateau[x][y]->getBordHaut() == false && Plateau[x][y]->getBordBas()==false && 
+            Plateau[x][y]->getBordGauche()==false && Plateau[x][y]->getBordDroit()==false) {
+            positionValide = true;}
+        else {
+            positionValide = false;
+        }
+            
+        
+        
+        if (positionValide) {
+            switch(k) {
+                case 0: // coin haut gauche
+                        if(Plateau[x-1][y]->getBordDroit() == false && Plateau[x-1][y]->getBordGauche() == false && 
+                        Plateau[x][y+1]->getBordHaut() == false && Plateau[x][y-1]->getBordHaut() == false && Plateau[x][y-1]->getBordBas() == false
+                    && Plateau[x+1][y]->getBordGauche() == false ) {
+                            setBordsHaut(x, y);
+                            setBordsGauche(x, y);
+                        }
+                    else {
+                        positionValide = false;
+                    }
+                    break;
+                case 1: // coin haut droit
+                    if(Plateau[x-1][y]->getBordDroit() == false && Plateau[x-1][y]->getBordGauche() == false && 
+                    Plateau[x][y+1]->getBordHaut() == false && Plateau[x][y+1]->getBordBas() == false && Plateau[x][y-1]->getBordHaut() == false) {
+                        setBordsHaut(x, y);
+                        setBordsDroit(x, y);
+                    }
+                    else {
+                        positionValide = false;
+                    }
+                    break;
+                case 2: // coin bas gauche
+                if( Plateau[x-1][y]->getBordGauche() == false && 
+                Plateau[x][y+1]->getBordBas() == false && Plateau[x][y-1]->getBordBas() == false&& Plateau[x][y-1]->getBordHaut() == false 
+                && Plateau[x+1][y]->getBordGauche() == false&& Plateau[x+1][y]->getBordDroit() == false) {
+                    setBordsBas(x, y);
+                    setBordsGauche(x, y);
+                }
+                else {
+                    positionValide = false;
+                }
+                break;
+                case 3: // coin bas droit
+                if( Plateau[x-1][y]->getBordDroit() == false && 
+                Plateau[x][y+1]->getBordBas() == false && Plateau[x][y+1]->getBordHaut() == false && Plateau[x][y-1]->getBordBas() == false 
+                && Plateau[x+1][y]->getBordGauche() == false&& Plateau[x+1][y]->getBordDroit() == false) {
+                    setBordsBas(x, y);
+                    setBordsDroit(x, y);
+                }
+                else {
+                    positionValide = false;
+                }
+            }
+            
+        }
+        if(positionValide) {
+            Plateau[x][y]->setCouleur(couleurs[i]);
+            obstaclesPlaces.push_back({x, y});
+            i++;  
+        }
     }
-
-    }
+}
 plateauRicochet::plateauRicochet(int x, int y) {
     Max_X = x;
     Max_Y = y;
