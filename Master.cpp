@@ -86,13 +86,13 @@ void Master::Afficher() {
         // Affiche les murs du haut
         for (int j = 0; j < Max_Y; ++j) {
             cout << "+";
-            if (Grille[i][j]->getBordHaut()) cout << "----";
+            if (Grille[i][j]->getBordHaut()) cout << "════";
             else cout << "    ";
         }
         cout << "+" << endl;
         // Affiche les murs gauche et le contenu de la case
         for (int j = 0; j < Max_Y; ++j) {
-            if (Grille[i][j]->getBordGauche()) cout << "|";
+            if (Grille[i][j]->getBordGauche()) cout << "║";
             else cout << " ";
             
             // Version avec smileys robots colorés SUR FOND COLORÉ
@@ -108,15 +108,16 @@ void Master::Afficher() {
             else
                 cout << "    "; // Case vide
         }
-        if (Grille[i][Max_Y-1]->getBordDroit()) cout << "|";
+        if (Grille[i][Max_Y-1]->getBordDroit()) cout << "║";
         cout << endl;
         // Mur droit de la dernière case
     }
     // Affiche la dernière ligne de murs bas
-    for (int j = 0; j < Max_Y; ++j) {
-        cout << "+";
-        if (Grille[Max_X-1][j]->getBordBas()) cout << "----";
+    cout << "╚" << "════";
+    for (int j = 1; j < Max_Y; ++j) {
+        cout << "╩";
+        if (Grille[Max_X-1][j]->getBordBas()) cout << "════";
         else cout << "    ";
     }
-    cout << "+" << endl;
+    cout << "╝" << endl;
 }

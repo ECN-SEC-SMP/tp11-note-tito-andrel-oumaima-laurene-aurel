@@ -12,6 +12,9 @@ using namespace std;
 std::vector<std::vector<Case*>> plateauRicochet::getPlateau() {
     return Plateau;
 }
+std::vector<std::vector<Case*>> plateauRicochet::getPlateau() {
+    return Plateau;
+}
 void plateauRicochet::setBordsBas(int X, int Y ) {
     if (X < 0 || X >= Max_X || Y < 0 || Y >= Max_Y) return; // Sécurité: Vérifie les indices
     Plateau[X][Y]->setBordsBas(true);
@@ -45,9 +48,66 @@ void plateauRicochet::setBordsDroit(int X, int Y) {
 }
 
 void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y) {
+void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y) {
     // Initialisation des obstacles
     int i = 0;
+    int i = 0;
     string couleurs[4] = {"rouge", "vert", "jaune", "bleu"};
+    // Garder trace des positions des obstacles placés
+    vector<pair<int, int>> obstaclesPlaces;
+    
+    while (i < 4) {
+        int k = rand() % 4; // Type de coin
+        int x = min_x + 1 + rand() % (max_x - min_x - 2);
+        int y = min_y + 1 + rand() % (max_y - min_y - 2);
+        
+        // Vérifier si cette position est valide (cases adjacentes libres)
+        bool positionValide = true;
+        
+        // Vérifier que la case et celle 
+
+        if (Plateau[x][y]->getBordHaut() == false && Plateau[x][y]->getBordBas()==false && 
+            Plateau[x][y]->getBordGauche()==false && Plateau[x][y]->getBordDroit()==false) {
+            positionValide = true;}
+        else {
+            positionValide = false;
+        }
+            
+        
+        
+        if (positionValide) {
+            switch(k) {
+                case 0: // coin haut gauche
+                        if(Plateau[x-1][y]->getBordDroit() == false && Plateau[x-1][y]->getBordGauche() == false && 
+                        Plateau[x][y+1]->getBordHaut() == false && Plateau[x][y-1]->getBordHaut() == false && Plateau[x][y-1]->getBordBas() == false
+                    && Plateau[x+1][y]->getBordGauche() == false ) {
+                            setBordsHaut(x, y);
+                            setBordsGauche(x, y);
+                            
+                        }
+                    else {
+                        positionValide = false;
+                    }
+                    break;
+                case 1: // coin haut droit
+                    if(Plateau[x-1][y]->getBordDroit() == false && Plateau[x-1][y]->getBordGauche() == false && 
+                    Plateau[x][y+1]->getBordHaut() == false && Plateau[x][y+1]->getBordBas() == false && Plateau[x][y-1]->getBordHaut() == false) {
+                        setBordsHaut(x, y);
+                        setBordsDroit(x, y);
+                    }
+                    else {
+                        positionValide = false;
+                    }
+                    break;
+                case 2: // coin bas gauche
+                if( Plateau[x-1][y]->getBordGauche() == false && 
+                Plateau[x][y+1]->getBordBas() == false && Plateau[x][y-1]->getBordBas() == false&& Plateau[x][y-1]->getBordHaut() == false 
+                && Plateau[x+1][y]->getBordGauche() == false&& Plateau[x+1][y]->getBordDroit() == false) {
+                    setBordsBas(x, y);
+                    setBordsGauche(x, y);
+                }
+                else {
+                    positionValide = false;
     // Garder trace des positions des obstacles placés
     vector<pair<int, int>> obstaclesPlaces;
     
@@ -122,8 +182,26 @@ void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y) {
             Plateau[x][y]->setCouleur(couleurs[i]);
             obstaclesPlaces.push_back({x, y});
             i++;  
+                case 3: // coin bas droit
+                if( Plateau[x-1][y]->getBordDroit() == false && 
+                Plateau[x][y+1]->getBordBas() == false && Plateau[x][y+1]->getBordHaut() == false && Plateau[x][y-1]->getBordBas() == false 
+                && Plateau[x+1][y]->getBordGauche() == false&& Plateau[x+1][y]->getBordDroit() == false) {
+                    setBordsBas(x, y);
+                    setBordsDroit(x, y);
+                }
+                else {
+                    positionValide = false;
+                }
+            }
+            
+        }
+        if(positionValide) {
+            Plateau[x][y]->setCouleur(couleurs[i]);
+            obstaclesPlaces.push_back({x, y});
+            i++;  
         }
     }
+}
 }
 plateauRicochet::plateauRicochet(int x, int y) {
     Max_X = x;
@@ -167,6 +245,7 @@ plateauRicochet::plateauRicochet(int x, int y) {
    
     }
 
+
     //Coin gauche
     setBordsHaut(Max_X/2 -1,Max_Y/2-1);
     setBordsGauche(Max_X/2-1,Max_Y/2-1);
@@ -209,7 +288,15 @@ plateauRicochet::plateauRicochet(int x, int y) {
     // // Placer l'objectif multicolore
     // int multi_x = rand() % Max_X;
     // int multi_y = rand() % Max_Y;
+    // // Placer l'objectif multicolore
+    // int multi_x = rand() % Max_X;
+    // int multi_y = rand() % Max_Y;
 
+    // while(Plateau[multi_x][multi_y]->getBordHaut() == false && Plateau[multi_x][multi_y]->getBordBas() == false 
+    // && Plateau[multi_x][multi_y]->getBordGauche() == false && Plateau[multi_x][multi_y]->getBordDroit() == false){
+    //     multi_x = rand() % Max_X;
+    //     multi_y = rand() % Max_Y;
+    // }
     // while(Plateau[multi_x][multi_y]->getBordHaut() == false && Plateau[multi_x][multi_y]->getBordBas() == false 
     // && Plateau[multi_x][multi_y]->getBordGauche() == false && Plateau[multi_x][multi_y]->getBordDroit() == false){
     //     multi_x = rand() % Max_X;
@@ -217,8 +304,33 @@ plateauRicochet::plateauRicochet(int x, int y) {
     // }
 
     // Plateau[multi_x][multi_y]->setCouleur("incolore");
+    // Plateau[multi_x][multi_y]->setCouleur("incolore");
     
     // int k = rand()%4;
+    // int k = rand()%4;
+
+    // switch(k) {
+    //     case 0:
+    //         //coin haut gauche
+    //         Plateau[multi_x][multi_y]->setBordsHaut(true);
+    //         Plateau[multi_x][multi_y]->setBordsGauche(true);
+    //         break;
+    //     case 1:
+    //         Plateau[multi_x][multi_y]->setBordsHaut(true);
+    //         Plateau[multi_x][multi_y]->setBordsDroit(true);
+    //         break;
+    //     case 2:
+    //         Plateau[multi_x][multi_y]->setBordsBas(true);
+    //         Plateau[multi_x][multi_y]->setBordsGauche(true);
+    //         break;
+    //     case 3:
+    //         Plateau[multi_x][multi_y]->setBordsBas(true);
+    //         Plateau[multi_x][multi_y]->setBordsDroit(true);
+    //         break;
+    // }
+
+
+}
 
     // switch(k) {
     //     case 0:
