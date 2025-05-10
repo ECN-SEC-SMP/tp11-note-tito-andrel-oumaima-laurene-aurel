@@ -78,6 +78,7 @@ void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y) {
                     && Plateau[x+1][y]->getBordGauche() == false ) {
                             setBordsHaut(x, y);
                             setBordsGauche(x, y);
+                            
                         }
                     else {
                         positionValide = false;
@@ -158,22 +159,6 @@ plateauRicochet::plateauRicochet(int x, int y) {
                 Plateau[i][j] = new Case(i, j, false, true, false, false);
             }
             else {
-                // //autre case
-                // bool Haut;
-                // bool Gauche;
-                // if(Plateau[i][j-1]->getBordBas()){
-                //     Haut = true;
-                // }
-                // else{
-                //     Haut = false;
-                // }
-                // if(Plateau[i-1][j]->getBordDroit()){
-                //     Gauche = true;
-                // }
-                // else{
-                //     Gauche = false;
-                // }
-                // Plateau[i][j] = new Case(i, j, Haut, false, Gauche, false);
                 Plateau[i][j] = new Case(i, j);
             }
             
@@ -221,75 +206,43 @@ plateauRicochet::plateauRicochet(int x, int y) {
 
     setObstacle(0, Max_X/2,Max_Y/2,Max_Y);
 
-    // Placer l'objectif multicolore
-    int multi_x = rand() % Max_X;
-    int multi_y = rand() % Max_Y;
+    // // Placer l'objectif multicolore
+    // int multi_x = rand() % Max_X;
+    // int multi_y = rand() % Max_Y;
 
-    while(Plateau[multi_x][multi_y]->getBordHaut() == false && Plateau[multi_x][multi_y]->getBordBas() == false 
-    && Plateau[multi_x][multi_y]->getBordGauche() == false && Plateau[multi_x][multi_y]->getBordDroit() == false){
-        multi_x = rand() % Max_X;
-        multi_y = rand() % Max_Y;
-    }
+    // while(Plateau[multi_x][multi_y]->getBordHaut() == false && Plateau[multi_x][multi_y]->getBordBas() == false 
+    // && Plateau[multi_x][multi_y]->getBordGauche() == false && Plateau[multi_x][multi_y]->getBordDroit() == false){
+    //     multi_x = rand() % Max_X;
+    //     multi_y = rand() % Max_Y;
+    // }
 
-    Plateau[multi_x][multi_y]->setCouleur("incolore");
+    // Plateau[multi_x][multi_y]->setCouleur("incolore");
     
-    int k = rand()%4;
+    // int k = rand()%4;
 
-    switch(k) {
-        case 0:
-            //coin haut gauche
-            Plateau[multi_x][multi_y]->setBordsHaut(true);
-            Plateau[multi_x][multi_y]->setBordsGauche(true);
-            break;
-        case 1:
-            Plateau[multi_x][multi_y]->setBordsHaut(true);
-            Plateau[multi_x][multi_y]->setBordsDroit(true);
-            break;
-        case 2:
-            Plateau[multi_x][multi_y]->setBordsBas(true);
-            Plateau[multi_x][multi_y]->setBordsGauche(true);
-            break;
-        case 3:
-            Plateau[multi_x][multi_y]->setBordsBas(true);
-            Plateau[multi_x][multi_y]->setBordsDroit(true);
-            break;
-    }
+    // switch(k) {
+    //     case 0:
+    //         //coin haut gauche
+    //         Plateau[multi_x][multi_y]->setBordsHaut(true);
+    //         Plateau[multi_x][multi_y]->setBordsGauche(true);
+    //         break;
+    //     case 1:
+    //         Plateau[multi_x][multi_y]->setBordsHaut(true);
+    //         Plateau[multi_x][multi_y]->setBordsDroit(true);
+    //         break;
+    //     case 2:
+    //         Plateau[multi_x][multi_y]->setBordsBas(true);
+    //         Plateau[multi_x][multi_y]->setBordsGauche(true);
+    //         break;
+    //     case 3:
+    //         Plateau[multi_x][multi_y]->setBordsBas(true);
+    //         Plateau[multi_x][multi_y]->setBordsDroit(true);
+    //         break;
+    // }
 
-    //Initialisation des robots
-    for (int k = 0; k < 2; k++) { // Example for initializing 2 robots
-        // Code to initialize robots goes here
-        //rand() % maxX;
-    }
+
 }
 
-// void plateauRicochet::Afficher() {
-//     for (int i = 0; i < Max_X; ++i) {
-//         // Affiche les murs du haut
-//         for (int j = 0; j < Max_Y; ++j) {
-//             cout << "+";
-//             if (Plateau[i][j]->getBordHaut()) cout << "----";
-//             else cout << "    ";
-//         }
-//         cout << "+" << endl;
-//         // Affiche les murs gauche et le contenu de la case
-//         for (int j = 0; j < Max_Y; ++j) {
-//             if (Plateau[i][j]->getBordGauche()) cout << "|";
-//             else cout << " ";
-//             if(Plateau[i][j]->getRobotHere()) cout << " R  "; // Ici tu peux afficher un symbole pour le robot// Affiche la couleur de la case
-//             else cout << "    "; // Ici tu peux afficher un symbole pour robot/obstacle/couleur
-//         }
-//         if (Plateau[i][Max_Y-1]->getBordDroit()) cout << "|";
-//         cout << endl;
-//         // Mur droit de la dernière case
-//     }
-//     // Affiche la dernière ligne de murs bas
-//     for (int j = 0; j < Max_Y; ++j) {
-//         cout << "+";
-//         if (Plateau[Max_X-1][j]->getBordBas()) cout << "----";
-//         else cout << "    ";
-//     }
-//     cout << "+" << endl;
-// }
 // Destructeur
 plateauRicochet::~plateauRicochet() {
     for (int i = 0; i < Max_X; ++i) { 

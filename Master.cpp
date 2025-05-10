@@ -76,6 +76,7 @@ void Master:: Tour() {
     //next Turn
     //fin si tout les objectif sont atteint
     Afficher();
+    Tour();
 }
 
 void Master::Afficher() {

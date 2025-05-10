@@ -8,6 +8,7 @@
 #include <iterator>
 #include "plateauRicochet.h"
 #include "Robot.h"
+#include <map>
 class plateauRicochet
 {
     private:
@@ -15,6 +16,7 @@ class plateauRicochet
      int Max_Y;
      //vector<std::vector<Case*>> Plateau;
      std::vector<std::vector<Case*>> Plateau; 
+     //std::vector<std::vector<int>> Coin;
     public:
         plateauRicochet(int x, int y);
         std::vector<std::vector<Case*>> getPlateau();
