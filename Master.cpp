@@ -97,7 +97,8 @@ void Master::Afficher()
     for (int i = 0; i < Max_X; ++i)
     {
         // Affiche les murs du haut
-        cout << (i == 0 ? "╔" : "╠");
+        cout << (i == 0 ? "╔" : (Grille[i][0]->getBordHaut() ? "╠" : "║"));
+
         for (int j = 0; j < Max_Y; ++j)
         {
             cout << (Grille[i][j]->getBordHaut() ? "════" : "    ");
@@ -129,7 +130,8 @@ void Master::Afficher()
                 }
             }
         }
-        cout << (i == 0 ? "╗" : "╣") << endl;
+
+        cout << (i == 0 ? "╗" : (Grille[i][Max_Y - 1]->getBordHaut() ? "╣" : "║")) << endl;
 
         // Affiche les murs gauche et le contenu de la case
         for (int j = 0; j < Max_Y; ++j)
@@ -179,48 +181,3 @@ void Master::Afficher()
     }
     cout << "╝" << endl;
 }
-
-// void Master::Afficher() {
-//     std::vector<std::vector<Case*>> Grille = Plateau->getPlateau();
-
-//     for (int i = 0; i < Max_X; ++i) {
-//         // Affiche les murs du haut
-//         cout << "╔" << "════";
-//         for (int j = 1; j < Max_Y; ++j) {
-//             cout << "╦";
-//             if (Grille[i][j]->getBordHaut()) cout << "════";
-//             else cout << "    ";
-//         }
-//         cout << "╣" << endl;
-
-//         // Affiche les murs gauche et le contenu de la case
-//         for (int j = 0; j < Max_Y; ++j) {
-//             if (Grille[i][j]->getBordGauche()) cout << "║";
-//             else cout << " ";
-
-//             // Version avec smileys robots colorés SUR FOND COLORÉ
-//             if(robotRed->GetX() == i && robotRed->GetY() == j)
-//                 cout << "\033[1;41m" << " 🤖 " << "\033[0m"; // Robot sur fond rouge
-//             else if(robotGreen->GetX() == i && robotGreen->GetY() == j)
-//                 cout << "\033[1;42m" << " 🤖 " << "\033[0m"; // Robot sur fond vert
-//             else if(robotBlue->GetX() == i && robotBlue->GetY() == j)
-//                 cout << "\033[1;44m" << " 🤖 " << "\033[0m"; // Robot sur fond bleu (était 34)
-//             else if(robotYellow->GetX() == i && robotYellow->GetY() == j)
-//                 cout << "\033[1;43m" << " 🤖 " << "\033[0m";
-//             //rajouter pour afficher les objectifs
-//             else
-//                 cout << "    "; // Case vide
-//         }
-//         if (Grille[i][Max_Y-1]->getBordDroit()) cout << "║";
-//         cout << endl;
-//         // Mur droit de la dernière case
-//     }
-//     // Affiche la dernière ligne de murs bas
-//     cout << "╚" << "════";
-//     for (int j = 1; j < Max_Y; ++j) {
-//         cout << "╩";
-//         if (Grille[Max_X-1][j]->getBordBas()) cout << "════";
-//         else cout << "    ";
-//     }
-//     cout << "╝" << endl;
-// }
