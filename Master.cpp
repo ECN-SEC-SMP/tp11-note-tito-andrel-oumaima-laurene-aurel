@@ -103,13 +103,12 @@ void Master::Afficher()
             cout << (Grille[i][j]->getBordHaut() ? "════" : "    ");
             if (j < Max_Y - 1)
             {
-                
                 if (i == 0)
                 {
                     cout << "╦";
                 }
-                else if (Grille[i][j]->getBordHaut() || Grille[i][j + 1]->getBordHaut() ||
-                         Grille[i][j]->getBordDroit() || Grille[i][j + 1]->getBordGauche())
+                else if (Grille[i][j]->getBordHaut() && Grille[i][j + 1]->getBordHaut() &&
+                         Grille[i][j]->getBordDroit() && Grille[i][j + 1]->getBordGauche())
                 {
                     cout << "╬";
                 }
