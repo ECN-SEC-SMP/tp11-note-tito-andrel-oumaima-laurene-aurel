@@ -267,7 +267,7 @@ void plateauRicochet::DeplacerRobot(Robot* robot, char direction) {
 
         // Vérifier si la case est libre avant de déplacer
         
-        case 'U'://Up
+        case 'U'://Upy
             while(1) {
                if (Plateau[Pos_X][Pos_Y]->getBordHaut() or Plateau[Pos_X+1][Pos_Y]->getRobotHere()){
                 robot->SetPosition(Pos_X, Pos_Y);
