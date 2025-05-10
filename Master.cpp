@@ -126,7 +126,14 @@ void Master::Afficher()
                 }
                 else
                 {
-                    cout << ".";
+                    if (!(Grille[i][j]->getBordHaut() || Grille[i][j + 1]->getBordGauche()))
+                    {
+                        cout << ".";
+                    }
+                    else
+                    {
+                        cout << ".";
+                    }
                 }
             }
         }
@@ -172,10 +179,6 @@ void Master::Afficher()
                 {
                     cout << "═";
                 }
-            }
-            else
-            {
-                cout << ".";
             }
         }
     }
