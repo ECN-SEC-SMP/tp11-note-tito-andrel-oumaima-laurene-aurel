@@ -105,12 +105,23 @@ void Master::Afficher()
             {
                 if (i == 0)
                 {
-                    cout << "╦";
+                    if (Grille[i][j + 1]->getBordGauche())
+                    {
+                        cout << "╦";
+                    }
+                    else
+                    {
+                        cout << "═";
+                    }
                 }
                 else if (Grille[i][j]->getBordHaut() && Grille[i][j + 1]->getBordHaut() &&
                          Grille[i][j]->getBordDroit() && Grille[i][j + 1]->getBordGauche())
                 {
                     cout << "╬";
+                }
+                else if (Grille[i][j]->getBordHaut() && Grille[i][j + 1]->getBordGauche())
+                {
+                    cout << "╗"; // OK
                 }
                 else
                 {
@@ -151,7 +162,14 @@ void Master::Afficher()
             if (Grille[Max_X - 1][j]->getBordBas() || Grille[Max_X - 1][j + 1]->getBordBas() ||
                 Grille[Max_X - 1][j]->getBordDroit() || Grille[Max_X - 1][j + 1]->getBordGauche())
             {
-                cout << "╩";
+                if (Grille[Max_X - 1][j + 1]->getBordGauche())
+                {
+                    cout << "╩";
+                }
+                else
+                {
+                    cout << "═";
+                }
             }
             else
             {
