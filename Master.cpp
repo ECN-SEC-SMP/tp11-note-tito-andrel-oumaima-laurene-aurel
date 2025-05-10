@@ -103,6 +103,7 @@ void Master::Afficher()
             cout << (Grille[i][j]->getBordHaut() ? "════" : "    ");
             if (j < Max_Y - 1)
             {
+                
                 if (i == 0)
                 {
                     cout << "╦";
