@@ -147,9 +147,26 @@ void Master::Afficher()
                 cout << "\033[1;44m" << " 🤖 " << "\033[0m"; // Robot sur fond bleu (était 34)
             else if (robotYellow->GetX() == i && robotYellow->GetY() == j)
                 cout << "\033[1;43m" << " 🤖 " << "\033[0m";
-            // rajouter pour afficher les objectifs
+            // Afficher les objectifs
             else
-                cout << "    "; // Case vide
+            {
+                bool objectifTrouve = false;
+                for (auto objectif : Plateau->getObjectifs())
+                {
+                    if (objectif->getX() == i && objectif->getY() == j)
+                    {
+                        char initiale = objectif->getCouleur()[0]; // Récupère l'initiale de la couleur
+                        cout << " " << initiale << "  ";
+                        objectifTrouve = true;
+                        break;
+                    }
+                }
+                if (!objectifTrouve)
+                {
+                    cout << "    "; // Case vide
+                }
+            }
+                //cout << "    "; // Case vide
         }
         cout << (Grille[i][Max_Y - 1]->getBordDroit() ? "║" : " ") << endl;
         // Mur droit de la dernière case
