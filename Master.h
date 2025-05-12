@@ -26,7 +26,7 @@ class Master {
         Robot* robotGreen;
         Robot* robotBlue;
         Robot* robotYellow;
-        //class objectif??
+
         //std::vector<std::vector<Case*>> Plateau;
     public:
         // Constructeurs

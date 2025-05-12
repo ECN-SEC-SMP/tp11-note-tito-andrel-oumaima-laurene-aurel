@@ -151,9 +151,26 @@ void Master::Afficher()
                 cout << "\033[1;44m" << " 🤖 " << "\033[0m";
             else if (robotYellow->GetX() == i && robotYellow->GetY() == j)
                 cout << "\033[1;43m" << " 🤖 " << "\033[0m";
-            // Pour les cases vides, utiliser le fond gris
+            // Afficher les objectifs
             else
-                cout << fondGris << "    " << resetColor;
+            {
+                bool objectifTrouve = false;
+                for (auto objectif : Plateau->getObjectifs())
+                {
+                    if (objectif->getX() == i && objectif->getY() == j)
+                    {
+                        char initiale = objectif->getCouleur()[0]; // Récupère l'initiale de la couleur
+                        cout << " " << initiale << "  ";
+                        objectifTrouve = true;
+                        break;
+                    }
+                }
+                if (!objectifTrouve)
+                {
+                    cout << "    "; // Case vide
+                }
+            }
+                //cout << "    "; // Case vide
         }
         cout << fondGris << (Grille[i][Max_Y - 1]->getBordDroit() ? "║" : " ") << resetColor << endl;
     }
