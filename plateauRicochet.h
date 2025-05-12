@@ -18,8 +18,6 @@ class plateauRicochet
      //vector<std::vector<Case*>> Plateau;
      std::vector<std::vector<Case*>> Plateau;
      std::vector<Objectif*> Objectifs; // Vecteur d'objectifs
-     //std::vector<std::vector<int>> Coin;
-     std::vector<std::vector<Case*>> Plateau; 
      std::vector<std::pair<int, int>> obstaclesPlaces;
     public:
         plateauRicochet(int x, int y);

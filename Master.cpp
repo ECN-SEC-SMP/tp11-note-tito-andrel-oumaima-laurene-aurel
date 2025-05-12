@@ -160,17 +160,18 @@ void Master::Afficher()
                     if (objectif->getX() == i && objectif->getY() == j)
                     {
                         char initiale = objectif->getCouleur()[0]; // Récupère l'initiale de la couleur
-                        cout << " " << initiale << "  ";
+                        // Ajouter fond gris pour l'objectif
+                        cout << fondGris << " " << initiale << "  " << resetColor;
                         objectifTrouve = true;
                         break;
                     }
                 }
                 if (!objectifTrouve)
                 {
-                    cout << "    "; // Case vide
+                    // La case vide doit aussi avoir le fond gris
+                    cout << fondGris << "    " << resetColor; // Case vide
                 }
             }
-                //cout << "    "; // Case vide
         }
         cout << fondGris << (Grille[i][Max_Y - 1]->getBordDroit() ? "║" : " ") << resetColor << endl;
     }
