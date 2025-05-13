@@ -48,7 +48,7 @@ class Master {
         void TourdeJeu();
         char select_Robot();
         void Afficher();
-        bool SelectionRobot(char Rob, int nbCoups, bool ObjectifOK);
+        bool SelectionRobot(char Rob, int nbCoups);
         //void InitPlateau();
 };
 
