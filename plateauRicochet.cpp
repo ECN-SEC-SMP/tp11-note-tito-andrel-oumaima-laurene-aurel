@@ -355,3 +355,13 @@ std::vector<Objectif *> plateauRicochet::getObjectifs()
 {
     return Objectifs;
 }
+
+void plateauRicochet::deleteObjectif(Objectif *objectif)
+{
+    auto it = std::find(Objectifs.begin(), Objectifs.end(), objectif);
+    if (it != Objectifs.end())
+    {
+        delete *it; // Libérer la mémoire de l'objectif
+        Objectifs.erase(it); // Supprimer l'objectif du vecteur
+    }
+}
