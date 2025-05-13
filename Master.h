@@ -50,7 +50,6 @@ class Master {
         void initJoueur();
         Joueur* selectJoueur();
         void AfficherScores();
-        //void InitPlateau();
 };
 
 #endif

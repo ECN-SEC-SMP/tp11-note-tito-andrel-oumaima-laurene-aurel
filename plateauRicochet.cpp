@@ -357,3 +357,26 @@ std::vector<Objectif *> plateauRicochet::getObjectifs()
 {
     return Objectifs;
 }
+void plateauRicochet::initRobot()
+{
+//         while (1){
+//             int X = rand()%16;
+//             int Y = rand()%16;
+//             bool libre = true;
+//             //Pas dans le carré du milieu
+//             if ( (X != 7 && Y != 7) && (X != 8 && Y != 8) && (X != 7 && Y != 8) && (X != 8 && Y != 7) )
+//             {
+//                 for (size_t i = 0; i < obstaclesPlaces.size(); i++) 
+//                 {
+//                     if (X == obstaclesPlaces[i].first && Y == obstaclesPlaces[i].second) {
+//                         libre = false;
+//                         break;
+//                     }
+//             }
+//             if(libre)
+//             {
+//               new Robot("rouge", X, Y);
+//             }
+//         }
+// }
+}
