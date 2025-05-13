@@ -12,6 +12,7 @@
 #include <cstdlib> // Pour srand() et rand()
 #include <ctime>   // Pour time()
 #include "Robot.h"
+#include "Joueur.h"
 
 
 class Master {
@@ -21,11 +22,18 @@ class Master {
         int Max_Y;
         //std::vector<std::vector<Case*>> Plateau;
         plateauRicochet* Plateau;
-        //robots
+
+        // Robots
         Robot* robotRed; 
         Robot* robotGreen;
         Robot* robotBlue;
         Robot* robotYellow;
+
+        // Joueurs
+        Joueur* JoueurRouge;
+        Joueur* JoueurBleu;
+        Joueur* JoueurJaune;
+        Joueur* JoueurVert;
 
         //std::vector<std::vector<Case*>> Plateau;
     public:

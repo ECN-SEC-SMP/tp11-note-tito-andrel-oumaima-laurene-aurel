@@ -8,6 +8,8 @@
 #include "Master.h"
 #include <cstdlib> // Pour srand() et rand()
 #include <ctime>   // Pour time()
+#include "Joueur.h"
+
 using namespace std;
 
 Master::Master(int X, int Y)
@@ -20,6 +22,11 @@ Master::Master(int X, int Y)
     robotGreen = new Robot("vert");
     robotBlue = new Robot("bleu");
     robotYellow = new Robot("jaune");
+
+    JoueurRouge = new Joueur("Rouge");
+    // JoueurBleu = new Joueur("Bleu");
+    // JoueurJaune = new Joueur("Jaune");
+    // JoueurVert = new Joueur("Vert");
 
     // robotYellow = new Robot("jaune", 4, 7);
     // robotYellow->GenereRobot();
@@ -36,7 +43,7 @@ char Master::select_Robot()
 {
     char Rob;
     std::cout << "Sélection du robot: Red, Green, Blue, Yellow" << std::endl;
-    std::cout << "R/G/B/Y" << std::endl;
+    std::cout << "R/G/B/Y" << endl;
     std::cin >> Rob;
     return Rob;
 }
@@ -46,63 +53,91 @@ void Master::Tour()
     char ok;     // Annonce du nombre de coups
     int nbCoups; // Nombre de coups
     // En attente du joueur
-    std::cout << "En attente..." << endl;
+    std::cout << "Appuyez sur O pour annoncer." << endl;
+    std::cout << "Appuyez sur S pour afficher les scores." << endl;
     while (ok != 'O')
     {
         cin >> ok;
     }
 
-    std::cout << "Nombre de coups annoncés ?" << endl;
-    while (!(std::cin >> nbCoups)) // Vérifie si l'entrée est un entier valide
+    if (ok == 'S')
     {
-        std::cin.clear();                                                   // Réinitialise le flux en cas d'erreur
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore les caractères invalides
-        std::cout << "Entrée invalide. Veuillez entrer un nombre : " << std::endl;
+        cout << "S";
     }
-    std::cout << "Nombre de coups annoncés : " << nbCoups << endl;
-
-    // choisir le robot entre les 4
-    char Rob = select_Robot();
-    if (Rob == 'R')
+    else if (ok == 'O')
     {
-        while (nbCoups != 0) {
-        // choisir la direction
-        // Déplacer le robot avec la direction choisie
-        // Déplacer le robot avec la direction choisie
-        Plateau->DeplacerRobot(robotRed, robotRed->RecupereInfo());
-        cout << "Robot position end: " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
-        // Vérifier si l'objectif est atteint
-        nbCoups --;
+
+        std::cout << "Nombre de coups annoncés ?" << endl;
+        while (!(std::cin >> nbCoups)) // Vérifie si l'entrée est un entier valide
+        {
+            std::cin.clear();                                                   // Réinitialise le flux en cas d'erreur
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore les caractères invalides
+            std::cout << "Entrée invalide. Veuillez entrer un nombre : " << std::endl;
         }
-    }
-    else if (Rob == 'G')
-    {
-        Plateau->DeplacerRobot(robotGreen, robotGreen->RecupereInfo());
-        cout << "Robot position end: " << robotGreen->GetX() << ", " << robotGreen->GetY() << endl;
-    }
-    else if (Rob == 'B')
-    {
+        std::cout << "Nombre de coups annoncés : " << nbCoups << endl;
 
-        Plateau->DeplacerRobot(robotBlue, robotBlue->RecupereInfo());
-        cout << "Robot position end: " << robotBlue->GetX() << ", " << robotBlue->GetY() << endl;
-    }
-    else if (Rob == 'Y')
-    {
-        Plateau->DeplacerRobot(robotYellow, robotYellow->RecupereInfo());
-        cout << "Robot position end: " << robotYellow->GetX() << ", " << robotYellow->GetY() << endl;
-    }
-    else
-    {
-        std::cout << "Robot non valide" << std::endl;
+        // choisir le robot entre les 4
+        char Rob = select_Robot();
+        int getX;
+        int getY;
+
+        if (Rob == 'R')
+        {
+            while (nbCoups != 0)
+            {
+                // choisir la direction
+                // Déplacer le robot avec la direction choisie
+                Plateau->DeplacerRobot(robotRed, robotRed->RecupereInfo());
+                cout << "Robot position end: " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
+                getX = robotRed->GetX();
+                getY = robotRed->GetY();
+                Afficher();
+                nbCoups--;
+                
+                // Gestion des objectifs ici
+                // On supprime un élémet du vecteur si le robot se trouve sur une case objectif
+            }
+            if (Plateau->getObjectifs().empty())
+            {
+                // Les objectifs sont atteints, on incrémente le score du joueur
+                cout << "Félicitations !";
+                JoueurRouge->setScore(JoueurRouge->getScore() + 1);
+                cout << "Score du robot Rouge :" << JoueurRouge->getScore() << endl;
+            }
+            else
+            {
+                // Tout les objectifs ne sont pas atteints
+                cout << "Skill Issue + gênant";
+                robotRed->SetX(getX);
+                robotRed->SetY(getY);
+                Afficher();
+            }
+        }
+        else if (Rob == 'G')
+        {
+            Plateau->DeplacerRobot(robotGreen, robotGreen->RecupereInfo());
+            cout << "Robot position end: " << robotGreen->GetX() << ", " << robotGreen->GetY() << endl;
+        }
+        else if (Rob == 'B')
+        {
+
+            Plateau->DeplacerRobot(robotBlue, robotBlue->RecupereInfo());
+            cout << "Robot position end: " << robotBlue->GetX() << ", " << robotBlue->GetY() << endl;
+        }
+        else if (Rob == 'Y')
+        {
+            Plateau->DeplacerRobot(robotYellow, robotYellow->RecupereInfo());
+            cout << "Robot position end: " << robotYellow->GetX() << ", " << robotYellow->GetY() << endl;
+        }
+        else
+        {
+            std::cout << "Robot non valide" << std::endl;
+            Tour();
+        }
+
+        // Afficher();
         Tour();
     }
-
-    // Objectif atteint?//Next player
-    // afficher le plateau
-    // next Turn
-    // fin si tout les objectif sont atteint
-    Afficher();
-    Tour();
 }
 
 void Master::Afficher()
