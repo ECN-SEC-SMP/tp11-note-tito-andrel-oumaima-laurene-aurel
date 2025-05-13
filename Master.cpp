@@ -9,13 +9,7 @@
 #include <cstdlib> // Pour srand() et rand()
 #include <ctime>   // Pour time()
 using namespace std;
-// Master::Master() {
-//     Max_X = 0;
-//     Max_Y = 0;
-//     plateau = nullptr;
-//     robotRouge = nullptr;
-//     InitPlateau();
-// }
+
 Master::Master(int X, int Y)
 {
     Max_X = X;
@@ -46,19 +40,40 @@ char Master::select_Robot()
     std::cin >> Rob;
     return Rob;
 }
+
 void Master::Tour()
 {
-    // Joueurs Selection du joueurs
+    char ok;     // Annonce du nombre de coups
+    int nbCoups; // Nombre de coups
+    // En attente du joueur
+    std::cout << "En attente..." << endl;
+    while (ok != 'O')
+    {
+        cin >> ok;
+    }
+
+    std::cout << "Nombre de coups annoncés ?" << endl;
+    while (!(std::cin >> nbCoups)) // Vérifie si l'entrée est un entier valide
+    {
+        std::cin.clear();                                                   // Réinitialise le flux en cas d'erreur
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore les caractères invalides
+        std::cout << "Entrée invalide. Veuillez entrer un nombre : " << std::endl;
+    }
+    std::cout << "Nombre de coups annoncés : " << nbCoups << endl;
 
     // choisir le robot entre les 4
     char Rob = select_Robot();
     if (Rob == 'R')
     {
+        while (nbCoups != 0) {
         // choisir la direction
+        // Déplacer le robot avec la direction choisie
         // Déplacer le robot avec la direction choisie
         Plateau->DeplacerRobot(robotRed, robotRed->RecupereInfo());
         cout << "Robot position end: " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
         // Vérifier si l'objectif est atteint
+        nbCoups --;
+        }
     }
     else if (Rob == 'G')
     {
@@ -93,9 +108,9 @@ void Master::Tour()
 void Master::Afficher()
 {
     std::vector<std::vector<Case *>> Grille = Plateau->getPlateau();
-    
+
     // Code ANSI pour fond gris clair
-    string fondGris = "\033[100m";  // Remplacé \033[47m (blanc) par \033[100m (gris clair)
+    string fondGris = "\033[100m"; // Remplacé \033[47m (blanc) par \033[100m (gris clair)
     string resetColor = "\033[0m";
 
     for (int i = 0; i < Max_X; ++i)
@@ -175,7 +190,7 @@ void Master::Afficher()
         }
         cout << fondGris << (Grille[i][Max_Y - 1]->getBordDroit() ? "║" : " ") << resetColor << endl;
     }
-    
+
     // Affiche la dernière ligne de murs bas
     cout << fondGris << "╚" << resetColor;
     for (int j = 0; j < Max_Y; ++j)
