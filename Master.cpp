@@ -97,7 +97,7 @@ bool Master::SelectionRobot(char Rob, int nbCoups)
         Plateau->DeplacerRobot(robotYellow, robotYellow->RecupereInfo());
         cout << "Robot position end: " << robotYellow->GetX() << ", " << robotYellow->GetY() << endl;
     }
-    Afficher();
+    // Afficher();
 
     return getObjectifAtteint(); // On retourne l'état de l'objectif
 }
@@ -156,9 +156,11 @@ void Master::TourdeJeu()
         // on remet le robot à sa position initiale, et on passe au joueur suivant
         if (ObjectifOK == true) // Condition validation objectif
         {
+            cout << "Félicitations !" << endl;
+            cout << "Objectif atteint" << endl;
             Afficher();
             // Les objectifs sont atteints, on incrémente le score du joueur
-            cout << "Félicitations !" << endl;
+            
             Joueurcourrant->setScore(Joueurcourrant->getScore() + 1); // Incrémente le score du joueur courant
             cout << "Score du joueur : " << Joueurcourrant->getScore() << endl;
             Tour();
@@ -184,13 +186,11 @@ void Master::TourdeJeu()
             Plateau->DeplacerRobotPos(robotGreen, getXV, getYV);
             Plateau->DeplacerRobotPos(robotBlue, getXB, getYB);
             Plateau->DeplacerRobotPos(robotYellow, getXJ, getYJ);
-
+            
+            // Insulte
+            cout << "Skill Issue + gênant" << endl;
             // Affichage de la position initiale - ancien plateau
             Afficher();
-
-            // Insulte
-            cout << "Skill Issue + gênant" << endl
-                 << endl;
             // Rob = select_Robot(); // Variable sélection robot
             TourdeJeu(); // On relance le tour de jeu
         }
@@ -215,15 +215,15 @@ void Master::Tour()
         }
     }
 
-    // On lance le sablier pendant 60 secondes
-    sablier->startDecompte();
-    while (!sablier->getFini())
-    {
-        // this_thread::sleep_for(chrono::seconds(1));
-        // Affichage du sablier
-        //cout << "Sablier : " << sablier->getTemps() << endl;
-    }
-    cout << "Temps écoulé !" << endl;
+    // // On lance le sablier pendant 60 secondes
+    // sablier->startDecompte();
+    // while (!sablier->getFini())
+    // {
+    //     // this_thread::sleep_for(chrono::seconds(1));
+    //     // Affichage du sablier
+    //     //cout << "Sablier : " << sablier->getTemps() << endl;
+    // }
+    // cout << "Temps écoulé !" << endl;
 
     TourdeJeu(); // Appel de la fonction de jeu
 }
@@ -297,7 +297,7 @@ void Master::Afficher()
                 bool objectifTrouve = false;
                 for (auto objectif : Plateau->getObjectifs())
                 {
-                    if (objectif->getX() == i && objectif->getY() == j)
+                    if (objectif->getX() == i && objectif->getY() == j && !objectif->getObjectifAtteint())
                     {
                         string forme;
 
@@ -381,12 +381,16 @@ void Master::Afficher()
 
 void Master::tirerObjectif()
 {
-    if(!Plateau->getObjectifs().empty())
+    auto objectifs = Plateau->getObjectifs();
+    if (!objectifs.empty() && indiceObjectifCourant < objectifs.size())
     {
-        // On tire un objectif au hasard
-        srand(time(0)); // Initialiser le générateur de nombres aléatoires
-        int randomIndex = rand() % Plateau->getObjectifs().size();
-        objectifCourant = Plateau->getObjectifs()[randomIndex];
+        objectifCourant = objectifs[indiceObjectifCourant];
+        indiceObjectifCourant++;
+    }
+    else
+    {
+        cout << "Tous les objectifs sont atteints ! Fin du jeu." << endl;
+        exit(0);
     }
 }
 
@@ -398,8 +402,8 @@ bool Master::getObjectifAtteint()
     || (robotYellow->GetX() == objectifCourant->getX() && robotYellow->GetY() == objectifCourant->getY() && robotYellow->getCouleur() == objectifCourant->getCouleur()))
     {
         cout << "Objectif atteint !" << endl;
-        // Suppression de l'objectif atteint
-        Plateau->deleteObjectif(objectifCourant);
+        objectifCourant->setObjectifAtteint(true); // L'objectif est atteint
+        tirerObjectif(); // Tire un nouvel objectif
         return true;
     }
     else
@@ -411,9 +415,13 @@ bool Master::getObjectifAtteint()
 }
 
 void Master::afficherObjectif(){
-    cout << "Objectif : " << objectifCourant->getForme() << endl;
-    cout << "Couleur : " << objectifCourant->getCouleur() << endl;
-    cout << "Position : (" << objectifCourant->getX() << ", " << objectifCourant->getY() << ")" << endl;
+    if (objectifCourant) {
+        cout << "Objectif : " << objectifCourant->getForme() << endl;
+        cout << "Couleur : " << objectifCourant->getCouleur() << endl;
+        cout << "Position : (" << objectifCourant->getX() << ", " << objectifCourant->getY() << ")" << endl;
+    } else {
+        cout << "Plus d'objectif !" << endl;
+    }
 }
 
 void Master::initJoueurs()

@@ -17,6 +17,7 @@ public:
     int y;
     string forme;
     string couleur;
+    bool objectifAtteint;
 
     // Constructeurs
     Objectif(string Couleur, string Forme, int X, int Y);
@@ -26,6 +27,7 @@ public:
     string getForme();
     int getX();
     int getY();
+    bool getObjectifAtteint();
 
 
     // Mutateurs
@@ -33,6 +35,7 @@ public:
     void setCouleur(string setCouleur);
     void setX(int setX);
     void setY(int setY);
+    void setObjectifAtteint(bool objectifAtteint);
 
     // Méthodes
     bool ObjectifAtteint(string Couleur, string Forme);

@@ -25,7 +25,7 @@ class Master {
 
         // Objectif
         Objectif* objectifCourant;
-        bool objectifAtteint;
+        int indiceObjectifCourant = 0;
 
         // Robots
         Robot* robotRed; 
