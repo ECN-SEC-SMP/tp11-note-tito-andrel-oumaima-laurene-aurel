@@ -106,6 +106,7 @@ void Master::Tour()
             nbCoups--;
             robotRed->SetNbDeplacement(nbCoups);
             cout << "Déplacements restants :" << robotRed->GetNbDeplacement() << endl;
+            
             // Gestion des objectifs ici
             // On supprime un élémet du vecteur si le robot se trouve sur une case objectif
         }
