@@ -278,7 +278,7 @@ void plateauRicochet::DeplacerRobot(Robot *robot, char direction)
     case 'U': // Upy
         while (1)
         {
-            if (Plateau[Pos_X][Pos_Y]->getBordHaut() or Plateau[Pos_X + 1][Pos_Y]->getRobotHere())
+            if (Plateau[Pos_X][Pos_Y]->getBordHaut() or Plateau[Pos_X - 1][Pos_Y]->getRobotHere())
             {
                 robot->SetPosition(Pos_X, Pos_Y);
 
