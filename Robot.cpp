@@ -13,8 +13,16 @@ bool obstacle;
 Robot::Robot(std::string c) {
     // Initialisation des attributs
     //robot spawn au meme endroit
-    this->x = rand()%16;
-    this->y = rand()%16;
+    while (1){
+    int X = rand()%16;
+    int Y = rand()%16;
+    //Pas dans le carré du milieu
+    if(X != 7 && Y != 7 || X != 8 && Y != 8|| X != 7 && Y != 8 || X != 8 && Y != 7){
+        this->x = X;
+        this->y = Y;
+        break;
+    }
+    }
     this->couleur = c;
     this->nbDeplacements = 0;
 }

@@ -35,6 +35,8 @@ class Master {
         Joueur* Joueur3;
         Joueur* Joueur4;
 
+        //
+
         //std::vector<std::vector<Case*>> Plateau;
     public:
         // Constructeurs
@@ -44,6 +46,7 @@ class Master {
         void Tour();
         char select_Robot();
         void Afficher();
+        void initJoueur();
         //void InitPlateau();
 };
 
