@@ -65,12 +65,10 @@ bool Master::SelectionRobot(char Rob, int nbCoups, bool ObjectifOK)
         // On modifie la variable ObjectifOK si l'objectif a été atteint
         if (true) // TODO : à modifier en fonction de l'objectif (rajouter)
         {
-            ObjectifOK = true;
             return true;
         }
         else
         {
-            ObjectifOK = false;
             return false;
         }
     }
@@ -85,12 +83,10 @@ bool Master::SelectionRobot(char Rob, int nbCoups, bool ObjectifOK)
         // On modifie la variable ObjectifOK si l'objectif a été atteint
         if (true) // TODO : à modifier en fonction de l'objectif (rajouter)
         {
-            ObjectifOK = true;
             return true;
         }
         else
         {
-            ObjectifOK = false;
             return false;
         }
     }
@@ -105,12 +101,10 @@ bool Master::SelectionRobot(char Rob, int nbCoups, bool ObjectifOK)
         // On modifie la variable ObjectifOK si l'objectif a été atteint
         if (true) // TODO : à modifier en fonction de l'objectif (rajouter)
         {
-            ObjectifOK = true;
             return true;
         }
         else
         {
-            ObjectifOK = false;
             return false;
         }
     }
@@ -125,12 +119,10 @@ bool Master::SelectionRobot(char Rob, int nbCoups, bool ObjectifOK)
         // On modifie la variable ObjectifOK si l'objectif a été atteint
         if (true) // TODO : à modifier en fonction de l'objectif (rajouter)
         {
-            ObjectifOK = true;
             return true;
         }
         else
         {
-            ObjectifOK = false;
             return false;
         }
     }
@@ -138,6 +130,8 @@ bool Master::SelectionRobot(char Rob, int nbCoups, bool ObjectifOK)
 
 void Master::TourdeJeu()
 {
+    int jeu = 0; // Nombre de joueurs -> à modifier
+    char Rob;
     // Sauvegarde des coordonnées initiales des robots
     // robot rouge
     int getXR;
@@ -168,73 +162,78 @@ void Master::TourdeJeu()
     getXJ = robotYellow->GetX();
     getYJ = robotYellow->GetY();
 
-    int nbCoups;             // Nombre de coups
-    bool ObjectifOK = false; // Variable d'acquittement d'objectif
+    int nbCoups;     // Nombre de coups
+    bool ObjectifOK; // Variable d'acquittement d'objectif
 
-    // Annonce du nombre de coups, on exclu tout les caractères qui ne sont pas des entiers
-    std::cout << "Nombre de coups annoncés ?" << endl;
-    while (!(std::cin >> nbCoups)) // Vérifie si l'entrée est un entier valide
+    while (jeu < 4)
     {
-        std::cin.clear();                                                   // Réinitialise le flux en cas d'erreur
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore les caractères invalides
-        std::cout << "Entrée invalide. Veuillez entrer un nombre : " << std::endl;
-    }
-
-    // Gestion sablier et annonce des coups des autres joueurs ici
-
-    char Rob = select_Robot(); // Variable sélection robot
-
-    // Le joueur continue de jouer tant qu'il y a assez de coups, et que l'objectif n'est pas atteint
-    while (nbCoups > 0 && ObjectifOK != true)
-    {
-        if (SelectionRobot(Rob, nbCoups, ObjectifOK) == true)
+        // Annonce du nombre de coups, on exclu tout les caractères qui ne sont pas des entiers
+        std::cout << "Nombre de coups annoncés ?" << endl;
+        while (!(std::cin >> nbCoups)) // Vérifie si l'entrée est un entier valide
         {
-            ObjectifOK = true;
+            std::cin.clear();                                                   // Réinitialise le flux en cas d'erreur
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore les caractères invalides
+            std::cout << "Entrée invalide. Veuillez entrer un nombre : " << std::endl;
+        }
+
+        // Gestion sablier et annonce des coups des autres joueurs ici
+
+        Rob = select_Robot(); // Variable sélection robot
+
+        // Le joueur continue de jouer tant qu'il y a assez de coups, et que l'objectif n'est pas atteint
+        while (nbCoups > 0 && ObjectifOK != true)
+        {
+            cout << "Nombre de coups restants : " << nbCoups << endl;
+            cout << "Objectif : " << ObjectifOK << endl;
+            if (SelectionRobot(Rob, nbCoups, ObjectifOK) == true)
+            {
+                ObjectifOK = true;
+            }
+            else
+            {
+                ObjectifOK = false;
+            }
+            nbCoups--;
+        }
+
+        // Si l'objectif est validé, on incrémente le score, sinon,
+        // on remet le robot à sa position initiale, et on passe au joueur suivant
+        if (ObjectifOK == true) // Condition validation objectif
+        {
+            // Les objectifs sont atteints, on incrémente le score du joueur
+            cout << "Félicitations !" << endl;
+            Joueur1->setScore(Joueur1->getScore() + 1); // à modifier en fct d'un vecteur
+            cout << "Score du joueur : " << Joueur1->getScore() << endl;
         }
         else
         {
-            ObjectifOK = false;
+            jeu++;
+            // L'objectif n'est pas atteint, on remet le robot à sa position initiale
+            robotRed->SetX(getXR);
+            robotRed->SetY(getYR);
+
+            robotGreen->SetX(getXV);
+            robotGreen->SetY(getYV);
+
+            robotBlue->SetX(getXB);
+            robotBlue->SetY(getYB);
+
+            robotYellow->SetX(getXJ);
+            robotYellow->SetY(getYJ);
+
+            Plateau->DeplacerRobotPos(robotRed, getXR, getYR); // Remise à la position initiale
+            Plateau->DeplacerRobotPos(robotGreen, getXV, getYV);
+            Plateau->DeplacerRobotPos(robotBlue, getXB, getYB);
+            Plateau->DeplacerRobotPos(robotYellow, getXJ, getYJ);
+
+            // Affichage de la position initiale - ancien plateau
+            Afficher();
+            // Insulte
+            cout << "Skill Issue + gênant" << endl
+                 << endl;
+            // Rob = select_Robot(); // Variable sélection robot
+            TourdeJeu(); // On relance le tour de jeu
         }
-        nbCoups--;
-        cout << "Nombre de coups restants : " << nbCoups << endl;
-    }
-
-    // Si l'objectif est validé, on incrémente le score, sinon,
-    // on remet le robot à sa position initiale, et on passe au joueur suivant
-    if (ObjectifOK == true) // Condition validation objectif
-    {
-        // Les objectifs sont atteints, on incrémente le score du joueur
-        cout << "Félicitations !" << endl;
-        Joueur1->setScore(Joueur1->getScore() + 1); // à modifier en fct d'un vecteur
-        cout << "Score du joueur : " << Joueur1->getScore() << endl;
-    }
-    else
-    {
-        // L'objectif n'est pas atteint, on remet le robot à sa position initiale
-        robotRed->SetX(getXR);
-        robotRed->SetY(getYR);
-
-        robotGreen->SetX(getXV);
-        robotGreen->SetY(getYV);
-
-        robotBlue->SetX(getXB);
-        robotBlue->SetY(getYB);
-
-        robotYellow->SetX(getXJ);
-        robotYellow->SetY(getYJ);
-
-        Plateau->DeplacerRobotPos(robotRed, getXR, getYR); // Remise à la position initiale
-        Plateau->DeplacerRobotPos(robotGreen, getXV, getYV);
-        Plateau->DeplacerRobotPos(robotBlue, getXB, getYB);
-        Plateau->DeplacerRobotPos(robotYellow, getXJ, getYJ);
-
-        // Affichage de la position initiale - ancien plateau
-        Afficher();
-        // Insulte
-        cout << "Skill Issue + gênant" << endl
-             << endl;
-
-        TourdeJeu(); // On relance le tour de jeu
     }
 }
 
@@ -258,8 +257,6 @@ void Master::Tour()
         }
         cin >> ok;
     }
-
-    int jeu = 4; // Variable de jeu lorsque le nombre de coups a été annoncé
 
     TourdeJeu(); // Appel de la fonction de jeu
     // Tour();
