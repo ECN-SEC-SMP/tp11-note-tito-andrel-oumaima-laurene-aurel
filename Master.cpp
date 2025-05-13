@@ -52,77 +52,52 @@ bool Master::SelectionRobot(char Rob, int nbCoups)
 {
     if (Rob == 'R')
     {
-        int getXR;
-        int getYR;
-        getXR = robotRed->GetX();
-        getYR = robotRed->GetY();
-        // Tant que le robot peut se déplacer
-        while (robotRed->GetNbDeplacement() != 0)
-        {
-            // Sauvegarde des coordonnées du robot
-            Plateau->DeplacerRobot(robotRed, robotRed->RecupereInfo());
-            cout << "Robot position end : " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
-            Afficher();
+        // Sauvegarde des coordonnées du robot
+        Plateau->DeplacerRobot(robotRed, robotRed->RecupereInfo());
+        cout << "Robot position end : " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
+        Afficher();
 
-            // Décrémente le nb de déplacements
-            nbCoups--;
-            robotRed->SetNbDeplacement(nbCoups);
-            cout << "Déplacements restants :" << robotRed->GetNbDeplacement() << endl;
-
-            // Gestion des objectifs ici
-            // On supprime un élémet du vecteur si le robot se trouve sur une case objectif
-        }
-
-        // Lorsque le nb de déplacements du robot atteint 0 (plus de coups restants)
-        if (robotRed->GetNbDeplacement() == 0)
-        {
-
-            // Si les objectifs ont été remplit, alors on augmente le score du joueur associé
-            if (Plateau->getObjectifs().empty())
-            {
-                // Les objectifs sont atteints, on incrémente le score du joueur
-                cout << "Félicitations !";
-                Joueur1->setScore(Joueur1->getScore() + 1); // à modifier en fct d'un vecteur
-                cout << "Score du robot Rouge :" << Joueur1->getScore() << endl;
-                return true;
-            }
-            else
-            {
-                // Tout les objectifs ne sont pas atteints
-                robotRed->SetX(getXR);
-                robotRed->SetY(getYR);
-                Plateau->DeplacerRobotPos(robotRed, getXR, getYR); // Remise à la position initiale
-                Afficher();                                        // Affichage de l'ancien plateau
-
-                // Insulte
-                cout << "Skill Issue + gênant" << endl
-                     << endl;
-                return false;
-            }
-        }
+        // Décrémente le nb de déplacements
+        nbCoups--;
+        robotRed->SetNbDeplacement(nbCoups);
+        cout << "Déplacements restants :" << robotRed->GetNbDeplacement() << endl;
+        return true;
+        // Si les objectifs ont été remplit, alors on augmente le score du joueur associé
+        // if (true) // à modifier en fonction de l'objectif (rajouter)
+        // {
+        //     return true;
+        // }
+        // else
+        // {
+        //     return false;
+        // }
     }
     else if (Rob == 'G')
     {
         Plateau->DeplacerRobot(robotGreen, robotGreen->RecupereInfo());
         cout << "Robot position end: " << robotGreen->GetX() << ", " << robotGreen->GetY() << endl;
+        return true;
     }
     else if (Rob == 'B')
     {
 
         Plateau->DeplacerRobot(robotBlue, robotBlue->RecupereInfo());
         cout << "Robot position end: " << robotBlue->GetX() << ", " << robotBlue->GetY() << endl;
+        return true;
     }
     else if (Rob == 'Y')
     {
         Plateau->DeplacerRobot(robotYellow, robotYellow->RecupereInfo());
         cout << "Robot position end: " << robotYellow->GetX() << ", " << robotYellow->GetY() << endl;
+        return true;
     }
 }
 
 void Master::Tour()
 {
-    char ok;     // Annonce du nombre de coups
-    int nbCoups; // Nombre de coups
+    char ok;                 // Annonce du nombre de coups
+    int nbCoups;             // Nombre de coups
+    bool ObjectifOK = false; // Variable d'acquittement d'objectif
 
     // En attente du joueur
     std::cout << "Appuyez sur O pour annoncer." << endl;
@@ -145,6 +120,11 @@ void Master::Tour()
     char Rob;
     int tour = 4; // Variable de jeu lorsque le nombre de coups a été annoncé
 
+    int getXR;
+    int getYR;
+    getXR = robotRed->GetX();
+    getYR = robotRed->GetY();
+
     // Annonce du nombre de coups, on exclu tout les caractères qui ne sont pas des entiers
     std::cout << "Nombre de coups annoncés ?" << endl;
     while (!(std::cin >> nbCoups)) // Vérifie si l'entrée est un entier valide
@@ -161,7 +141,32 @@ void Master::Tour()
 
     Rob = select_Robot();
 
-    SelectionRobot(Rob, nbCoups);
+    //SelectionRobot(Rob, nbCoups);
+    // while (SelectionRobot(Rob, nbCoups) == false)
+    // {
+    //     ObjectifOK = false;
+    // }
+
+    if (SelectionRobot(Rob,nbCoups) == true) { ObjectifOK = true; }
+
+    if (ObjectifOK == true) // Condition validation objectif
+    {
+        // Les objectifs sont atteints, on incrémente le score du joueur
+        cout << "Félicitations !" << endl;
+        Joueur1->setScore(Joueur1->getScore() + 1); // à modifier en fct d'un vecteur
+        cout << "Score du robot Rouge :" << Joueur1->getScore() << endl;
+    }
+    else
+    {
+        // Tout les objectifs ne sont pas atteints
+        robotRed->SetX(getXR);
+        robotRed->SetY(getYR);
+        Plateau->DeplacerRobotPos(robotRed, getXR, getYR); // Remise à la position initiale
+        Afficher();
+        // Insulte
+        cout << "Skill Issue + gênant" << endl
+             << endl; // Affichage de l'ancien plateau
+    }
 
     // Afficher();
     Tour();
