@@ -8,6 +8,7 @@
 #include "Master.h"
 #include <cstdlib> // Pour srand() et rand()
 #include <ctime>   // Pour time()
+#include <limits>  // Pour std::numeric_limits
 #include "Joueur.h"
 
 using namespace std;
@@ -278,6 +279,7 @@ void Master::Afficher()
                 cout << "\033[1;44m" << " 🤖 " << "\033[0m";
             else if (robotYellow->GetX() == i && robotYellow->GetY() == j)
                 cout << "\033[1;43m" << " 🤖 " << "\033[0m";
+
             // Afficher les objectifs
             else
             {
@@ -286,9 +288,39 @@ void Master::Afficher()
                 {
                     if (objectif->getX() == i && objectif->getY() == j)
                     {
-                        char initiale = objectif->getCouleur()[0]; // Récupère l'initiale de la couleur
+                        string forme;
+
+                        if (objectif->getForme() == "cercle"){
+                            forme = " ⚪ ";
+                        }
+                        else if (objectif->getForme() == "carre"){
+                            forme = " ⬜ ";
+                        }
+                        else if (objectif->getForme() == "triangle"){
+                            forme = " ▲  ";
+                        }
+                        else{
+                            forme = " ✖️  ";
+                        }
+
+                        // char initiale = objectif->getForme()[0]; // Récupère l'initiale de la couleur
+                        switch(objectif->getCouleur()[0]){
+                            case 'r':
+                                cout << "\033[1;41m" << forme << "\033[0m"; // Rouge
+                                break;
+                            case 'v':
+                                cout << "\033[1;42m" << forme << "\033[0m"; // Vert
+                                break;
+                            case 'b':
+                                cout << "\033[1;44m" << forme << "\033[0m"; // Bleu
+                                break;
+                            case 'j':
+                                cout << "\033[1;43m" << forme << "\033[0m"; // Jaune
+                                break;
+                        }
+                        
                         // Ajouter fond gris pour l'objectif
-                        cout << fondGris << " " << initiale << "  " << resetColor;
+                        // cout << fondGris << " " << initiale << "  " << resetColor;
                         objectifTrouve = true;
                         break;
                     }
