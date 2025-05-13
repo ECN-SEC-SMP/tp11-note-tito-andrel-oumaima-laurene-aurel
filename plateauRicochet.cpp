@@ -96,7 +96,7 @@ void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y, st
                 {
                     setBordsHaut(x, y);
                     setBordsGauche(x, y);
-                    Objectifs.push_back(new Objectif(couleurs[i], "cercle", x, y));
+                    Objectifs.push_back(new Objectif(couleurs[i], forme, x, y));
                 }
                 else
                 {
@@ -109,7 +109,7 @@ void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y, st
                 {
                     setBordsHaut(x, y);
                     setBordsDroit(x, y);
-                    Objectifs.push_back(new Objectif(couleurs[i], "cercle", x, y));
+                    Objectifs.push_back(new Objectif(couleurs[i], forme, x, y));
                 }
                 else
                 {
