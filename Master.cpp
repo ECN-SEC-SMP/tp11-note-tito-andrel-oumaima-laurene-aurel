@@ -39,8 +39,14 @@ Master::Master(int X, int Y)
 }
 Master::~Master()
 {
+    delete robotYellow; // Suppression du robot jaune
+    delete robotGreen; // Suppression du robot vertS
+    delete robotBlue;  // Suppression du robot bleu
     delete robotRed; // Suppression du robot rouge
+    
     delete Plateau;  // Suppression du plateau
+        // Libère la mémoire des anciens joueurs
+        Joueurs.clear();
 }
 
 // Touches d'entrée
@@ -233,25 +239,32 @@ void Master::Tour()
     // En attente du joueur
     std::cout << "Appuyez sur O pour annoncer." << endl;
     std::cout << "Appuyez sur S pour afficher les scores." << endl;
+    cin >> ok;
     while (ok != 'O')
     {
         // Affichage des scores - option
         if (ok == 'S')
-        if (ok == 'S')
         {
             AfficherScores();
+            cin >> ok;
         }
     }
-
-    // On lance le sablier pendant 60 secondes
-    sablier->startDecompte();
-    while (!sablier->getFini())
-    {
-        this_thread::sleep_for(chrono::seconds(1));
-        // Affichage du sablier
-        //cout << "Sablier : " << sablier->getTemps() << endl;
-    }
-    cout << "Temps écoulé !" << endl;
+    // //On lance le sablier pendant 60 secondes
+    // sablier->startDecompte();
+    // while (!sablier->getFini())
+    // {
+    //     this_thread::sleep_for(chrono::seconds(1));
+    //     // Affichage du sablier
+    //     //cout << "Sablier : " << sablier->getTemps() << endl;
+    //     cin >> ok;
+    //     if (ok == 'O')
+    //     {
+    //         TourdeJeu(); 
+    //         cin >> ok;
+    //     }
+        
+    // }
+    // cout << "Temps écoulé !" << endl;
 
     TourdeJeu(); // Appel de la fonction de jeu
 }
@@ -410,10 +423,6 @@ void Master::initJoueurs()
     cout << "nombre de joueurs ?" << endl;
     cin >> nbJoueurs;
 
-    // Libère la mémoire des anciens joueurs
-    for (auto joueur : Joueurs) {
-        delete joueur;
-    }
     Joueurs.clear();
 
     for (int i = 0; i < nbJoueurs; i++) {
