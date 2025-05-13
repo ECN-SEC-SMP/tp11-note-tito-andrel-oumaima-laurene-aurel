@@ -57,87 +57,89 @@ void Master::Tour()
     std::cout << "Appuyez sur S pour afficher les scores." << endl;
     while (ok != 'O')
     {
+        if (ok == 'S')
+        {
+            cout << "S" << endl;
+        }
         cin >> ok;
     }
 
-    if (ok == 'S')
+    // choisir le robot entre les 4
+    char Rob = select_Robot();
+    int tour = 4; // Variable de jeu lorsque le nombre de coups a été annoncé
+
+    std::cout << "Nombre de coups annoncés ?" << endl;
+    while (!(std::cin >> nbCoups)) // Vérifie si l'entrée est un entier valide
     {
-        cout << "S";
+        std::cin.clear();                                                   // Réinitialise le flux en cas d'erreur
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore les caractères invalides
+        std::cout << "Entrée invalide. Veuillez entrer un nombre : " << std::endl;
     }
-    else if (ok == 'O')
+    std::cout << "Nombre de coups annoncés : " << nbCoups << endl;
+
+    // Gestion sablier et annonce des coups des autres joueurs
+
+    int getX;
+    int getY;
+
+    if (Rob == 'R')
     {
+        while (nbCoups != 0)
+        {
+            // choisir la direction
+            // Déplacer le robot avec la direction choisie
+            getX = robotRed->GetX();
+            getY = robotRed->GetY();
+            Plateau->DeplacerRobot(robotRed, robotRed->RecupereInfo());
+            cout << "Robot position end : " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
+            Afficher();
+            nbCoups--;
 
-        std::cout << "Nombre de coups annoncés ?" << endl;
-        while (!(std::cin >> nbCoups)) // Vérifie si l'entrée est un entier valide
-        {
-            std::cin.clear();                                                   // Réinitialise le flux en cas d'erreur
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore les caractères invalides
-            std::cout << "Entrée invalide. Veuillez entrer un nombre : " << std::endl;
+            // Gestion des objectifs ici
+            // On supprime un élémet du vecteur si le robot se trouve sur une case objectif
         }
-        std::cout << "Nombre de coups annoncés : " << nbCoups << endl;
-
-        // choisir le robot entre les 4
-        char Rob = select_Robot();
-        int getX;
-        int getY;
-
-        if (Rob == 'R')
+        if (Plateau->getObjectifs().empty())
         {
-            while (nbCoups != 0)
-            {
-                // choisir la direction
-                // Déplacer le robot avec la direction choisie
-                Plateau->DeplacerRobot(robotRed, robotRed->RecupereInfo());
-                cout << "Robot position end: " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
-                getX = robotRed->GetX();
-                getY = robotRed->GetY();
-                Afficher();
-                nbCoups--;
-                
-                // Gestion des objectifs ici
-                // On supprime un élémet du vecteur si le robot se trouve sur une case objectif
-            }
-            if (Plateau->getObjectifs().empty())
-            {
-                // Les objectifs sont atteints, on incrémente le score du joueur
-                cout << "Félicitations !";
-                JoueurRouge->setScore(JoueurRouge->getScore() + 1);
-                cout << "Score du robot Rouge :" << JoueurRouge->getScore() << endl;
-            }
-            else
-            {
-                // Tout les objectifs ne sont pas atteints
-                cout << "Skill Issue + gênant";
-                robotRed->SetX(getX);
-                robotRed->SetY(getY);
-                Afficher();
-            }
-        }
-        else if (Rob == 'G')
-        {
-            Plateau->DeplacerRobot(robotGreen, robotGreen->RecupereInfo());
-            cout << "Robot position end: " << robotGreen->GetX() << ", " << robotGreen->GetY() << endl;
-        }
-        else if (Rob == 'B')
-        {
-
-            Plateau->DeplacerRobot(robotBlue, robotBlue->RecupereInfo());
-            cout << "Robot position end: " << robotBlue->GetX() << ", " << robotBlue->GetY() << endl;
-        }
-        else if (Rob == 'Y')
-        {
-            Plateau->DeplacerRobot(robotYellow, robotYellow->RecupereInfo());
-            cout << "Robot position end: " << robotYellow->GetX() << ", " << robotYellow->GetY() << endl;
+            // Les objectifs sont atteints, on incrémente le score du joueur
+            cout << "Félicitations !";
+            JoueurRouge->setScore(JoueurRouge->getScore() + 1);
+            cout << "Score du robot Rouge :" << JoueurRouge->getScore() << endl;
         }
         else
         {
-            std::cout << "Robot non valide" << std::endl;
-            Tour();
+            // Tout les objectifs ne sont pas atteints
+            cout << "Skill Issue + gênant" << endl;
+            robotRed->SetX(getX);
+            robotRed->SetY(getY);
+            Plateau->DeplacerRobotPos(robotRed, getX, getY);
+            // robotRed->SetPosition(getX, getY);
+            Afficher();
         }
+    }
+    else if (Rob == 'G')
+    {
+        Plateau->DeplacerRobot(robotGreen, robotGreen->RecupereInfo());
+        cout << "Robot position end: " << robotGreen->GetX() << ", " << robotGreen->GetY() << endl;
+    }
+    else if (Rob == 'B')
+    {
 
-        // Afficher();
+        Plateau->DeplacerRobot(robotBlue, robotBlue->RecupereInfo());
+        cout << "Robot position end: " << robotBlue->GetX() << ", " << robotBlue->GetY() << endl;
+    }
+    else if (Rob == 'Y')
+    {
+        Plateau->DeplacerRobot(robotYellow, robotYellow->RecupereInfo());
+        cout << "Robot position end: " << robotYellow->GetX() << ", " << robotYellow->GetY() << endl;
+    }
+    else
+    {
+        std::cout << "Robot non valide" << std::endl;
         Tour();
     }
+
+    // Afficher();
+    Tour();
 }
 
 void Master::Afficher()
