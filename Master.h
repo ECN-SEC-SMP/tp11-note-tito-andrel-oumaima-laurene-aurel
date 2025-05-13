@@ -35,6 +35,9 @@ class Master {
         Joueur* Joueur3;
         Joueur* Joueur4;
 
+        // Sablier
+        Sablier* sablier;
+
         //std::vector<std::vector<Case*>> Plateau;
     public:
         // Constructeurs

@@ -10,6 +10,7 @@
 #include <ctime>   // Pour time()
 #include <limits>  // Pour std::numeric_limits
 #include "Joueur.h"
+#include "Sablier.h"
 
 using namespace std;
 
@@ -30,6 +31,8 @@ Master::Master(int X, int Y)
     Joueur2 = new Joueur("Bleu");
     Joueur3 = new Joueur("Jaune");
     Joueur4 = new Joueur("Vert");
+
+    sablier = new Sablier(60); // 60 secondes
 
     // robotYellow = new Robot("jaune", 4, 7);
     // robotYellow->GenereRobot();
@@ -165,7 +168,7 @@ void Master::TourdeJeu()
     int nbCoups;     // Nombre de coups
     bool ObjectifOK; // Variable d'acquittement d'objectif
 
-    while (jeu < 4)
+    while (jeu < 4) // à modifier (?)
     {
         // Annonce du nombre de coups, on exclu tout les caractères qui ne sont pas des entiers
         std::cout << "Nombre de coups annoncés ?" << endl;
@@ -258,8 +261,17 @@ void Master::Tour()
         cin >> ok;
     }
 
+    // On lance le sablier pendant 60 secondes
+    while (sablier->getFini() == false)
+    {
+        sablier->startDecompte();
+        // Affichage du sablier
+        cout << "Sablier : " << sablier->getTemps() << endl;
+    }
+
+
+
     TourdeJeu(); // Appel de la fonction de jeu
-    // Tour();
 }
 
 void Master::Afficher()
