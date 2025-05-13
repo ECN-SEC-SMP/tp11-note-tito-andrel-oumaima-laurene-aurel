@@ -48,29 +48,29 @@ char Master::select_Robot()
     return Rob;
 }
 
-bool Master::SelectionRobot(char Rob, int nbCoups)
+bool Master::SelectionRobot(char Rob, int nbCoups, bool ObjectifOK)
 {
     if (Rob == 'R')
     {
+        robotRed->SetNbDeplacement(nbCoups); // Ajout du nb de coups au robot
+        std::cout << "Nombre de coups annoncés : " << robotRed->GetNbDeplacement() << endl;
+
         // Sauvegarde des coordonnées du robot
         Plateau->DeplacerRobot(robotRed, robotRed->RecupereInfo());
         cout << "Robot position end : " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
         Afficher();
 
-        // Décrémente le nb de déplacements
-        nbCoups--;
-        robotRed->SetNbDeplacement(nbCoups);
-        cout << "Déplacements restants :" << robotRed->GetNbDeplacement() << endl;
-        return true;
-        // Si les objectifs ont été remplit, alors on augmente le score du joueur associé
-        // if (true) // à modifier en fonction de l'objectif (rajouter)
-        // {
-        //     return true;
-        // }
-        // else
-        // {
-        //     return false;
-        // }
+        // On modifie la variable ObjectifOK si l'objectif a été atteint
+        if (true) // TODO : à modifier en fonction de l'objectif (rajouter)
+        {
+            ObjectifOK = true;
+            return true;
+        }
+        else
+        {
+            ObjectifOK = false;
+            return false;
+        }
     }
     else if (Rob == 'G')
     {
@@ -120,10 +120,35 @@ void Master::Tour()
     char Rob;
     int tour = 4; // Variable de jeu lorsque le nombre de coups a été annoncé
 
+    // Sauvegarde des coordonnées initiales des robots
+    // robot rouge
     int getXR;
     int getYR;
+
+    // robot vert
+    int getXV;
+    int getYV;
+
+    // robot bleu
+    int getXB;
+    int getYB;
+
+    // robot jaune
+    int getXJ;
+    int getYJ;
+
+    // On enregistre la position initiale de chaque robot
     getXR = robotRed->GetX();
     getYR = robotRed->GetY();
+
+    getXV = robotGreen->GetX();
+    getYV = robotGreen->GetY();
+
+    getXB = robotBlue->GetX();
+    getYB = robotBlue->GetY();
+
+    getXJ = robotYellow->GetX();
+    getYJ = robotYellow->GetY();
 
     // Annonce du nombre de coups, on exclu tout les caractères qui ne sont pas des entiers
     std::cout << "Nombre de coups annoncés ?" << endl;
@@ -134,20 +159,25 @@ void Master::Tour()
         std::cout << "Entrée invalide. Veuillez entrer un nombre : " << std::endl;
     }
 
-    robotRed->SetNbDeplacement(nbCoups); // Ajout du nb de coups au robot
-    std::cout << "Nombre de coups annoncés : " << robotRed->GetNbDeplacement() << endl;
-
     // Gestion sablier et annonce des coups des autres joueurs ici
 
     Rob = select_Robot();
 
-    //SelectionRobot(Rob, nbCoups);
-    // while (SelectionRobot(Rob, nbCoups) == false)
-    // {
-    //     ObjectifOK = false;
-    // }
+    // SelectionRobot(Rob, nbCoups);
+    //  while (SelectionRobot(Rob, nbCoups) == false)
+    //  {
+    //      ObjectifOK = false;
+    //  }
 
-    if (SelectionRobot(Rob,nbCoups) == true) { ObjectifOK = true; }
+    while (nbCoups != 0 || ObjectifOK != true)
+    {
+        if (SelectionRobot(Rob, nbCoups, ObjectifOK) == true) {
+            ObjectifOK = true;
+        } else {
+            ObjectifOK = false;
+        }
+        nbCoups--;
+    }
 
     if (ObjectifOK == true) // Condition validation objectif
     {
@@ -158,14 +188,29 @@ void Master::Tour()
     }
     else
     {
-        // Tout les objectifs ne sont pas atteints
+        // L'objectif n'est pas atteint, on remet le robot à sa position initiale
         robotRed->SetX(getXR);
         robotRed->SetY(getYR);
+
+        robotGreen->SetX(getXV);
+        robotGreen->SetY(getYV);
+
+        robotBlue->SetX(getXB);
+        robotBlue->SetY(getYB);
+
+        robotYellow->SetX(getXJ);
+        robotYellow->SetY(getYJ);
+
         Plateau->DeplacerRobotPos(robotRed, getXR, getYR); // Remise à la position initiale
+        Plateau->DeplacerRobotPos(robotGreen, getXV, getYV);
+        Plateau->DeplacerRobotPos(robotBlue, getXB, getYB);
+        Plateau->DeplacerRobotPos(robotYellow, getXJ, getYJ);
+
+        // Affichage de la position initiale - ancien plateau
         Afficher();
         // Insulte
         cout << "Skill Issue + gênant" << endl
-             << endl; // Affichage de l'ancien plateau
+             << endl;
     }
 
     // Afficher();
