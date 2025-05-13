@@ -49,31 +49,31 @@ char Master::select_Robot()
 void Master::Tour()
 {
     // Joueurs Selection du joueurs
-
+    
     // choisir le robot entre les 4
     char Rob = select_Robot();
     if (Rob == 'R')
     {
         // choisir la direction
         // Déplacer le robot avec la direction choisie
-        Plateau->DeplacerRobot(robotRed, robotRed->RecupereInfo());
+        robotRed->RecupereInfo();
         cout << "Robot position end: " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
         // Vérifier si l'objectif est atteint
     }
     else if (Rob == 'G')
     {
-        Plateau->DeplacerRobot(robotGreen, robotGreen->RecupereInfo());
+        Plateau->DeplacerRobot(robotGreen);
         cout << "Robot position end: " << robotGreen->GetX() << ", " << robotGreen->GetY() << endl;
     }
     else if (Rob == 'B')
     {
 
-        Plateau->DeplacerRobot(robotBlue, robotBlue->RecupereInfo());
+        Plateau->DeplacerRobot(robotBlue);
         cout << "Robot position end: " << robotBlue->GetX() << ", " << robotBlue->GetY() << endl;
     }
     else if (Rob == 'Y')
     {
-        Plateau->DeplacerRobot(robotYellow, robotYellow->RecupereInfo());
+        Plateau->DeplacerRobot(robotYellow);
         cout << "Robot position end: " << robotYellow->GetX() << ", " << robotYellow->GetY() << endl;
     }
     else

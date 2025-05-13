@@ -8,6 +8,7 @@
 class Robot {
 private:
     std::string couleur; // Couleur du robot
+    char keyboard_info;
 
 public:
     int nbDeplacements;  // Nombre de déplacements
@@ -17,11 +18,15 @@ public:
 
     Robot(std::string c, int posX, int posY); // Constructeur
     Robot(std::string c); // Constructeur par défaut
-
-    char RecupereInfo(); // recupere la direction du robot
+    char GetKeyboardInfo() const;
+    void SetKeyboardInfo(char consigne);
+    void RecupereInfo(); // recupere la direction du robot
     void Deplacement(char direction); // Bouger
     void GenereRobot();
     bool CaseDispo(int x, int y);
+    //void reset_terminal_mode();
+    //void set_terminal_mode();
+    
 
     // Accesseur :
     int GetX() const;

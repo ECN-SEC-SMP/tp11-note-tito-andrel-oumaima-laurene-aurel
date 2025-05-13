@@ -257,7 +257,7 @@ plateauRicochet::~plateauRicochet() {
 }
 }
 
-void plateauRicochet::DeplacerRobot(Robot* robot, char direction) {
+void plateauRicochet::DeplacerRobot(Robot* robot) {
     // Code pour déplacer le robot sur le plateau
     
     int Pos_X = robot->GetX();
@@ -266,8 +266,9 @@ void plateauRicochet::DeplacerRobot(Robot* robot, char direction) {
     int Deplacement = robot->GetNbDeplacement();
     robot->SetNbDeplacement(Deplacement + 1);
     cout << "Robot position: " << Pos_X << ", " << Pos_Y << endl;
-    switch (direction) {
-
+    char neutre = robot->GetKeyboardInfo();
+    cout << "la valeur reçu de plateau par robot en mouvement :" << neutre << endl;
+    switch (neutre) {
         // Vérifier si la case est libre avant de déplacer
         
         case 'U'://Upy
@@ -295,7 +296,7 @@ void plateauRicochet::DeplacerRobot(Robot* robot, char direction) {
                      Pos_X++;
                }
             }
-        cout<<"end Down"<<endl;
+        //cout<<"end Down"<<endl;
             break;
             
         case 'L':  // Left

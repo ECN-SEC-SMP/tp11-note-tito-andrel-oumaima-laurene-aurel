@@ -5,10 +5,17 @@
 #include <vector>
 #include <list>
 
+#include <termios.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <cstdlib>
+#include <cstring>
+
 #include <cstdlib> // Pour srand() et rand()
 #include <ctime>   // Pour time()
 bool OK = false; // Variable globale pour la disponibilité de la case
 bool obstacle;
+
 // Constructeurs que j'utilise
 Robot::Robot(std::string c) {
     // Initialisation des attributs
@@ -28,27 +35,110 @@ Robot::Robot(std::string c, int posX, int posY){
     //OK = false;
 }
 
-char Robot::RecupereInfo(){
-    char direction;
-    std::cout<<"Directions ?"<<std::endl;
-    std::cout<<"   U"<<std::endl;
-    std::cout<<"L     R"<<std::endl;
-    std::cout<<"   D"<<std::endl;
-    std::cin>>direction;
-    return direction;
+// Structure pour stocker les paramètres originaux du terminal
+struct termios orig_termios;
+
+void reset_terminal_mode() {
+    tcsetattr(STDIN_FILENO, TCSANOW, &orig_termios);
 }
 
-void Robot::Deplacement(char direction) {
-    // switch (direction) {
-    //     case 'U': y--; break; // Up
-    //     case 'D': while (obstacle==0) y++; break; // Down
-    //     case 'L': while (obstacle==0) x--; break; // Left
-    //     case 'R': while (obstacle==0) x++; break; // Right
+void set_terminal_mode() {
+    struct termios new_termios;
+    tcgetattr(STDIN_FILENO, &orig_termios);
+    memcpy(&new_termios, &orig_termios, sizeof(new_termios));
+    atexit(reset_terminal_mode);
+    cfmakeraw(&new_termios);
+    tcsetattr(STDIN_FILENO, TCSANOW, &new_termios);
+}
+
+int kbhit(void) {
+    struct termios oldt, newt;
+    int ch;
+    int oldf;
+
+    tcgetattr(STDIN_FILENO, &oldt);
+    newt = oldt;
+    newt.c_lflag &= ~(ICANON | ECHO); // mode non canonique, pas d'echo
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
+    fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
+
+    ch = getchar();
+
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt); // restaure
+    fcntl(STDIN_FILENO, F_SETFL, oldf);
+
+    if (ch != EOF) {
+        ungetc(ch, stdin); // remet le caractère dans le buffer
+        return 1;
+    }
+
+    return 0;
+}
+
+char Robot::GetKeyboardInfo() const {
+    return keyboard_info;
+}
+
+void Robot::SetKeyboardInfo(char consigne) {
+    keyboard_info = consigne;
+}
+
+void Robot::RecupereInfo(){ //renommer en info
+    //char input_direction;
+    std::cout<<"Directions ? (q pour quitter)"<<std::endl;
+    std::cout<<"   ^"<<std::endl;
+    std::cout<<"<     >"<<std::endl;
+    std::cout<<"   v"<<std::endl;
+
+    bool running = true;
+    plateauRicochet* plateau = new plateauRicochet;
+
+    while (running) {
+        int test = kbhit();
+        //std::cout << "la valeur reçu " << test << std::endl;
+        if (test) {
+            char ch1 = getchar();
+            //std::cout << "la valeur reçu de robot en mouvement ch1 :" << ch1 << std::endl;
+            if (ch1 == '\033') { // ESC
+                char ch2 = getchar();
+                //std::cout << "la valeur reçu de robot en mouvement ch2 :" << ch2 << std::endl;
+                if (ch2 == '[') {
+                    char ch3 = getchar();
+                    //std::cout << "la valeur reçu de robot en mouvement ch3 :" << ch3 << std::endl;
+                    switch (ch3) {
+                        case 'A': this->SetKeyboardInfo('U');
+                                Plateau->DeplacerRobot(robotRed);
+                                break; // haut
+                        case 'B': this->SetKeyboardInfo('D'); break; // bas
+                        case 'C': this->SetKeyboardInfo('R'); break; // droite
+                        case 'D': this->SetKeyboardInfo('L'); break; // gauche
+                    }
+                    std::cout << "lA" << keyboard_info << std::endl;
+                }
+            } else if (ch1 == 'q') {
+                running = false;
+            }
+        }
+        usleep(100000); // Petite pause pour limiter la vitesse (100ms)
+    }
+}
+
+// void clear_screen() {
+//     std::cout << "\033[2J\033[H";
+// }
+
+//void Robot::Deplacement(char input_direction) {
+    // switch (input_direction) {
+    //     case 'z': y--; break; // Up
+    //     case 's': while (obstacle==0) y++; break; // Down
+    //     case 'q': while (obstacle==0) x--; break; // Left
+    //     case 'd': while (obstacle==0) x++; break; // Right
     // }
 
-    // //récupére le robot et la direction de deplacement
-    // nbDeplacements++; // A chaque mouvement, on ajoute 1 déplacement
-}
+    //récupére le robot et la direction de deplacement
+    //nbDeplacements++; // A chaque mouvement, on ajoute 1 déplacement
+//}
 
 void Robot::GenereRobot(){
     //je pense que c'est plus compliqué de tous les générer en même temps
@@ -124,4 +214,3 @@ void Robot::SetPosition(int xpos, int ypos){
     SetX(xpos);
     SetY(ypos);
 }
-
