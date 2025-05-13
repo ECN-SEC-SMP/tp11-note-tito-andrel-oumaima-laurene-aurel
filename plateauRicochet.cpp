@@ -57,7 +57,7 @@ void plateauRicochet::setBordsDroit(int X, int Y)
     }
 }
 
-void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y)
+void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y, string forme)
 {
     // Initialisation des obstacles
     int i = 0;
@@ -122,7 +122,7 @@ void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y)
                 {
                     setBordsBas(x, y);
                     setBordsGauche(x, y);
-                    //Objectifs.push_back(new Objectif(couleurs[i], forme, x, y));
+                    Objectifs.push_back(new Objectif(couleurs[i], forme, x, y));
                 }
                 else
                 {
@@ -135,7 +135,7 @@ void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y)
                 {
                     setBordsBas(x, y);
                     setBordsDroit(x, y);
-                    //Objectifs.push_back(new Objectif(couleurs[i], forme, x, y));
+                    Objectifs.push_back(new Objectif(couleurs[i], forme, x, y));
                 }
                 else
                 {
