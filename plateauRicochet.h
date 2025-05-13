@@ -8,6 +8,7 @@
 #include <iterator>
 #include "plateauRicochet.h"
 #include "Robot.h"
+#include "Objectif.h"
 #include <map>
 class plateauRicochet
 {
@@ -15,8 +16,9 @@ class plateauRicochet
      int Max_X;
      int Max_Y;
      //vector<std::vector<Case*>> Plateau;
-     std::vector<std::vector<Case*>> Plateau; 
-     //std::vector<std::vector<int>> Coin;
+     std::vector<std::vector<Case*>> Plateau;
+     std::vector<Objectif*> Objectifs; // Vecteur d'objectifs
+     std::vector<std::pair<int, int>> obstaclesPlaces;
     public:
         plateauRicochet(int x, int y);
         std::vector<std::vector<Case*>> getPlateau();
@@ -28,6 +30,7 @@ class plateauRicochet
         void setBordsGauche(int X, int Y);
         void setBordsDroit(int X, int Y);
         void DeplacerRobot(Robot* robot, char direction);
+        std::vector<Objectif*> getObjectifs();// Accesseur pour les objectifs
         //void Afficher();   
 };
 

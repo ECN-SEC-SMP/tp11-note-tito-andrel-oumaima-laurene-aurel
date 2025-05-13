@@ -78,7 +78,7 @@ void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y) {
                     && Plateau[x+1][y]->getBordGauche() == false ) {
                             setBordsHaut(x, y);
                             setBordsGauche(x, y);
-                            
+                            Objectifs.push_back(new Objectif(couleurs[i], "cercle", x, y));
                         }
                     else {
                         positionValide = false;
@@ -89,6 +89,7 @@ void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y) {
                     Plateau[x][y+1]->getBordHaut() == false && Plateau[x][y+1]->getBordBas() == false && Plateau[x][y-1]->getBordHaut() == false) {
                         setBordsHaut(x, y);
                         setBordsDroit(x, y);
+                        Objectifs.push_back(new Objectif(couleurs[i], "cercle", x, y));
                     }
                     else {
                         positionValide = false;
@@ -100,6 +101,7 @@ void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y) {
                 && Plateau[x+1][y]->getBordGauche() == false&& Plateau[x+1][y]->getBordDroit() == false) {
                     setBordsBas(x, y);
                     setBordsGauche(x, y);
+                    Objectifs.push_back(new Objectif(couleurs[i], "cercle", x, y));
                 }
                 else {
                     positionValide = false;
@@ -111,6 +113,7 @@ void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y) {
                 && Plateau[x+1][y]->getBordGauche() == false&& Plateau[x+1][y]->getBordDroit() == false) {
                     setBordsBas(x, y);
                     setBordsDroit(x, y);
+                    Objectifs.push_back(new Objectif(couleurs[i], "cercle", x, y));
                 }
                 else {
                     positionValide = false;
@@ -330,4 +333,8 @@ void plateauRicochet::InitRobot(Robot* robotRed, Robot* robotGreen, Robot* robot
     Plateau[robotGreen->GetX()][robotGreen->GetY()]->setRobotHere(true);
     Plateau[robotBlue->GetX()][robotBlue->GetY()]->setRobotHere(true);
     Plateau[robotYellow->GetX()][robotYellow->GetY()]->setRobotHere(true);
+}
+
+std::vector<Objectif*> plateauRicochet::getObjectifs() {
+    return Objectifs;
 }

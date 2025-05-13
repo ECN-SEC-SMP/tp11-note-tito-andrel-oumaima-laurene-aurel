@@ -93,79 +93,94 @@ void Master::Tour()
 void Master::Afficher()
 {
     std::vector<std::vector<Case *>> Grille = Plateau->getPlateau();
+    
+    // Code ANSI pour fond gris clair
+    string fondGris = "\033[100m";  // Remplacé \033[47m (blanc) par \033[100m (gris clair)
+    string resetColor = "\033[0m";
 
     for (int i = 0; i < Max_X; ++i)
     {
         // Affiche les murs du haut
-        cout << (i == 0 ? "╔" : (Grille[i][0]->getBordHaut() ? "╠" : "║"));
+        cout << fondGris << (i == 0 ? "╔" : (Grille[i][0]->getBordHaut() ? "╠" : "║")) << resetColor;
 
         for (int j = 0; j < Max_Y; ++j)
         {
-            cout << (Grille[i][j]->getBordHaut() ? "════" : "    ");
+            cout << fondGris << (Grille[i][j]->getBordHaut() ? "════" : "    ") << resetColor;
             if (j < Max_Y - 1)
             {
                 if (i == 0)
                 {
                     if (Grille[i][j + 1]->getBordGauche())
                     {
-                        cout << "╦";
+                        cout << fondGris << "╦" << resetColor;
                     }
                     else
                     {
-                        cout << "═";
+                        cout << fondGris << "═" << resetColor;
                     }
                 }
                 else if (Grille[i][j]->getBordHaut() && Grille[i][j + 1]->getBordHaut() &&
                          Grille[i][j]->getBordDroit() && Grille[i][j + 1]->getBordGauche())
                 {
-                    cout << "╬";
+                    cout << fondGris << "╬" << resetColor;
                 }
                 else if (Grille[i][j]->getBordHaut() && Grille[i][j + 1]->getBordGauche())
                 {
-                    cout << "╗"; // OK
+                    cout << fondGris << "╗" << resetColor; // OK
                 }
                 else
                 {
-                    if (!(Grille[i][j]->getBordHaut() || Grille[i][j + 1]->getBordGauche()))
-                    {
-                        cout << ".";
-                    }
-                    else
-                    {
-                        cout << ".";
-                    }
+                    cout << fondGris << "." << resetColor;
                 }
             }
         }
 
-        cout << (i == 0 ? "╗" : (Grille[i][Max_Y - 1]->getBordHaut() ? "╣" : "║")) << endl;
+        cout << fondGris << (i == 0 ? "╗" : (Grille[i][Max_Y - 1]->getBordHaut() ? "╣" : "║")) << resetColor << endl;
 
         // Affiche les murs gauche et le contenu de la case
         for (int j = 0; j < Max_Y; ++j)
         {
-            cout << (Grille[i][j]->getBordGauche() ? "║" : " ");
+            cout << fondGris << (Grille[i][j]->getBordGauche() ? "║" : " ") << resetColor;
 
-            // Version avec smileys robots colorés SUR FOND COLORÉ
+            // Version avec smileys robots colorés SUR FOND COLORÉ (inchangée)
             if (robotRed->GetX() == i && robotRed->GetY() == j)
-                cout << "\033[1;41m" << " 🤖 " << "\033[0m"; // Robot sur fond rouge
+                cout << "\033[1;41m" << " 🤖 " << "\033[0m";
             else if (robotGreen->GetX() == i && robotGreen->GetY() == j)
-                cout << "\033[1;42m" << " 🤖 " << "\033[0m"; // Robot sur fond vert
+                cout << "\033[1;42m" << " 🤖 " << "\033[0m";
             else if (robotBlue->GetX() == i && robotBlue->GetY() == j)
-                cout << "\033[1;44m" << " 🤖 " << "\033[0m"; // Robot sur fond bleu (était 34)
+                cout << "\033[1;44m" << " 🤖 " << "\033[0m";
             else if (robotYellow->GetX() == i && robotYellow->GetY() == j)
                 cout << "\033[1;43m" << " 🤖 " << "\033[0m";
-            // rajouter pour afficher les objectifs
+            // Afficher les objectifs
             else
-                cout << "    "; // Case vide
+            {
+                bool objectifTrouve = false;
+                for (auto objectif : Plateau->getObjectifs())
+                {
+                    if (objectif->getX() == i && objectif->getY() == j)
+                    {
+                        char initiale = objectif->getCouleur()[0]; // Récupère l'initiale de la couleur
+                        // Ajouter fond gris pour l'objectif
+                        cout << fondGris << " " << initiale << "  " << resetColor;
+                        objectifTrouve = true;
+                        break;
+                    }
+                }
+                if (!objectifTrouve)
+                {
+                    // La case vide doit aussi avoir le fond gris
+                    cout << fondGris << "    " << resetColor; // Case vide
+                }
+            }
         }
-        cout << (Grille[i][Max_Y - 1]->getBordDroit() ? "║" : " ") << endl;
-        // Mur droit de la dernière case
+        cout << fondGris << (Grille[i][Max_Y - 1]->getBordDroit() ? "║" : " ") << resetColor << endl;
     }
+    
     // Affiche la dernière ligne de murs bas
-    cout << "╚";
+    cout << fondGris << "╚" << resetColor;
     for (int j = 0; j < Max_Y; ++j)
     {
-        cout << (Grille[Max_X - 1][j]->getBordBas() ? "════" : "    ");
+        cout << fondGris << (Grille[Max_X - 1][j]->getBordBas() ? "════" : "    ") << resetColor;
         if (j < Max_Y - 1)
         {
             if (Grille[Max_X - 1][j]->getBordBas() || Grille[Max_X - 1][j + 1]->getBordBas() ||
@@ -173,14 +188,18 @@ void Master::Afficher()
             {
                 if (Grille[Max_X - 1][j + 1]->getBordGauche())
                 {
-                    cout << "╩";
+                    cout << fondGris << "╩" << resetColor;
                 }
                 else
                 {
-                    cout << "═";
+                    cout << fondGris << "═" << resetColor;
                 }
+            }
+            else
+            {
+                cout << fondGris << "." << resetColor;
             }
         }
     }
-    cout << "╝" << endl;
+    cout << fondGris << "╝" << resetColor << endl;
 }
