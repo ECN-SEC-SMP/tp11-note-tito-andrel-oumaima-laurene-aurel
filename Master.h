@@ -34,10 +34,8 @@ class Master {
         Robot* robotYellow;
 
         // Joueurs
-        Joueur* Joueur1;
-        Joueur* Joueur2;
-        Joueur* Joueur3;
-        Joueur* Joueur4;
+        std::vector<Joueur*> Joueurs;
+        int nbJoueurs;
 
         // Sablier
         Sablier* sablier;
@@ -56,6 +54,9 @@ class Master {
         bool getObjectifAtteint();
         void afficherObjectif();
         bool SelectionRobot(char Rob, int nbCoups);
+        void initJoueurs();
+        Joueur* selectJoueur();
+        void AfficherScores();
         //void InitPlateau();
 };
 

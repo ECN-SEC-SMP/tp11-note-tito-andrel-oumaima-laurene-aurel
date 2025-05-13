@@ -257,6 +257,7 @@ plateauRicochet::~plateauRicochet()
 void plateauRicochet::DeplacerRobotPos(Robot *robot, int Pos_X, int Pos_Y) {
     Plateau[robot->GetX()][robot->GetY()]->setRobotHere(false); // Enlève le robot de la case actuelle
     robot->SetPosition(Pos_X, Pos_Y);
+    Plateau[Pos_X][Pos_Y]->setRobotHere(true); // Met le robot sur la nouvelle case
 }
 
 void plateauRicochet::DeplacerRobot(Robot *robot, char direction)
