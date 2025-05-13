@@ -10,24 +10,32 @@
 #include <ctime>   // Pour time()
 #include <limits>  // Pour std::numeric_limits
 #include "Joueur.h"
+#include "Sablier.h"
+#include <thread>
 
 using namespace std;
 
+// Initialisation du plateau et des éléments le constituant
 Master::Master(int X, int Y)
 {
     Max_X = X;
     Max_Y = Y;
     // Robot
     Plateau = new plateauRicochet(Max_X, Max_Y);
+
     robotRed = new Robot("rouge");
     robotGreen = new Robot("vert");
     robotBlue = new Robot("bleu");
     robotYellow = new Robot("jaune");
 
-    JoueurRouge = new Joueur("Rouge");
-    // JoueurBleu = new Joueur("Bleu");
-    // JoueurJaune = new Joueur("Jaune");
-    // JoueurVert = new Joueur("Vert");
+    // TODO : modifier logique d'initialisation, et remplacer dans programme
+    // Par ex : joueur 1 devientdrais joueur[i] avec [i] = tour de jeu
+    Joueur1 = new Joueur("Rouge");
+    Joueur2 = new Joueur("Bleu");
+    Joueur3 = new Joueur("Jaune");
+    Joueur4 = new Joueur("Vert");
+
+    sablier = new Sablier(10); // 60 secondes
 
     // robotYellow = new Robot("jaune", 4, 7);
     // robotYellow->GenereRobot();
@@ -42,6 +50,7 @@ Master::~Master()
     delete Plateau;  // Suppression du plateau
 }
 
+// Touches d'entrée
 char Master::select_Robot()
 {
     char Rob;
@@ -51,108 +60,210 @@ char Master::select_Robot()
     return Rob;
 }
 
+// Manipulation du robot sur le plateau et acquittement objectif, en foncion de la couleur
+bool Master::SelectionRobot(char Rob, int nbCoups)
+{
+    if (Rob == 'R')
+    {
+        robotRed->SetNbDeplacement(nbCoups); // Ajout du nb de coups au robot
+
+        // Sauvegarde des coordonnées du robot
+        Plateau->DeplacerRobot(robotRed, robotRed->RecupereInfo());
+        cout << "Robot position end : " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
+        Afficher();
+
+        // On modifie la variable ObjectifOK si l'objectif de la même a été atteint
+        if (true) // TODO : à modifier en fonction de l'objectif (rajouter)
+        {
+            return false;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else if (Rob == 'G')
+    {
+        robotGreen->SetNbDeplacement(nbCoups); // Ajout du nb de coups au robot
+
+        Plateau->DeplacerRobot(robotGreen, robotGreen->RecupereInfo());
+        cout << "Robot position end: " << robotGreen->GetX() << ", " << robotGreen->GetY() << endl;
+        Afficher();
+
+        // On modifie la variable ObjectifOK si l'objectif a été atteint
+        if (true) // TODO : à modifier en fonction de l'objectif (rajouter)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else if (Rob == 'B')
+    {
+        robotBlue->SetNbDeplacement(nbCoups); // Ajout du nb de coups au robot
+
+        Plateau->DeplacerRobot(robotBlue, robotBlue->RecupereInfo());
+        cout << "Robot position end: " << robotBlue->GetX() << ", " << robotBlue->GetY() << endl;
+        Afficher();
+
+        // On modifie la variable ObjectifOK si l'objectif a été atteint
+        if (true) // TODO : à modifier en fonction de l'objectif (rajouter)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else if (Rob == 'Y')
+    {
+        robotYellow->SetNbDeplacement(nbCoups); // Ajout du nb de coups au robot
+
+        Plateau->DeplacerRobot(robotYellow, robotYellow->RecupereInfo());
+        cout << "Robot position end: " << robotYellow->GetX() << ", " << robotYellow->GetY() << endl;
+        Afficher();
+
+        // On modifie la variable ObjectifOK si l'objectif a été atteint
+        if (true) // TODO : à modifier en fonction de l'objectif (rajouter)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
+
+void Master::TourdeJeu()
+{
+    int jeu = 0;     // Nombre de joueurs -> à modifier
+    char Rob;        // Sélection robot
+    int nbCoups;     // Nombre de coups
+    bool ObjectifOK; // Variable d'acquittement d'objectif
+
+    // On enregistre la position initiale de chaque robot
+    int getXR = robotRed->GetX();
+    int getYR = robotRed->GetY();
+
+    int getXV = robotGreen->GetX();
+    int getYV = robotGreen->GetY();
+
+    int getXB = robotBlue->GetX();
+    int getYB = robotBlue->GetY();
+
+    int getXJ = robotYellow->GetX();
+    int getYJ = robotYellow->GetY();
+
+    while (jeu < 4) // à modifier (?)
+    {
+        // Annonce du nombre de coups, on exclu tout les caractères qui ne sont pas des entiers
+        // TODO : Associer joueur à prompt
+        std::cout << "Nombre de coups annoncés ?" << endl;
+        while (!(std::cin >> nbCoups)) // Vérifie si l'entrée est un entier valide
+        {
+            std::cin.clear();                                                   // Réinitialise le flux en cas d'erreur
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore les caractères invalides
+            std::cout << "Entrée invalide. Veuillez entrer un nombre : " << std::endl;
+        }
+
+        // Le joueur continue de jouer tant qu'il y a assez de coups, et que l'objectif n'est pas atteint
+        ObjectifOK = false; // Réinitialisation de la variable ObjectifOK
+        while (nbCoups > 0 && ObjectifOK != true)
+        {
+            Rob = select_Robot(); // Variable sélection robot
+            cout << "Nombre de coups restants : " << nbCoups << endl;
+            if (SelectionRobot(Rob, nbCoups) == true)
+            {
+                ObjectifOK = true;
+            }
+            else
+            {
+                ObjectifOK = false;
+            }
+            nbCoups--;
+        }
+
+        // Si l'objectif est validé, on incrémente le score, sinon,
+        // on remet le robot à sa position initiale, et on passe au joueur suivant
+        if (ObjectifOK == true) // Condition validation objectif
+        {
+            Afficher();
+            // Les objectifs sont atteints, on incrémente le score du joueur
+            cout << "Félicitations !" << endl;
+            Joueur1->setScore(Joueur1->getScore() + 1); // à modifier en fct d'un vecteur
+            cout << "Score du joueur : " << Joueur1->getScore() << endl;
+            Tour();
+        }
+        else
+        {
+            jeu++;  // On passe au joueur suivant -> à modifier
+
+            // L'objectif n'est pas atteint, on remet le robot à sa position initiale
+            robotRed->SetX(getXR);
+            robotRed->SetY(getYR);
+
+            robotGreen->SetX(getXV);
+            robotGreen->SetY(getYV);
+
+            robotBlue->SetX(getXB);
+            robotBlue->SetY(getYB);
+
+            robotYellow->SetX(getXJ);
+            robotYellow->SetY(getYJ);
+
+            Plateau->DeplacerRobotPos(robotRed, getXR, getYR); // Remise à la position initiale
+            Plateau->DeplacerRobotPos(robotGreen, getXV, getYV);
+            Plateau->DeplacerRobotPos(robotBlue, getXB, getYB);
+            Plateau->DeplacerRobotPos(robotYellow, getXJ, getYJ);
+
+            // Affichage de la position initiale - ancien plateau
+            Afficher();
+
+            // Insulte
+            cout << "Skill Issue + gênant" << endl
+                 << endl;
+            // Rob = select_Robot(); // Variable sélection robot
+            TourdeJeu(); // On relance le tour de jeu
+        }
+    }
+}
+
 void Master::Tour()
 {
-    char ok;     // Annonce du nombre de coups
-    int nbCoups; // Nombre de coups
+    char ok; // Annonce du nombre de coups
+
     // En attente du joueur
     std::cout << "Appuyez sur O pour annoncer." << endl;
     std::cout << "Appuyez sur S pour afficher les scores." << endl;
     while (ok != 'O')
     {
+        // Affichage des scores - option
+        if (ok == 'S')
+        {
+            cout << "Scores actuels : " << endl;
+            cout << "    Joueur 1 : " << Joueur1->getScore() << endl;
+            cout << "    Joueur 2 : " << Joueur2->getScore() << endl;
+            cout << "    Joueur 3 : " << Joueur3->getScore() << endl;
+            cout << "    Joueur 4 : " << Joueur4->getScore() << endl;
+        }
         cin >> ok;
     }
 
-    if (ok == 'S')
+    // On lance le sablier pendant 60 secondes
+    sablier->startDecompte();
+    while (!sablier->getFini())
     {
-        cout << "S";
+        this_thread::sleep_for(chrono::seconds(1));
+        // Affichage du sablier
+        //cout << "Sablier : " << sablier->getTemps() << endl;
     }
-    else if (ok == 'O')
-    {
+    cout << "Temps écoulé !" << endl;
 
-        // std::cout << "Nombre de coups annoncés ?" << endl;
-        // while (!(std::cin >> nbCoups)) // Vérifie si l'entrée est un entier valide
-        // {
-        //     std::cin.clear();                                                   // Réinitialise le flux en cas d'erreur
-        //     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore les caractères invalides
-        //     std::cout << "Entrée invalide. Veuillez entrer un nombre : " << std::endl;
-        // }
-        // std::cout << "Nombre de coups annoncés : " << nbCoups << endl;
-
-        // choisir le robot entre les 4
-        char Rob = select_Robot();
-        int getX;
-        int getY;
-
-        if (Rob == 'R')
-        {   
-            Plateau->DeplacerRobot(robotRed, robotRed->RecupereInfo());
-            cout << "Robot position end: " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
-            // while (nbCoups != 0)
-            // {
-            //     // choisir la direction
-            //     // Déplacer le robot avec la direction choisie
-            //     Plateau->DeplacerRobot(robotRed, robotRed->RecupereInfo());
-            //     cout << "Robot position end: " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
-            //     getX = robotRed->GetX();
-            //     getY = robotRed->GetY();
-            //     Afficher();
-            //     nbCoups--;
-                
-            //     // Gestion des objectifs ici
-            //     // On supprime un élémet du vecteur si le robot se trouve sur une case objectif
-            // }
-            // if (Plateau->getObjectifs().empty())
-            // {
-            //     // Les objectifs sont atteints, on incrémente le score du joueur
-            //     cout << "Félicitations !";
-            //     JoueurRouge->setScore(JoueurRouge->getScore() + 1);
-            //     cout << "Score du robot Rouge :" << JoueurRouge->getScore() << endl;
-            // }
-            // else
-            // {
-            //     // Tout les objectifs ne sont pas atteints
-            //     cout << "Skill Issue + gênant";
-            //     robotRed->SetX(getX);
-            //     robotRed->SetY(getY);
-            //     Afficher();
-            // }
-        }
-        else if (Rob == 'G')
-        {
-            Plateau->DeplacerRobot(robotGreen, robotGreen->RecupereInfo());
-            cout << "Robot position end: " << robotGreen->GetX() << ", " << robotGreen->GetY() << endl;
-        }
-        else if (Rob == 'B')
-        {
-
-            Plateau->DeplacerRobot(robotBlue, robotBlue->RecupereInfo());
-            cout << "Robot position end: " << robotBlue->GetX() << ", " << robotBlue->GetY() << endl;
-        }
-        else if (Rob == 'Y')
-        {
-            Plateau->DeplacerRobot(robotYellow, robotYellow->RecupereInfo());
-            cout << "Robot position end: " << robotYellow->GetX() << ", " << robotYellow->GetY() << endl;
-        }
-        else
-        {
-            std::cout << "Robot non valide" << std::endl;
-            Tour();
-        }
-
-        if(getObjectifAtteint()){
-            tirerObjectif();
-            if(Plateau->getObjectifs().empty()){
-                cout << "Partie terminée" << endl;
-                return;
-            }
-        }
-        Afficher();
-        for (auto obj : Plateau->getObjectifs()) {
-            std::cout << obj->getForme() << " " << obj->getCouleur() << " (" << obj->getX() << "," << obj->getY() << ")" << std::endl;
-        }
-        Tour();
-    }
+    TourdeJeu(); // Appel de la fonction de jeu
 }
 
 void Master::Afficher()
@@ -228,35 +339,40 @@ void Master::Afficher()
                     {
                         string forme;
 
-                        if (objectif->getForme() == "cercle"){
+                        if (objectif->getForme() == "cercle")
+                        {
                             forme = " ⚪ ";
                         }
-                        else if (objectif->getForme() == "carre"){
+                        else if (objectif->getForme() == "carre")
+                        {
                             forme = " ⬜ ";
                         }
-                        else if (objectif->getForme() == "triangle"){
+                        else if (objectif->getForme() == "triangle")
+                        {
                             forme = " ▲  ";
                         }
-                        else{
+                        else
+                        {
                             forme = " ✖️  ";
                         }
 
                         // char initiale = objectif->getForme()[0]; // Récupère l'initiale de la couleur
-                        switch(objectif->getCouleur()[0]){
-                            case 'r':
-                                cout << "\033[1;41m" << forme << "\033[0m"; // Rouge
-                                break;
-                            case 'v':
-                                cout << "\033[1;42m" << forme << "\033[0m"; // Vert
-                                break;
-                            case 'b':
-                                cout << "\033[1;44m" << forme << "\033[0m"; // Bleu
-                                break;
-                            case 'j':
-                                cout << "\033[1;43m" << forme << "\033[0m"; // Jaune
-                                break;
+                        switch (objectif->getCouleur()[0])
+                        {
+                        case 'r':
+                            cout << "\033[1;41m" << forme << "\033[0m"; // Rouge
+                            break;
+                        case 'v':
+                            cout << "\033[1;42m" << forme << "\033[0m"; // Vert
+                            break;
+                        case 'b':
+                            cout << "\033[1;44m" << forme << "\033[0m"; // Bleu
+                            break;
+                        case 'j':
+                            cout << "\033[1;43m" << forme << "\033[0m"; // Jaune
+                            break;
                         }
-                        
+
                         // Ajouter fond gris pour l'objectif
                         // cout << fondGris << " " << initiale << "  " << resetColor;
                         objectifTrouve = true;

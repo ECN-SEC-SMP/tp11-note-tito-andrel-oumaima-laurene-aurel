@@ -34,10 +34,13 @@ class Master {
         Robot* robotYellow;
 
         // Joueurs
-        Joueur* JoueurRouge;
-        Joueur* JoueurBleu;
-        Joueur* JoueurJaune;
-        Joueur* JoueurVert;
+        Joueur* Joueur1;
+        Joueur* Joueur2;
+        Joueur* Joueur3;
+        Joueur* Joueur4;
+
+        // Sablier
+        Sablier* sablier;
 
         //std::vector<std::vector<Case*>> Plateau;
     public:
@@ -46,11 +49,13 @@ class Master {
         // Destructeur
         ~Master();
         void Tour();
+        void TourdeJeu();
         char select_Robot();
         void Afficher();
         void tirerObjectif();
         bool getObjectifAtteint();
         void afficherObjectif();
+        bool SelectionRobot(char Rob, int nbCoups);
         //void InitPlateau();
 };
 
