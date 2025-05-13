@@ -42,6 +42,7 @@ class Master {
         // Destructeur
         ~Master();
         void Tour();
+        void TourdeJeu();
         char select_Robot();
         void Afficher();
         bool SelectionRobot(char Rob, int nbCoups, bool ObjectifOK);
