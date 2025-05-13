@@ -24,15 +24,16 @@ Master::Master(int X, int Y)
     robotBlue = new Robot("bleu");
     robotYellow = new Robot("jaune");
 
-    Joueur1 = new Joueur("Rouge");
-    Joueur2 = new Joueur("Bleu");
-    Joueur3 = new Joueur("Jaune");
-    Joueur4 = new Joueur("Vert");
+    // Joueur1 = new Joueur("Rouge");
+    // Joueur2 = new Joueur("Bleu");
+    // Joueur3 = new Joueur("Jaune");
+    // Joueur4 = new Joueur("Vert");
 
     // robotYellow = new Robot("jaune", 4, 7);
     // robotYellow->GenereRobot();
     Plateau->InitRobot(robotRed, robotGreen, robotBlue, robotYellow);
     Afficher();
+    initJoueur();
 }
 Master::~Master()
 {
@@ -57,20 +58,17 @@ void Master::Tour()
     // En attente du joueur
     std::cout << "Appuyez sur O pour annoncer." << endl;
     std::cout << "Appuyez sur S pour afficher les scores." << endl;
-    while (ok != 'O')
+    cin >> ok;
+    while (ok == 'S')
     {
-        // Affichage des scores - option
-        if (ok == 'S')
-        {
-            cout << "Scores actuels : " << endl;
-            cout << "    Joueur 1 : " << Joueur1->getScore() << endl;
-            cout << "    Joueur 2 : " << Joueur2->getScore() << endl;
-            cout << "    Joueur 3 : " << Joueur3->getScore() << endl;
-            cout << "    Joueur 4 : " << Joueur4->getScore() << endl;
-        }
+        AfficherScores();
+        std::cout << "Appuyez sur O pour annoncer." << endl;
+        std::cout << "Appuyez sur S pour afficher les scores." << endl;
         cin >> ok;
     }
-
+    while (ok == 'O')
+    {
+        Joueur* JoueurCourrant = selectJoueur();
     // choisir le robot entre les 4
     char Rob = select_Robot();
     int tour = 4; // Variable de jeu lorsque le nombre de coups a été annoncé
@@ -120,8 +118,8 @@ void Master::Tour()
             {
                 // Les objectifs sont atteints, on incrémente le score du joueur
                 cout << "Félicitations !";
-                Joueur1->setScore(Joueur1->getScore() + 1); // à modifier en fct d'un vecteur
-                cout << "Score du robot Rouge :" << Joueur1->getScore() << endl;
+                JoueurCourrant->setScore(JoueurCourrant->getScore() + 1); // à modifier en fct d'un vecteur
+                cout << "Score du robot Rouge :" << JoueurCourrant->getScore() << endl;
             }
             else
             {
@@ -161,6 +159,7 @@ void Master::Tour()
 
     // Afficher();
     Tour();
+    }
 }
 
 void Master::Afficher()
@@ -309,10 +308,42 @@ void Master::Afficher()
 }
 void Master::initJoueur()
 {
-    // cout<< "nombre de joueurs ?"<<endl;
-    // cin>>nbJoueurs;
-    // string nom;
-    // cout << "Nom du joueur 1 ?" << endl;
-    // cin >> nom;
-    // Joueur*JoueurBleu = new Joueur(nom);
+    cout<< "nombre de joueurs ?"<<endl;
+    cin>>nbJoueurs;
+    Joueurs.clear();
+    for(int i=0; i<nbJoueurs; i++){
+        string nom;
+        cout << "Nom du joueur " << i+1 << " ?" << endl;
+        cin >> nom;
+        Joueurs.push_back(new Joueur(nom));
+   }
+}
+
+Joueur* Master::selectJoueur()
+{
+    // Choisir le joueur
+    int choix;
+    cout << "Sélectionnez le joueur (1 à " << nbJoueurs << "): ";
+    cin >> choix;
+
+    if (choix < 1 || choix > nbJoueurs)
+    {
+        cout << "Choix invalide. Veuillez sélectionner un joueur valide." << endl;
+        selectJoueur();
+    }
+    else
+    {
+        cout << "Vous avez sélectionné le joueur : " << Joueurs[choix - 1]->getNom() << endl;
+        return Joueurs[choix - 1]; // Retourne le joueur sélectionné
+    }
+}
+
+//afficher les scores
+void Master::AfficherScores()
+{
+    cout << "Scores actuels : " << endl;
+    for(int i = 0; i < nbJoueurs; i++)
+    {
+        cout << Joueurs[i]->getNom() << " : " << Joueurs[i]->getScore() << endl;
+    }
 }

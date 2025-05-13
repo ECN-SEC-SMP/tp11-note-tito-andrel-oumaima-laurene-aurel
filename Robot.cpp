@@ -46,45 +46,6 @@ char Robot::RecupereInfo(){
     return direction;
 }
 
-void Robot::Deplacement(char direction) {
-    // switch (direction) {
-    //     case 'U': y--; break; // Up
-    //     case 'D': while (obstacle==0) y++; break; // Down
-    //     case 'L': while (obstacle==0) x--; break; // Left
-    //     case 'R': while (obstacle==0) x++; break; // Right
-    // }
-
-    // //récupére le robot et la direction de deplacement
-    // nbDeplacements++; // A chaque mouvement, on ajoute 1 déplacement
-}
-
-void Robot::GenereRobot(){
-    //je pense que c'est plus compliqué de tous les générer en même temps
-    // //je pref les stocker un à un
-    // int i = rand()%4;
-    // int j = 0;
-    // std::string color;
-    // int xinitial = 0;
-    // int yinitial = 0;
-
-    // xinitial, yinitial = rand()%16, rand()%16;
-    // Robot::CaseDispo(xinitial, yinitial);
-    // if(OK == 0) Robot robotB("bleu", xinitial, yinitial);
-
-    // xinitial, yinitial = rand()%16, rand()%16;
-    // Robot::CaseDispo(xinitial, yinitial);
-    // if(OK == 0) Robot robotJ("jaune", xinitial, yinitial);
-
-    // xinitial, yinitial = rand()%16, rand()%16;
-    // Robot::CaseDispo(xinitial, yinitial);
-    // if(OK == 0) Robot robotR("rouge", xinitial, yinitial);
-
-    // xinitial, yinitial = rand()%16, rand()%16;
-    // Robot::CaseDispo(xinitial, yinitial);
-    // if(OK == 0) Robot robotV("vert", xinitial, yinitial);
-
-    // Robot::SetPosition(xinitial, yinitial);
-}
 
 bool Robot::CaseDispo(int x, int y){
     for(int i = 0; i<=16; i++){

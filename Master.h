@@ -30,13 +30,14 @@ class Master {
         Robot* robotYellow;
 
         // Joueurs
-        Joueur* Joueur1;
-        Joueur* Joueur2;
-        Joueur* Joueur3;
-        Joueur* Joueur4;
+        // Joueur* Joueur1;
+        // Joueur* Joueur2;
+        // Joueur* Joueur3;
+        // Joueur* Joueur4;
 
         //
-
+        std::vector<Joueur*> Joueurs;
+        int nbJoueurs;
         //std::vector<std::vector<Case*>> Plateau;
     public:
         // Constructeurs
@@ -47,6 +48,8 @@ class Master {
         char select_Robot();
         void Afficher();
         void initJoueur();
+        Joueur* selectJoueur();
+        void AfficherScores();
         //void InitPlateau();
 };
 
