@@ -30,10 +30,10 @@ class Master {
         Robot* robotYellow;
 
         // Joueurs
-        Joueur* JoueurRouge;
-        Joueur* JoueurBleu;
-        Joueur* JoueurJaune;
-        Joueur* JoueurVert;
+        Joueur* Joueur1;
+        Joueur* Joueur2;
+        Joueur* Joueur3;
+        Joueur* Joueur4;
 
         //std::vector<std::vector<Case*>> Plateau;
     public:
