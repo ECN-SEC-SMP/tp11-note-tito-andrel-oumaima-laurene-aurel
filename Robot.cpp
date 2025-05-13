@@ -4,9 +4,10 @@
 #include <iostream>
 #include <vector>
 #include <list>
-
+#include <string>
 #include <cstdlib> // Pour srand() et rand()
 #include <ctime>   // Pour time()
+
 bool OK = false; // Variable globale pour la disponibilité de la case
 bool obstacle;
 // Constructeurs que j'utilise
@@ -94,6 +95,10 @@ int Robot::GetX() const {
 
 int Robot::GetY() const {
     return y;
+}
+
+string Robot::getCouleur(){
+    return couleur;
 }
 
 int Robot::GetNbDeplacement() const {

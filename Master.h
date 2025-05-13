@@ -23,6 +23,10 @@ class Master {
         //std::vector<std::vector<Case*>> Plateau;
         plateauRicochet* Plateau;
 
+        // Objectif
+        Objectif* objectifCourant;
+        bool objectifAtteint;
+
         // Robots
         Robot* robotRed; 
         Robot* robotGreen;
@@ -44,6 +48,9 @@ class Master {
         void Tour();
         char select_Robot();
         void Afficher();
+        void tirerObjectif();
+        bool getObjectifAtteint();
+        void afficherObjectif();
         //void InitPlateau();
 };
 

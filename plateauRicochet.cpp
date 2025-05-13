@@ -253,8 +253,7 @@ plateauRicochet::~plateauRicochet() {
             delete Plateau[i][j]; 
         
     }
-    // Vectors themselves are automatically destroyed
-}
+    }
 }
 
 void plateauRicochet::DeplacerRobot(Robot* robot, char direction) {
