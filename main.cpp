@@ -15,7 +15,8 @@
 #include "stdlib.h"
 #include "plateauRicochet.h"
 #include "Robot.h"  // Pour time()
-#include"Master.h"
+#include "Master.h"
+#include "Joueur.h"
 
 using namespace std;
 // void game() {
