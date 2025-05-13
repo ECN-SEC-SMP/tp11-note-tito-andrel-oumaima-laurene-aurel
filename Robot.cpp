@@ -16,6 +16,10 @@ Robot::Robot(std::string c) {
     //robot spawn au meme endroit
     this->x = rand()%16;
     this->y = rand()%16;
+    while(x== 7 && y==7 || x==8 && y==8 || x==7 && y==8 || x==8 && y==7){
+        this->x = rand()%16;
+        this->y = rand()%16;
+    }
     this->couleur = c;
     this->nbDeplacements = 0;
 }
