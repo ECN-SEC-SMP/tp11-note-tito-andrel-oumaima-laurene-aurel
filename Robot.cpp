@@ -92,7 +92,7 @@ void Robot::RecupereInfo(){ //renommer en info
     std::cout<<"   v"<<std::endl;
 
     bool running = true;
-    plateauRicochet* plateau = new plateauRicochet;
+    plateauRicochet* plateau = new plateauRicochet(x, y);
 
     while (running) {
         int test = kbhit();
