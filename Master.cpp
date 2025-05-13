@@ -28,12 +28,7 @@ Master::Master(int X, int Y)
     robotBlue = new Robot("bleu");
     robotYellow = new Robot("jaune");
 
-    // TODO : modifier logique d'initialisation, et remplacer dans programme
-    // Par ex : joueur 1 devientdrais joueur[i] avec [i] = tour de jeu
-    Joueur1 = new Joueur("Rouge");
-    Joueur2 = new Joueur("Bleu");
-    Joueur3 = new Joueur("Jaune");
-    Joueur4 = new Joueur("Vert");
+    initJoueurs();
 
     sablier = new Sablier(10); // 60 secondes
 
@@ -156,10 +151,11 @@ void Master::TourdeJeu()
     int getXJ = robotYellow->GetX();
     int getYJ = robotYellow->GetY();
 
-    while (jeu < 4) // à modifier (?)
+    while (jeu < nbJoueurs) // à modifier (?)
     {
         // Annonce du nombre de coups, on exclu tout les caractères qui ne sont pas des entiers
         // TODO : Associer joueur à prompt
+        Joueur* Joueurcourrant = selectJoueur(); // Sélectionne le joueur courant
         std::cout << "Nombre de coups annoncés ?" << endl;
         while (!(std::cin >> nbCoups)) // Vérifie si l'entrée est un entier valide
         {
@@ -192,8 +188,8 @@ void Master::TourdeJeu()
             Afficher();
             // Les objectifs sont atteints, on incrémente le score du joueur
             cout << "Félicitations !" << endl;
-            Joueur1->setScore(Joueur1->getScore() + 1); // à modifier en fct d'un vecteur
-            cout << "Score du joueur : " << Joueur1->getScore() << endl;
+            Joueurcourrant->setScore(Joueurcourrant->getScore() + 1); // Incrémente le score du joueur courant
+            cout << "Score du joueur : " << Joueurcourrant->getScore() << endl;
             Tour();
         }
         else
@@ -241,14 +237,10 @@ void Master::Tour()
     {
         // Affichage des scores - option
         if (ok == 'S')
+        if (ok == 'S')
         {
-            cout << "Scores actuels : " << endl;
-            cout << "    Joueur 1 : " << Joueur1->getScore() << endl;
-            cout << "    Joueur 2 : " << Joueur2->getScore() << endl;
-            cout << "    Joueur 3 : " << Joueur3->getScore() << endl;
-            cout << "    Joueur 4 : " << Joueur4->getScore() << endl;
+            AfficherScores();
         }
-        cin >> ok;
     }
 
     // On lance le sablier pendant 60 secondes
@@ -412,4 +404,51 @@ void Master::Afficher()
         }
     }
     cout << fondGris << "╝" << resetColor << endl;
+}
+void Master::initJoueurs()
+{
+    cout << "nombre de joueurs ?" << endl;
+    cin >> nbJoueurs;
+
+    // Libère la mémoire des anciens joueurs
+    for (auto joueur : Joueurs) {
+        delete joueur;
+    }
+    Joueurs.clear();
+
+    for (int i = 0; i < nbJoueurs; i++) {
+        string nom;
+        cout << "Nom du joueur " << i + 1 << " ?" << endl;
+        cin >> nom;
+        Joueurs.push_back(new Joueur(nom));
+    }
+}
+
+// afficher les scores
+void Master::AfficherScores()
+{
+    cout << "Scores actuels : " << endl;
+    for(int i = 0; i < nbJoueurs; i++)
+    {
+        cout << Joueurs[i]->getNom() << " : " << Joueurs[i]->getScore() << endl;
+    }
+}
+
+Joueur* Master::selectJoueur()
+{
+    // Choisir le joueur
+    int choix;
+    cout << "Sélectionnez le joueur (1 à " << nbJoueurs << "): ";
+    cin >> choix;
+
+    if (choix < 1 || choix > nbJoueurs)
+    {
+        cout << "Choix invalide. Veuillez sélectionner un joueur valide." << endl;
+        return selectJoueur();
+    }
+    else
+    {
+        cout << "Vous avez sélectionné le joueur : " << Joueurs[choix - 1]->getNom() << endl;
+        return Joueurs[choix - 1]; // Retourne le joueur sélectionné
+    }
 }
