@@ -8,6 +8,7 @@
 #include "Master.h"
 #include <cstdlib> // Pour srand() et rand()
 #include <ctime>   // Pour time()
+#include <limits>  // Pour std::numeric_limits
 #include "Joueur.h"
 
 using namespace std;
