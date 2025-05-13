@@ -96,7 +96,7 @@ void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y)
                 {
                     setBordsHaut(x, y);
                     setBordsGauche(x, y);
-                    Objectifs.push_back(new Objectif(couleurs[i], "cercle", x, y));
+                    Objectifs.push_back(new Objectif(couleurs[i], forme, x, y));
                 }
                 else
                 {
@@ -109,7 +109,7 @@ void plateauRicochet::setObstacle(int min_x, int max_x, int min_y, int max_y)
                 {
                     setBordsHaut(x, y);
                     setBordsDroit(x, y);
-                    Objectifs.push_back(new Objectif(couleurs[i], "cercle", x, y));
+                    Objectifs.push_back(new Objectif(couleurs[i], forme, x, y));
                 }
                 else
                 {
@@ -231,48 +231,15 @@ plateauRicochet::plateauRicochet(int x, int y)
     setBordsHaut(Max_Y / 2 + rand() % (Max_Y / 2), Max_X - 1);
 
     // obstacles sur le plateau
-    setObstacle(0, Max_X / 2, 0, Max_Y / 2);
+    setObstacle(0, Max_X / 2, 0, Max_Y / 2, "carre");
 
-    setObstacle(Max_X / 2, Max_X - 1, 0, Max_Y / 2);
+    setObstacle(Max_X / 2, Max_X - 1, 0, Max_Y / 2, "croix");
 
-    setObstacle(Max_X / 2, Max_X - 1, Max_Y / 2, Max_Y);
+    setObstacle(Max_X / 2, Max_X - 1, Max_Y / 2, Max_Y, "triangle");
 
-    setObstacle(0, Max_X / 2, Max_Y / 2, Max_Y);
-
-    // // Placer l'objectif multicolore
-    // int multi_x = rand() % Max_X;
-    // int multi_y = rand() % Max_Y;
-
-    // while(Plateau[multi_x][multi_y]->getBordHaut() == false && Plateau[multi_x][multi_y]->getBordBas() == false
-    // && Plateau[multi_x][multi_y]->getBordGauche() == false && Plateau[multi_x][multi_y]->getBordDroit() == false){
-    //     multi_x = rand() % Max_X;
-    //     multi_y = rand() % Max_Y;
-    // }
-
-    // Plateau[multi_x][multi_y]->setCouleur("incolore");
-
-    // int k = rand()%4;
-
-    // switch(k) {
-    //     case 0:
-    //         //coin haut gauche
-    //         Plateau[multi_x][multi_y]->setBordsHaut(true);
-    //         Plateau[multi_x][multi_y]->setBordsGauche(true);
-    //         break;
-    //     case 1:
-    //         Plateau[multi_x][multi_y]->setBordsHaut(true);
-    //         Plateau[multi_x][multi_y]->setBordsDroit(true);
-    //         break;
-    //     case 2:
-    //         Plateau[multi_x][multi_y]->setBordsBas(true);
-    //         Plateau[multi_x][multi_y]->setBordsGauche(true);
-    //         break;
-    //     case 3:
-    //         Plateau[multi_x][multi_y]->setBordsBas(true);
-    //         Plateau[multi_x][multi_y]->setBordsDroit(true);
-    //         break;
-    // }
+    setObstacle(0, Max_X / 2, Max_Y / 2, Max_Y, "cercle");
 }
+
 
 // Destructeur
 plateauRicochet::~plateauRicochet()
