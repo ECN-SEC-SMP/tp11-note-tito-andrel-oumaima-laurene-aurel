@@ -285,3 +285,12 @@ void Master::Afficher()
     }
     cout << fondGris << "╝" << resetColor << endl;
 }
+void Master::initJoueur()
+{
+    // cout<< "nombre de joueurs ?"<<endl;
+    // cin>>nbJoueurs;
+    // string nom;
+    // cout << "Nom du joueur 1 ?" << endl;
+    // cin >> nom;
+    // Joueur*JoueurBleu = new Joueur(nom);
+}
