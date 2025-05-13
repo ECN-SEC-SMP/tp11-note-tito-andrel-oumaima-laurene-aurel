@@ -26,6 +26,7 @@ class plateauRicochet
         ~plateauRicochet();
         void InitRobot(Robot* robotRed, Robot* robotGreen, Robot* robotBlue, Robot* robotYellow);
         void setObstacle(int x1, int x2, int y1, int y2, string forme);
+        void setObstacle(int min_x, int max_x, int min_y, int max_y);
         void setBordsBas(int X, int Y);
         void setBordsHaut(int X, int Y);
         void setBordsGauche(int X, int Y);
