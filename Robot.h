@@ -20,7 +20,7 @@ public:
     Robot(std::string c); // Constructeur par défaut
     char GetKeyboardInfo() const;
     void SetKeyboardInfo(char consigne);
-    void RecupereInfo(); // recupere la direction du robot
+    char RecupereInfo(); // recupere la direction du robot
     void Deplacement(char direction); // Bouger
     void GenereRobot();
     bool CaseDispo(int x, int y);

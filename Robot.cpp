@@ -51,31 +51,6 @@ void set_terminal_mode() {
     tcsetattr(STDIN_FILENO, TCSANOW, &new_termios);
 }
 
-int kbhit(void) {
-    struct termios oldt, newt;
-    int ch;
-    int oldf;
-
-    tcgetattr(STDIN_FILENO, &oldt);
-    newt = oldt;
-    newt.c_lflag &= ~(ICANON | ECHO); // mode non canonique, pas d'echo
-    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-    oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
-    fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
-
-    ch = getchar();
-
-    tcsetattr(STDIN_FILENO, TCSANOW, &oldt); // restaure
-    fcntl(STDIN_FILENO, F_SETFL, oldf);
-
-    if (ch != EOF) {
-        ungetc(ch, stdin); // remet le caractère dans le buffer
-        return 1;
-    }
-
-    return 0;
-}
-
 char Robot::GetKeyboardInfo() const {
     return keyboard_info;
 }
@@ -84,46 +59,46 @@ void Robot::SetKeyboardInfo(char consigne) {
     keyboard_info = consigne;
 }
 
-void Robot::RecupereInfo(){ //renommer en info
-    //char input_direction;
-    std::cout<<"Directions ? (q pour quitter)"<<std::endl;
-    std::cout<<"   ^"<<std::endl;
-    std::cout<<"<     >"<<std::endl;
-    std::cout<<"   v"<<std::endl;
 
-    bool running = true;
-    plateauRicochet* plateau = new plateauRicochet(x, y);
-
-    while (running) {
-        int test = kbhit();
-        //std::cout << "la valeur reçu " << test << std::endl;
-        if (test) {
-            char ch1 = getchar();
-            //std::cout << "la valeur reçu de robot en mouvement ch1 :" << ch1 << std::endl;
-            if (ch1 == '\033') { // ESC
-                char ch2 = getchar();
-                //std::cout << "la valeur reçu de robot en mouvement ch2 :" << ch2 << std::endl;
-                if (ch2 == '[') {
-                    char ch3 = getchar();
-                    //std::cout << "la valeur reçu de robot en mouvement ch3 :" << ch3 << std::endl;
-                    switch (ch3) {
-                        case 'A': this->SetKeyboardInfo('U');
-                                Plateau->DeplacerRobot(robotRed);
-                                break; // haut
-                        case 'B': this->SetKeyboardInfo('D'); break; // bas
-                        case 'C': this->SetKeyboardInfo('R'); break; // droite
-                        case 'D': this->SetKeyboardInfo('L'); break; // gauche
-                    }
-                    std::cout << "lA" << keyboard_info << std::endl;
+// Voici la fonction RecupereInfo modifiée pour qu'elle ne soit pas bloquante
+char Robot::RecupereInfo() {
+    // Définir le terminal en mode non-bloquant
+    int oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
+    fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
+    
+    // Structure pour stocker les paramètres du terminal
+    struct termios oldt, newt;
+    tcgetattr(STDIN_FILENO, &oldt);
+    newt = oldt;
+    newt.c_lflag &= ~(ICANON | ECHO); // mode non canonique, pas d'echo
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    
+    char ch1 = getchar();
+    char direction = ' '; // Valeur par défaut si aucune touche n'est pressée
+    
+    if (ch1 != EOF) {
+        if (ch1 == '\033') { // ESC (début d'une séquence de touches fléchées)
+            char ch2 = getchar();
+            if (ch2 == '[') {
+                char ch3 = getchar();
+                switch (ch3) {
+                    case 'A': direction = 'U'; break; // haut
+                    case 'B': direction = 'D'; break; // bas
+                    case 'C': direction = 'R'; break; // droite
+                    case 'D': direction = 'L'; break; // gauche
                 }
-            } else if (ch1 == 'q') {
-                running = false;
             }
+        } else if (ch1 == 'q') {
+            direction = 'Q'; // Quitter
         }
-        usleep(100000); // Petite pause pour limiter la vitesse (100ms)
     }
+    
+    // Restaurer les paramètres originaux du terminal
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+    fcntl(STDIN_FILENO, F_SETFL, oldf);
+    
+    return direction;
 }
-
 // void clear_screen() {
 //     std::cout << "\033[2J\033[H";
 // }
