@@ -1,5 +1,6 @@
 #ifndef PLATEAU_H
 #define PLATEAU_H
+
 #include "Case.h"
 #include <string>
 #include <iostream>
@@ -24,7 +25,7 @@ class plateauRicochet
         std::vector<std::vector<Case*>> getPlateau();
         ~plateauRicochet();
         void InitRobot(Robot* robotRed, Robot* robotGreen, Robot* robotBlue, Robot* robotYellow);
-        void setObstacle(int x1, int x2, int y1, int y2);
+        void setObstacle(int x1, int x2, int y1, int y2, string forme);
         void setBordsBas(int X, int Y);
         void setBordsHaut(int X, int Y);
         void setBordsGauche(int X, int Y);
