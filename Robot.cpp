@@ -199,15 +199,15 @@ std::vector<int> Robot::GetPosition() const {
 
 // Setteur :
 void Robot::SetX(int posX) {
-    x = posX;
+    this->x = posX;
 }
 
 void Robot::SetY(int posY) {
-    y = posY;
+    this->y = posY;
 }
 
 void Robot::SetNbDeplacement(int nb) {
-    nbDeplacements = nb;
+    this->nbDeplacements = nb;
 }
 
 void Robot::SetPosition(int xpos, int ypos){
