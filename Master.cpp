@@ -13,6 +13,12 @@
 #include "Sablier.h"
 #include <thread>
 
+#include <termios.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <cstdlib>
+#include <cstring>
+
 using namespace std;
 
 // Initialisation du plateau et des éléments le constituant
@@ -73,34 +79,88 @@ bool Master::SelectionRobot(char Rob, int nbCoups)
         robotRed->SetNbDeplacement(nbCoups); // Ajout du nb de coups au robot
 
         // Sauvegarde des coordonnées du robot
-        Plateau->DeplacerRobot(robotRed, robotRed->RecupereInfo());
+        Plateau->DeplacerRobot(robotRed, robotRed->GetKeyboardInfo());
         cout << "Robot position end : " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
     }
     else if (Rob == 'G')
     {
         robotGreen->SetNbDeplacement(nbCoups); // Ajout du nb de coups au robot
 
-        Plateau->DeplacerRobot(robotGreen, robotGreen->RecupereInfo());
+        Plateau->DeplacerRobot(robotGreen, robotGreen->GetKeyboardInfo());
         cout << "Robot position end: " << robotGreen->GetX() << ", " << robotGreen->GetY() << endl;
     }
     else if (Rob == 'B')
     {
         robotBlue->SetNbDeplacement(nbCoups); // Ajout du nb de coups au robot
 
-        Plateau->DeplacerRobot(robotBlue, robotBlue->RecupereInfo());
+        Plateau->DeplacerRobot(robotBlue, robotBlue->GetKeyboardInfo());
         cout << "Robot position end: " << robotBlue->GetX() << ", " << robotBlue->GetY() << endl;
     }
     else if (Rob == 'Y')
     {
         robotYellow->SetNbDeplacement(nbCoups); // Ajout du nb de coups au robot
 
-        Plateau->DeplacerRobot(robotYellow, robotYellow->RecupereInfo());
+        Plateau->DeplacerRobot(robotYellow, robotYellow->GetKeyboardInfo());
         cout << "Robot position end: " << robotYellow->GetX() << ", " << robotYellow->GetY() << endl;
     }
+
     Afficher();
+
 
     return getObjectifAtteint(); // On retourne l'état de l'objectif
 }
+
+
+// int kbhit(void) {
+//     struct termios oldt, newt;
+//     int ch;
+//     int oldf;
+
+//     tcgetattr(STDIN_FILENO, &oldt);
+//     newt = oldt;
+//     newt.c_lflag &= ~(ICANON | ECHO); // mode non canonique, pas d'echo
+//     tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+//     oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
+//     fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
+
+//     ch = getchar();
+
+//     tcsetattr(STDIN_FILENO, TCSANOW, &oldt); // restaure
+//     fcntl(STDIN_FILENO, F_SETFL, oldf);
+
+//     if (ch != EOF) {
+//         ungetc(ch, stdin); // remet le caractère dans le buffer
+//         return 1;
+//     }
+
+//     return 0;
+// }
+
+int kbhit(void) {
+    struct termios oldt, newt;
+    int ch;
+    int oldf;
+
+    tcgetattr(STDIN_FILENO, &oldt);
+    newt = oldt;
+    newt.c_lflag &= ~(ICANON | ECHO); // mode non canonique, pas d'echo
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
+    fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
+
+    ch = getchar();
+
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt); // restaure
+    fcntl(STDIN_FILENO, F_SETFL, oldf);
+
+    if (ch != EOF) {
+        ungetc(ch, stdin); // remet le caractère dans le buffer
+        return 1;
+    }
+
+    return 0;
+}
+
 
 void Master::TourdeJeu()
 {
@@ -196,12 +256,51 @@ void Master::TourdeJeu()
         }
     }
 }
+void Master::Tour() {
+        // Sauvegarde et modification du mode terminal
+    struct termios oldt, newt;
+    tcgetattr(STDIN_FILENO, &oldt);
+    newt = oldt;
+    newt.c_lflag &= ~(ICANON | ECHO); // mode non canonique, pas d'echo
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    
+    // Mettre le terminal en mode non-bloquant
+    int oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
+    fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
 
-void Master::Tour()
-{
-    char ok; // Annonce du nombre de coups
-
-    // En attente du joueur
+    char keyInfo = ' ';
+    bool continuerTour = true;
+    
+    std::cout << "Utilisez les flèches pour déplacer le robot (q pour quitter)" << std::endl;
+    std::cout << "   ^" << std::endl;
+    std::cout << "<     >" << std::endl;
+    std::cout << "   v" << std::endl;
+    
+    while (continuerTour) {
+        // Vérifier si une touche est pressée
+        if (kbhit()) {
+            // Récupérer l'information de la touche pressée
+            keyInfo = robotRed->RecupereInfo();
+            std::cout << "keyinfo" << keyInfo << endl;
+            // Si une direction valide est reçue, déplacer le robot
+            if (keyInfo == 'U' || keyInfo == 'D' || keyInfo == 'L' || keyInfo == 'R') {
+                robotRed->SetKeyboardInfo(keyInfo);
+                Plateau->DeplacerRobot(robotRed, keyInfo);
+                cout << "Robot position : " << robotRed->GetX() << ", " << robotRed->GetY() << endl;
+                Afficher();
+            } 
+            // Si 'Q' est pressé, quitter la boucle
+            else if (keyInfo == 'Q') {
+                continuerTour = false;
+            }
+        }
+        
+        // Petite pause pour ne pas surcharger le CPU
+        usleep(50000); // 50ms
+    }
+    
+    // Une fois sorti de la boucle, on peut continuer avec TourdeJeu
+    char ok;
     std::cout << "Appuyez sur O pour annoncer." << endl;
     std::cout << "Appuyez sur S pour afficher les scores." << endl;
     cin >> ok;
@@ -227,6 +326,10 @@ void Master::Tour()
 
     TourdeJeu(); // Appel de la fonction de jeu
 }
+// struct termios orig_termios;
+// void reset_terminal_mode() {
+//     tcsetattr(STDIN_FILENO, TCSANOW, &orig_termios);
+// }
 
 void Master::Afficher()
 {
