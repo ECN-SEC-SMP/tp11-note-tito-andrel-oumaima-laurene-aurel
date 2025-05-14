@@ -1,9 +1,10 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
-
+#include <iostream>
 #include <string>
 #include <vector>
+#include "stdlib.h"
 
 class Robot {
 private:
@@ -31,6 +32,7 @@ public:
     // Accesseur :
     int GetX() const;
     int GetY() const;
+    std::string getCouleur();
     int GetNbDeplacement() const;
     std::vector<int> GetPosition() const;
 

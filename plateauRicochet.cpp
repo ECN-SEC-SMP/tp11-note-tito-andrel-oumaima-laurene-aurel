@@ -5,6 +5,9 @@
 #include <iterator>
 #include "plateauRicochet.h"
 using namespace std;
+#include <set>
+#include <utility>
+
 
 /**
  * @brief Constructeur de la classe Plateau
@@ -257,6 +260,7 @@ plateauRicochet::~plateauRicochet()
 void plateauRicochet::DeplacerRobotPos(Robot *robot, int Pos_X, int Pos_Y) {
     Plateau[robot->GetX()][robot->GetY()]->setRobotHere(false); // Enlève le robot de la case actuelle
     robot->SetPosition(Pos_X, Pos_Y);
+    Plateau[Pos_X][Pos_Y]->setRobotHere(true); // Met le robot sur la nouvelle case
 }
 
 void plateauRicochet::DeplacerRobot(Robot *robot, char direction)
@@ -277,7 +281,7 @@ void plateauRicochet::DeplacerRobot(Robot *robot, char direction)
     case 'U': // Upy
         while (1)
         {
-            if (Plateau[Pos_X][Pos_Y]->getBordHaut() or Plateau[Pos_X + 1][Pos_Y]->getRobotHere())
+            if (Plateau[Pos_X][Pos_Y]->getBordHaut() or Plateau[Pos_X - 1][Pos_Y]->getRobotHere())
             {
                 robot->SetPosition(Pos_X, Pos_Y);
 
@@ -342,8 +346,48 @@ void plateauRicochet::DeplacerRobot(Robot *robot, char direction)
     Plateau[Pos_X][Pos_Y]->setRobotHere(true);
 }
 
+
+bool estInterdite(int x, int y) {
+    return (x == 7 && y == 7) || (x == 8 && y == 8) || 
+           (x == 7 && y == 8) || (x == 8 && y == 7);
+}
+
+std::pair<int, int> genererPositionValide(std::set<std::pair<int, int>>& positionsOccupees) {
+    int x, y;
+    do {
+        x = rand() % 16;
+        y = rand() % 16;
+    } while (estInterdite(x, y) || positionsOccupees.count({x, y}) > 0);
+    
+    positionsOccupees.insert({x, y});
+    return {x, y};
+}
+
+// voir si rajouter cette vérif à déplacement
+bool plateauRicochet::estDeplacementValide(int x, int y) {
+    if (x < 0 || x >= 16 || y < 0 || y >= 16) return false;
+    if (estInterdite(x, y)) return false;
+    if (Plateau[x][y]->getRobotHere()) return false;
+    return true;
+}
+
 void plateauRicochet::InitRobot(Robot *robotRed, Robot *robotGreen, Robot *robotBlue, Robot *robotYellow)
 {
+    std::set<std::pair<int, int>> positionsOccupees;
+
+    auto [xR, yR] = genererPositionValide(positionsOccupees);
+    *robotRed = Robot("rouge", xR, yR);
+
+    auto [xG, yG] = genererPositionValide(positionsOccupees);
+    *robotGreen = Robot("vert", xG, yG);
+
+    auto [xB, yB] = genererPositionValide(positionsOccupees);
+    *robotBlue = Robot("bleu", xB, yB);
+
+    auto [xY, yY] = genererPositionValide(positionsOccupees);
+    *robotYellow = Robot("jaune", xY, yY);
+
+
     // Initialisation des robots
     Plateau[robotRed->GetX()][robotRed->GetY()]->setRobotHere(true);
     Plateau[robotGreen->GetX()][robotGreen->GetY()]->setRobotHere(true);

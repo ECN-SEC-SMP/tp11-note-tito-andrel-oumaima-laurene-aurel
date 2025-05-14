@@ -13,6 +13,7 @@
 
 #include <cstdlib> // Pour srand() et rand()
 #include <ctime>   // Pour time()
+
 bool OK = false; // Variable globale pour la disponibilité de la case
 bool obstacle;
 
@@ -22,14 +23,18 @@ Robot::Robot(std::string c) {
     //robot spawn au meme endroit
     this->x = rand()%16;
     this->y = rand()%16;
+    while(x== 7 && y==7 || x==8 && y==8 || x==7 && y==8 || x==8 && y==7){
+        this->x = rand()%16;
+        this->y = rand()%16;
+    }
     this->couleur = c;
     this->nbDeplacements = 0;
 }
 
 Robot::Robot(std::string c, int posX, int posY){
     // Initialisation des attributs
-    x = rand()%16;
-    y = rand()%16;
+    this->x = posX;
+    this->y = posY;
     couleur = c;
     nbDeplacements = 0;
     //OK = false;
@@ -143,15 +148,6 @@ void Robot::GenereRobot(){
     // Robot::SetPosition(xinitial, yinitial);
 }
 
-bool Robot::CaseDispo(int x, int y){
-    for(int i = 0; i<=16; i++){
-        for(int j = 0; j<=16; j++){
-            OK = 0;
-        }
-    }
-    return OK;
-}
-
 // Accesseur :
 int Robot::GetX() const {
     return x;
@@ -159,6 +155,10 @@ int Robot::GetX() const {
 
 int Robot::GetY() const {
     return y;
+}
+
+string Robot::getCouleur(){
+    return couleur;
 }
 
 int Robot::GetNbDeplacement() const {
