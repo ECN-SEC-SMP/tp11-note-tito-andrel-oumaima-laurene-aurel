@@ -103,7 +103,9 @@ bool Master::SelectionRobot(char Rob, int nbCoups)
         Plateau->DeplacerRobot(robotYellow, robotYellow->GetKeyboardInfo());
         cout << "Robot position end: " << robotYellow->GetX() << ", " << robotYellow->GetY() << endl;
     }
-    //Afficher();  
+
+    Afficher();
+
 
     return getObjectifAtteint(); // On retourne l'état de l'objectif
 }
