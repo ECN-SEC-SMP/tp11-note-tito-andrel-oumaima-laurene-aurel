@@ -34,7 +34,9 @@ class plateauRicochet
         void DeplacerRobot(Robot* robot, char direction);
         void DeplacerRobotPos(Robot *robot, int Pos_X, int Pos_Y);
         std::vector<Objectif*> getObjectifs();// Accesseur pour les objectifs
-        //void Afficher();   
+        //void Afficher();
+
+        bool estDeplacementValide(int x, int y);
 };
 
 #endif

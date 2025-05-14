@@ -25,11 +25,10 @@ Robot::Robot(std::string c) {
 
 Robot::Robot(std::string c, int posX, int posY){
     // Initialisation des attributs
-    x = rand()%16;
-    y = rand()%16;
+    this->x = posX;
+    this->y = posY;
     couleur = c;
     nbDeplacements = 0;
-    //OK = false;
 }
 
 char Robot::RecupereInfo(){
@@ -80,15 +79,6 @@ void Robot::GenereRobot(){
     // if(OK == 0) Robot robotV("vert", xinitial, yinitial);
 
     // Robot::SetPosition(xinitial, yinitial);
-}
-
-bool Robot::CaseDispo(int x, int y){
-    for(int i = 0; i<=16; i++){
-        for(int j = 0; j<=16; j++){
-            OK = 0;
-        }
-    }
-    return OK;
 }
 
 // Accesseur :
