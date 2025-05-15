@@ -1,0 +1,57 @@
+\doxysection{plateau\+Ricochet.\+h}
+\hypertarget{plateau_ricochet_8h_source}{}\label{plateau_ricochet_8h_source}\mbox{\hyperlink{plateau_ricochet_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ PLATEAU\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ PLATEAU\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_case_8h}{Case.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_robot_8h}{Robot.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_objectif_8h}{Objectif.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classplateau_ricochet_a86852e8a9c9883aaad062169b694721e}{plateauRicochet}}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \textcolor{keywordtype}{int}\ Max\_X;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \textcolor{keywordtype}{int}\ Max\_Y;}
+\DoxyCodeLine{00036\ \ \ \ \ \ std::vector<std::vector<Case*>>\ Plateau;}
+\DoxyCodeLine{00038\ \ \ \ \ \ std::vector<Objectif*>\ Objectifs;}
+\DoxyCodeLine{00040\ \ \ \ \ \ std::vector<std::pair<int,\ int>>\ obstaclesPlaces;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classplateau_ricochet_a86852e8a9c9883aaad062169b694721e}{plateauRicochet}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ std::vector<std::vector<Case*>>\ \mbox{\hyperlink{classplateau_ricochet_a59aaa6981469b75af73939a34acf1a71}{getPlateau}}();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classplateau_ricochet_a65ebb4ed858a6e79ebe2d8b2b66768bb}{\string~plateauRicochet}}();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classplateau_ricochet_a1ccee570447fa7efb82fc83204a7ef4a}{InitRobot}}(\mbox{\hyperlink{class_robot}{Robot}}*\ robotRed,\ \mbox{\hyperlink{class_robot}{Robot}}*\ robotGreen,\ \mbox{\hyperlink{class_robot}{Robot}}*\ robotBlue,\ \mbox{\hyperlink{class_robot}{Robot}}*\ robotYellow);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classplateau_ricochet_aa55e8f50beeec6bb04a34634db505bd1}{setObstacle}}(\textcolor{keywordtype}{int}\ x1,\ \textcolor{keywordtype}{int}\ x2,\ \textcolor{keywordtype}{int}\ y1,\ \textcolor{keywordtype}{int}\ y2,\ \textcolor{keywordtype}{string}\ forme);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classplateau_ricochet_a51739585033dbb19e0a5ce2f0d2d430a}{setBordsBas}}(\textcolor{keywordtype}{int}\ X,\ \textcolor{keywordtype}{int}\ Y);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classplateau_ricochet_ab897a30adc117df355505090337ebb6f}{setBordsHaut}}(\textcolor{keywordtype}{int}\ X,\ \textcolor{keywordtype}{int}\ Y);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classplateau_ricochet_a397881e5da3372ab2bb4d21c7629fdec}{setBordsGauche}}(\textcolor{keywordtype}{int}\ X,\ \textcolor{keywordtype}{int}\ Y);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classplateau_ricochet_a18496124c80f5c17f1686c3c100e30cf}{setBordsDroit}}(\textcolor{keywordtype}{int}\ X,\ \textcolor{keywordtype}{int}\ Y);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classplateau_ricochet_a9aa5e28b2380bc18acfc9d162ccb196b}{DeplacerRobot}}(\mbox{\hyperlink{class_robot}{Robot}}*\ robot,\ \textcolor{keywordtype}{char}\ direction);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classplateau_ricochet_a6052e29ba3c4a820da533c296559354d}{DeplacerRobotPos}}(\mbox{\hyperlink{class_robot}{Robot}}\ *robot,\ \textcolor{keywordtype}{int}\ Pos\_X,\ \textcolor{keywordtype}{int}\ Pos\_Y);}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ std::vector<Objectif*>\ \mbox{\hyperlink{classplateau_ricochet_a9a6fce834ed95153b17c62fade148438}{getObjectifs}}();}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classplateau_ricochet_add114b8788b4c0c9ab49a371050b54a2}{estDeplacementValide}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00135\ \};}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

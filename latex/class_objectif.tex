@@ -1,0 +1,338 @@
+\doxysection{Objectif Class Reference}
+\hypertarget{class_objectif}{}\label{class_objectif}\index{Objectif@{Objectif}}
+
+
+Représente un objectif à atteindre sur le plateau de jeu.  
+
+
+
+
+{\ttfamily \#include $<$Objectif.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_objectif_aae3f719b1b739feb26cb28a463eb6cbc}{Objectif}} (string Couleur, string Forme, int X, int Y)
+\begin{DoxyCompactList}\small\item\em Constructeur de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_objectif_a554be9619895ecd8af7f00ad444f092b}{get\+Couleur}} ()
+\begin{DoxyCompactList}\small\item\em Récupère la couleur de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_objectif_ac07a40215158516ce915316a59ab157c}{get\+Forme}} ()
+\begin{DoxyCompactList}\small\item\em Récupère la forme de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_objectif_abce876681784b977464cef84d3a6de5d}{getX}} ()
+\begin{DoxyCompactList}\small\item\em Récupère la coordonnée X de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_objectif_a5db446048de92e39213467bdb8cf691a}{getY}} ()
+\begin{DoxyCompactList}\small\item\em Récupère la coordonnée Y de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_objectif_a0de9ce693100cbbfefc80c4cc7e64cb5}{get\+Objectif\+Atteint}} ()
+\begin{DoxyCompactList}\small\item\em Indique si l\textquotesingle{}objectif a été atteint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_objectif_a9defb60881063a739e502bc4a2b60a6d}{set\+Forme}} (string Forme)
+\begin{DoxyCompactList}\small\item\em Définit la forme de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_objectif_a51c7c75c3e26e572f0370a5c853634fb}{set\+Couleur}} (string set\+Couleur)
+\begin{DoxyCompactList}\small\item\em Définit la couleur de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_objectif_a090d5a4e049701bb9ec4cc94b0e548f7}{setX}} (int setX)
+\begin{DoxyCompactList}\small\item\em Définit la coordonnée X de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_objectif_ae7c8bdb9c083333ea4f91ecc762a4c67}{setY}} (int setY)
+\begin{DoxyCompactList}\small\item\em Définit la coordonnée Y de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_objectif_a6e1896c6bfbb20d24feb9870c26d3cee}{set\+Objectif\+Atteint}} (bool \mbox{\hyperlink{class_objectif_afd92aaee919c52a0c0a45a671653d794}{objectif\+Atteint}})
+\begin{DoxyCompactList}\small\item\em Définit l\textquotesingle{}état d\textquotesingle{}atteinte de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_objectif_a57b1297a090201f4a76c4f369c7d9885}{Objectif\+Atteint}} (string Couleur, string Forme)
+\begin{DoxyCompactList}\small\item\em Vérifie si l\textquotesingle{}objectif est atteint en fonction de la couleur et de la forme. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_objectif_a43315143466dc501df8f2858ffa46636}{\texorpdfstring{$\sim$}{\string~}\+Objectif}} ()
+\begin{DoxyCompactList}\small\item\em Destructeur de la classe \doxylink{class_objectif}{Objectif}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_objectif_a0193cb23f35fe6298eaf5473550cd04b}{x}}
+\begin{DoxyCompactList}\small\item\em Coordonnée X de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_objectif_a27cfca6549fb2af0c5f6bdadb16e2e9e}{y}}
+\begin{DoxyCompactList}\small\item\em Coordonnée Y de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_objectif_a7e9be836e90daabaa8585668316176e0}{forme}}
+\begin{DoxyCompactList}\small\item\em Forme de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_objectif_a4125047da21fac433cf4af99dd37ecf7}{couleur}}
+\begin{DoxyCompactList}\small\item\em Couleur de l\textquotesingle{}objectif. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_objectif_afd92aaee919c52a0c0a45a671653d794}{objectif\+Atteint}}
+\begin{DoxyCompactList}\small\item\em Indique si l\textquotesingle{}objectif a été atteint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Représente un objectif à atteindre sur le plateau de jeu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_objectif_aae3f719b1b739feb26cb28a463eb6cbc}\index{Objectif@{Objectif}!Objectif@{Objectif}}
+\index{Objectif@{Objectif}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{Objectif()}{Objectif()}}
+{\footnotesize\ttfamily \label{class_objectif_aae3f719b1b739feb26cb28a463eb6cbc} 
+Objectif\+::\+Objectif (\begin{DoxyParamCaption}\item[{string}]{Couleur}{, }\item[{string}]{Forme}{, }\item[{int}]{X}{, }\item[{int}]{Y}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur de l\textquotesingle{}objectif. 
+
+Bibliothèques.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Couleur} & Couleur de l\textquotesingle{}objectif. \\
+\hline
+{\em Forme} & Forme de l\textquotesingle{}objectif. \\
+\hline
+{\em X} & Coordonnée X. \\
+\hline
+{\em Y} & Coordonnée Y.\\
+\hline
+\end{DoxyParams}
+Nécéssaires pour le bon focntionnement du projet.
+
+Création d\textquotesingle{}un objectif en fonction des coordonnées X, Y ainsi que d\textquotesingle{}une couleur et d\textquotesingle{}une forme (type d\textquotesingle{}objectif)
+
+Création d\textquotesingle{}un objectif lié à une case. On cherche à initialiser les coordonnées (case particulière) Ainsi que les coordonnées et la forme de l\textquotesingle{}objectif. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em X,Y} & entier \\
+\hline
+\mbox{\texttt{ in}}  & {\em Couleur,Forme} & string \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_objectif_a43315143466dc501df8f2858ffa46636}\index{Objectif@{Objectif}!````~Objectif@{\texorpdfstring{$\sim$}{\string~}Objectif}}
+\index{````~Objectif@{\texorpdfstring{$\sim$}{\string~}Objectif}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Objectif()}{\string~Objectif()}}
+{\footnotesize\ttfamily \label{class_objectif_a43315143466dc501df8f2858ffa46636} 
+Objectif\+::\texorpdfstring{$\sim$}{\string~}\+Objectif (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructeur de la classe \doxylink{class_objectif}{Objectif}. 
+
+Destructeur.
+
+Fonction destructrice permettant de supprimer un élément, dans le cas d\textquotesingle{}un objectif atteint par exemple. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_objectif_a554be9619895ecd8af7f00ad444f092b}\index{Objectif@{Objectif}!getCouleur@{getCouleur}}
+\index{getCouleur@{getCouleur}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{getCouleur()}{getCouleur()}}
+{\footnotesize\ttfamily \label{class_objectif_a554be9619895ecd8af7f00ad444f092b} 
+string Objectif\+::get\+Couleur (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Récupère la couleur de l\textquotesingle{}objectif. 
+
+\begin{DoxyReturn}{Returns}
+Couleur de l\textquotesingle{}objectif. 
+\end{DoxyReturn}
+\Hypertarget{class_objectif_ac07a40215158516ce915316a59ab157c}\index{Objectif@{Objectif}!getForme@{getForme}}
+\index{getForme@{getForme}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{getForme()}{getForme()}}
+{\footnotesize\ttfamily \label{class_objectif_ac07a40215158516ce915316a59ab157c} 
+string Objectif\+::get\+Forme (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Récupère la forme de l\textquotesingle{}objectif. 
+
+Accesseurs.
+
+\begin{DoxyReturn}{Returns}
+Forme de l\textquotesingle{}objectif.
+\end{DoxyReturn}
+Fonctions permettant l\textquotesingle{}accès aux différents paramètres d\textquotesingle{}un objectif. L\textquotesingle{}utilisateur récupère alors les informaions nécéssaires au bon fonctionnement du programme. \Hypertarget{class_objectif_a0de9ce693100cbbfefc80c4cc7e64cb5}\index{Objectif@{Objectif}!getObjectifAtteint@{getObjectifAtteint}}
+\index{getObjectifAtteint@{getObjectifAtteint}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{getObjectifAtteint()}{getObjectifAtteint()}}
+{\footnotesize\ttfamily \label{class_objectif_a0de9ce693100cbbfefc80c4cc7e64cb5} 
+bool Objectif\+::get\+Objectif\+Atteint (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Indique si l\textquotesingle{}objectif a été atteint. 
+
+\begin{DoxyReturn}{Returns}
+true si l\textquotesingle{}objectif est atteint, false sinon. 
+\end{DoxyReturn}
+\Hypertarget{class_objectif_abce876681784b977464cef84d3a6de5d}\index{Objectif@{Objectif}!getX@{getX}}
+\index{getX@{getX}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily \label{class_objectif_abce876681784b977464cef84d3a6de5d} 
+int Objectif\+::getX (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Récupère la coordonnée X de l\textquotesingle{}objectif. 
+
+\begin{DoxyReturn}{Returns}
+Coordonnée X. 
+\end{DoxyReturn}
+\Hypertarget{class_objectif_a5db446048de92e39213467bdb8cf691a}\index{Objectif@{Objectif}!getY@{getY}}
+\index{getY@{getY}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily \label{class_objectif_a5db446048de92e39213467bdb8cf691a} 
+int Objectif\+::getY (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Récupère la coordonnée Y de l\textquotesingle{}objectif. 
+
+\begin{DoxyReturn}{Returns}
+Coordonnée Y. 
+\end{DoxyReturn}
+\Hypertarget{class_objectif_a57b1297a090201f4a76c4f369c7d9885}\index{Objectif@{Objectif}!ObjectifAtteint@{ObjectifAtteint}}
+\index{ObjectifAtteint@{ObjectifAtteint}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{ObjectifAtteint()}{ObjectifAtteint()}}
+{\footnotesize\ttfamily \label{class_objectif_a57b1297a090201f4a76c4f369c7d9885} 
+bool Objectif\+::\+Objectif\+Atteint (\begin{DoxyParamCaption}\item[{string}]{Couleur}{, }\item[{string}]{Forme}{}\end{DoxyParamCaption})}
+
+
+
+Vérifie si l\textquotesingle{}objectif est atteint en fonction de la couleur et de la forme. 
+
+Méthode, Objectif\+Atteint.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Couleur} & Couleur à vérifier. \\
+\hline
+{\em Forme} & Forme à vérifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si l\textquotesingle{}objectif est atteint, false sinon.
+\end{DoxyReturn}
+Fonctions méthode permettant de faire ressortir une information d\textquotesingle{}objectif atteint. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Couleur,Forme} & string \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_objectif_a51c7c75c3e26e572f0370a5c853634fb}\index{Objectif@{Objectif}!setCouleur@{setCouleur}}
+\index{setCouleur@{setCouleur}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{setCouleur()}{setCouleur()}}
+{\footnotesize\ttfamily \label{class_objectif_a51c7c75c3e26e572f0370a5c853634fb} 
+void Objectif\+::set\+Couleur (\begin{DoxyParamCaption}\item[{string}]{set\+Couleur}{}\end{DoxyParamCaption})}
+
+
+
+Définit la couleur de l\textquotesingle{}objectif. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Couleur} & Nouvelle couleur. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_objectif_a9defb60881063a739e502bc4a2b60a6d}\index{Objectif@{Objectif}!setForme@{setForme}}
+\index{setForme@{setForme}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{setForme()}{setForme()}}
+{\footnotesize\ttfamily \label{class_objectif_a9defb60881063a739e502bc4a2b60a6d} 
+void Objectif\+::set\+Forme (\begin{DoxyParamCaption}\item[{string}]{set\+Forme}{}\end{DoxyParamCaption})}
+
+
+
+Définit la forme de l\textquotesingle{}objectif. 
+
+Mutateurs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Forme} & Nouvelle forme.\\
+\hline
+\end{DoxyParams}
+Fonctions permettant la modification des différents paramètres d\textquotesingle{}un objectif. Permet de configurer et de modifier les paramètres spécifiques d\textquotesingle{}un objectif. \Hypertarget{class_objectif_a6e1896c6bfbb20d24feb9870c26d3cee}\index{Objectif@{Objectif}!setObjectifAtteint@{setObjectifAtteint}}
+\index{setObjectifAtteint@{setObjectifAtteint}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{setObjectifAtteint()}{setObjectifAtteint()}}
+{\footnotesize\ttfamily \label{class_objectif_a6e1896c6bfbb20d24feb9870c26d3cee} 
+void Objectif\+::set\+Objectif\+Atteint (\begin{DoxyParamCaption}\item[{bool}]{objectif\+Atteint}{}\end{DoxyParamCaption})}
+
+
+
+Définit l\textquotesingle{}état d\textquotesingle{}atteinte de l\textquotesingle{}objectif. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em objectif\+Atteint} & Nouvel état (true si atteint). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_objectif_a090d5a4e049701bb9ec4cc94b0e548f7}\index{Objectif@{Objectif}!setX@{setX}}
+\index{setX@{setX}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{setX()}{setX()}}
+{\footnotesize\ttfamily \label{class_objectif_a090d5a4e049701bb9ec4cc94b0e548f7} 
+void Objectif\+::setX (\begin{DoxyParamCaption}\item[{int}]{setX}{}\end{DoxyParamCaption})}
+
+
+
+Définit la coordonnée X de l\textquotesingle{}objectif. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setX} & Nouvelle coordonnée X. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_objectif_ae7c8bdb9c083333ea4f91ecc762a4c67}\index{Objectif@{Objectif}!setY@{setY}}
+\index{setY@{setY}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{setY()}{setY()}}
+{\footnotesize\ttfamily \label{class_objectif_ae7c8bdb9c083333ea4f91ecc762a4c67} 
+void Objectif\+::setY (\begin{DoxyParamCaption}\item[{int}]{setY}{}\end{DoxyParamCaption})}
+
+
+
+Définit la coordonnée Y de l\textquotesingle{}objectif. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setY} & Nouvelle coordonnée Y. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_objectif_a4125047da21fac433cf4af99dd37ecf7}\index{Objectif@{Objectif}!couleur@{couleur}}
+\index{couleur@{couleur}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{couleur}{couleur}}
+{\footnotesize\ttfamily \label{class_objectif_a4125047da21fac433cf4af99dd37ecf7} 
+string Objectif\+::couleur}
+
+
+
+Couleur de l\textquotesingle{}objectif. 
+
+\Hypertarget{class_objectif_a7e9be836e90daabaa8585668316176e0}\index{Objectif@{Objectif}!forme@{forme}}
+\index{forme@{forme}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{forme}{forme}}
+{\footnotesize\ttfamily \label{class_objectif_a7e9be836e90daabaa8585668316176e0} 
+string Objectif\+::forme}
+
+
+
+Forme de l\textquotesingle{}objectif. 
+
+\Hypertarget{class_objectif_afd92aaee919c52a0c0a45a671653d794}\index{Objectif@{Objectif}!objectifAtteint@{objectifAtteint}}
+\index{objectifAtteint@{objectifAtteint}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{objectifAtteint}{objectifAtteint}}
+{\footnotesize\ttfamily \label{class_objectif_afd92aaee919c52a0c0a45a671653d794} 
+bool Objectif\+::objectif\+Atteint}
+
+
+
+Indique si l\textquotesingle{}objectif a été atteint. 
+
+\Hypertarget{class_objectif_a0193cb23f35fe6298eaf5473550cd04b}\index{Objectif@{Objectif}!x@{x}}
+\index{x@{x}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{class_objectif_a0193cb23f35fe6298eaf5473550cd04b} 
+int Objectif\+::x}
+
+
+
+Coordonnée X de l\textquotesingle{}objectif. 
+
+\Hypertarget{class_objectif_a27cfca6549fb2af0c5f6bdadb16e2e9e}\index{Objectif@{Objectif}!y@{y}}
+\index{y@{y}!Objectif@{Objectif}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \label{class_objectif_a27cfca6549fb2af0c5f6bdadb16e2e9e} 
+int Objectif\+::y}
+
+
+
+Coordonnée Y de l\textquotesingle{}objectif. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_objectif_8h}{Objectif.\+h}}\item 
+\mbox{\hyperlink{_objectif_8cpp}{Objectif.\+cpp}}\end{DoxyCompactItemize}

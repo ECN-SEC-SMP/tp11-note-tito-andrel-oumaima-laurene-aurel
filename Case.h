@@ -157,7 +157,7 @@ public:
      * @brief Définit la coordonnée X de la case.
      * @param setX Nouvelle coordonnée X.
      */
-    void setX(int setX);
+    voi setX(int setX);
 
     /**
      * @brief Définit la coordonnée Y de la case.

@@ -1,0 +1,363 @@
+\doxysection{Master Class Reference}
+\hypertarget{class_master}{}\label{class_master}\index{Master@{Master}}
+
+
+Classe principale gérant le jeu Ricochet \doxylink{class_robot}{Robot}.  
+
+
+
+
+{\ttfamily \#include $<$Master.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_master_a454cc0f9654a0d43759cd917dcc2c8e6}{Master}} (int X, int Y)
+\begin{DoxyCompactList}\small\item\em Constructeur initialisant le jeu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_master_a20f70958ed75532ba672af1b780f59eb}{\texorpdfstring{$\sim$}{\string~}\+Master}} ()
+\begin{DoxyCompactList}\small\item\em Destructeur libérant les ressources. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_a512ae771d470322e9098275aacf5bb53}{Tour}} ()
+\begin{DoxyCompactList}\small\item\em Lance un tour de jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_abd03ebaf01e0e5072f507a3dfb19dffe}{Tourde\+Jeu}} ()
+\begin{DoxyCompactList}\small\item\em Gère un tour de jeu complet pour tous les joueurs. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_master_a5d630e2e7c14577d7bb5cfad1dcb3a04}{select\+\_\+\+Robot}} ()
+\begin{DoxyCompactList}\small\item\em Sélectionne un robot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_ac3384a85f67e8c4a1ef7429cbb9cb7cc}{Afficher}} ()
+\begin{DoxyCompactList}\small\item\em Affiche le plateau de jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_adaf24bf2d7308c644d80371a2d46beb2}{tirer\+Objectif}} ()
+\begin{DoxyCompactList}\small\item\em Tire un nouvel objectif aléatoire. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_master_a1bcfc48640464e65bb501af03c239034}{get\+Objectif\+Atteint}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie si l\textquotesingle{}objectif actuel est atteint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_ab198fbb1645f287acf48c411bea94a55}{afficher\+Objectif}} ()
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}objectif courant. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_master_a5a5d63f725769c18185418f101b1cf44}{Selection\+Robot}} (char Rob, int nb\+Coups)
+\begin{DoxyCompactList}\small\item\em Déplace le robot sélectionné \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_ac93bf4a063addee6ed532e402354e222}{init\+Joueurs}} ()
+\begin{DoxyCompactList}\small\item\em Initialise les joueurs pour la partie. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_joueur}{Joueur}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_master_a16595b310107a2d903463e96b65c15e0}{select\+Joueur}} ()
+\begin{DoxyCompactList}\small\item\em Sélectionne un joueur pour le tour. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_aa79d4d9ea0fc2013c45dd05c0a99fd41}{Afficher\+Scores}} ()
+\begin{DoxyCompactList}\small\item\em Affiche les scores de tous les joueurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_master_af338a778a95d3b242d9ee6869348db44}{Max\+\_\+X}}
+\begin{DoxyCompactList}\small\item\em Largeur du plateau. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_master_ae505e07d8e1e6eabe62886ff814b3c26}{Max\+\_\+Y}}
+\begin{DoxyCompactList}\small\item\em Hauteur du plateau. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classplateau_ricochet}{plateau\+Ricochet}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_master_a2843c18aa77583bd609430b097021f8c}{Plateau}}
+\begin{DoxyCompactList}\small\item\em Plateau de jeu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_objectif}{Objectif}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_master_a82da5574230b61352b5149079db226b0}{objectif\+Courant}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_objectif}{Objectif} actuel à atteindre. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_master_a40445a914a27c706f39b3989a51b351f}{indice\+Objectif\+Courant}} = 0
+\begin{DoxyCompactList}\small\item\em Indice de l\textquotesingle{}objectif courant dans la liste. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_master_a5d99011a4969e001027377e11b133bdd}{robot\+Red}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_robot}{Robot} rouge. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_master_a7654a99100d5958199630a4eec811add}{robot\+Green}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_robot}{Robot} vert. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_master_ab9e2820636a8b5b77563be9d03f1d11a}{robot\+Blue}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_robot}{Robot} bleu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_master_a3563d99ccc59203f37dcf51a36e84fe4}{robot\+Yellow}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_robot}{Robot} jaune. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_joueur}{Joueur}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_master_aca22ef2fec511408b028ceb508834556}{Joueurs}}
+\begin{DoxyCompactList}\small\item\em Liste des joueurs. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_master_a8033843e5758f31c8bb7f87f3070f11a}{nb\+Joueurs}}
+\begin{DoxyCompactList}\small\item\em Nombre de joueurs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sablier}{Sablier}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_master_a6a7512bca7054f727b738eeede9fa79a}{sablier}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_sablier}{Sablier} pour limiter le temps de réflexion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe principale gérant le jeu Ricochet \doxylink{class_robot}{Robot}. 
+
+Cette classe orchestre l\textquotesingle{}ensemble des éléments du jeu\+: gestion du plateau, des robots, des joueurs, des objectifs, et du déroulement du jeu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_master_a454cc0f9654a0d43759cd917dcc2c8e6}\index{Master@{Master}!Master@{Master}}
+\index{Master@{Master}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{Master()}{Master()}}
+{\footnotesize\ttfamily \label{class_master_a454cc0f9654a0d43759cd917dcc2c8e6} 
+Master\+::\+Master (\begin{DoxyParamCaption}\item[{int}]{X}{, }\item[{int}]{Y}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur initialisant le jeu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Largeur du plateau \\
+\hline
+{\em Y} & Hauteur du plateau \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_master_a20f70958ed75532ba672af1b780f59eb}\index{Master@{Master}!````~Master@{\texorpdfstring{$\sim$}{\string~}Master}}
+\index{````~Master@{\texorpdfstring{$\sim$}{\string~}Master}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Master()}{\string~Master()}}
+{\footnotesize\ttfamily \label{class_master_a20f70958ed75532ba672af1b780f59eb} 
+Master\+::\texorpdfstring{$\sim$}{\string~}\+Master (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructeur libérant les ressources. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_master_ac3384a85f67e8c4a1ef7429cbb9cb7cc}\index{Master@{Master}!Afficher@{Afficher}}
+\index{Afficher@{Afficher}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{Afficher()}{Afficher()}}
+{\footnotesize\ttfamily \label{class_master_ac3384a85f67e8c4a1ef7429cbb9cb7cc} 
+void Master\+::\+Afficher (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche le plateau de jeu. 
+
+\Hypertarget{class_master_ab198fbb1645f287acf48c411bea94a55}\index{Master@{Master}!afficherObjectif@{afficherObjectif}}
+\index{afficherObjectif@{afficherObjectif}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{afficherObjectif()}{afficherObjectif()}}
+{\footnotesize\ttfamily \label{class_master_ab198fbb1645f287acf48c411bea94a55} 
+void Master\+::afficher\+Objectif (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}objectif courant. 
+
+\Hypertarget{class_master_aa79d4d9ea0fc2013c45dd05c0a99fd41}\index{Master@{Master}!AfficherScores@{AfficherScores}}
+\index{AfficherScores@{AfficherScores}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{AfficherScores()}{AfficherScores()}}
+{\footnotesize\ttfamily \label{class_master_aa79d4d9ea0fc2013c45dd05c0a99fd41} 
+void Master\+::\+Afficher\+Scores (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche les scores de tous les joueurs. 
+
+\Hypertarget{class_master_a1bcfc48640464e65bb501af03c239034}\index{Master@{Master}!getObjectifAtteint@{getObjectifAtteint}}
+\index{getObjectifAtteint@{getObjectifAtteint}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{getObjectifAtteint()}{getObjectifAtteint()}}
+{\footnotesize\ttfamily \label{class_master_a1bcfc48640464e65bb501af03c239034} 
+bool Master\+::get\+Objectif\+Atteint (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Vérifie si l\textquotesingle{}objectif actuel est atteint. 
+
+\begin{DoxyReturn}{Returns}
+true si l\textquotesingle{}objectif est atteint, false sinon 
+\end{DoxyReturn}
+\Hypertarget{class_master_ac93bf4a063addee6ed532e402354e222}\index{Master@{Master}!initJoueurs@{initJoueurs}}
+\index{initJoueurs@{initJoueurs}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{initJoueurs()}{initJoueurs()}}
+{\footnotesize\ttfamily \label{class_master_ac93bf4a063addee6ed532e402354e222} 
+void Master\+::init\+Joueurs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise les joueurs pour la partie. 
+
+\Hypertarget{class_master_a5d630e2e7c14577d7bb5cfad1dcb3a04}\index{Master@{Master}!select\_Robot@{select\_Robot}}
+\index{select\_Robot@{select\_Robot}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{select\_Robot()}{select\_Robot()}}
+{\footnotesize\ttfamily \label{class_master_a5d630e2e7c14577d7bb5cfad1dcb3a04} 
+char Master\+::select\+\_\+\+Robot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sélectionne un robot. 
+
+\begin{DoxyReturn}{Returns}
+Caractère identifiant le robot (\textquotesingle{}R\textquotesingle{},\textquotesingle{}G\textquotesingle{},\textquotesingle{}B\textquotesingle{},\textquotesingle{}Y\textquotesingle{}) 
+\end{DoxyReturn}
+\Hypertarget{class_master_a5a5d63f725769c18185418f101b1cf44}\index{Master@{Master}!SelectionRobot@{SelectionRobot}}
+\index{SelectionRobot@{SelectionRobot}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{SelectionRobot()}{SelectionRobot()}}
+{\footnotesize\ttfamily \label{class_master_a5a5d63f725769c18185418f101b1cf44} 
+bool Master\+::\+Selection\+Robot (\begin{DoxyParamCaption}\item[{char}]{Rob}{, }\item[{int}]{nb\+Coups}{}\end{DoxyParamCaption})}
+
+
+
+Déplace le robot sélectionné 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Rob} & Identifiant du robot (\textquotesingle{}R\textquotesingle{},\textquotesingle{}G\textquotesingle{},\textquotesingle{}B\textquotesingle{},\textquotesingle{}Y\textquotesingle{}) \\
+\hline
+{\em nb\+Coups} & Nombre de coups annoncés \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si l\textquotesingle{}objectif est atteint, false sinon 
+\end{DoxyReturn}
+\Hypertarget{class_master_a16595b310107a2d903463e96b65c15e0}\index{Master@{Master}!selectJoueur@{selectJoueur}}
+\index{selectJoueur@{selectJoueur}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{selectJoueur()}{selectJoueur()}}
+{\footnotesize\ttfamily \label{class_master_a16595b310107a2d903463e96b65c15e0} 
+\mbox{\hyperlink{class_joueur}{Joueur}} \texorpdfstring{$\ast$}{*} Master\+::select\+Joueur (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sélectionne un joueur pour le tour. 
+
+\begin{DoxyReturn}{Returns}
+Pointeur vers le joueur sélectionné 
+\end{DoxyReturn}
+\Hypertarget{class_master_adaf24bf2d7308c644d80371a2d46beb2}\index{Master@{Master}!tirerObjectif@{tirerObjectif}}
+\index{tirerObjectif@{tirerObjectif}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{tirerObjectif()}{tirerObjectif()}}
+{\footnotesize\ttfamily \label{class_master_adaf24bf2d7308c644d80371a2d46beb2} 
+void Master\+::tirer\+Objectif (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Tire un nouvel objectif aléatoire. 
+
+\Hypertarget{class_master_a512ae771d470322e9098275aacf5bb53}\index{Master@{Master}!Tour@{Tour}}
+\index{Tour@{Tour}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{Tour()}{Tour()}}
+{\footnotesize\ttfamily \label{class_master_a512ae771d470322e9098275aacf5bb53} 
+void Master\+::\+Tour (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Lance un tour de jeu. 
+
+\Hypertarget{class_master_abd03ebaf01e0e5072f507a3dfb19dffe}\index{Master@{Master}!TourdeJeu@{TourdeJeu}}
+\index{TourdeJeu@{TourdeJeu}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{TourdeJeu()}{TourdeJeu()}}
+{\footnotesize\ttfamily \label{class_master_abd03ebaf01e0e5072f507a3dfb19dffe} 
+void Master\+::\+Tourde\+Jeu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gère un tour de jeu complet pour tous les joueurs. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_master_a40445a914a27c706f39b3989a51b351f}\index{Master@{Master}!indiceObjectifCourant@{indiceObjectifCourant}}
+\index{indiceObjectifCourant@{indiceObjectifCourant}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{indiceObjectifCourant}{indiceObjectifCourant}}
+{\footnotesize\ttfamily \label{class_master_a40445a914a27c706f39b3989a51b351f} 
+int Master\+::indice\+Objectif\+Courant = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Indice de l\textquotesingle{}objectif courant dans la liste. 
+
+\Hypertarget{class_master_aca22ef2fec511408b028ceb508834556}\index{Master@{Master}!Joueurs@{Joueurs}}
+\index{Joueurs@{Joueurs}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{Joueurs}{Joueurs}}
+{\footnotesize\ttfamily \label{class_master_aca22ef2fec511408b028ceb508834556} 
+std\+::vector$<$\mbox{\hyperlink{class_joueur}{Joueur}}\texorpdfstring{$\ast$}{*}$>$ Master\+::\+Joueurs\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Liste des joueurs. 
+
+\Hypertarget{class_master_af338a778a95d3b242d9ee6869348db44}\index{Master@{Master}!Max\_X@{Max\_X}}
+\index{Max\_X@{Max\_X}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{Max\_X}{Max\_X}}
+{\footnotesize\ttfamily \label{class_master_af338a778a95d3b242d9ee6869348db44} 
+int Master\+::\+Max\+\_\+X\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Largeur du plateau. 
+
+\Hypertarget{class_master_ae505e07d8e1e6eabe62886ff814b3c26}\index{Master@{Master}!Max\_Y@{Max\_Y}}
+\index{Max\_Y@{Max\_Y}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{Max\_Y}{Max\_Y}}
+{\footnotesize\ttfamily \label{class_master_ae505e07d8e1e6eabe62886ff814b3c26} 
+int Master\+::\+Max\+\_\+Y\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Hauteur du plateau. 
+
+\Hypertarget{class_master_a8033843e5758f31c8bb7f87f3070f11a}\index{Master@{Master}!nbJoueurs@{nbJoueurs}}
+\index{nbJoueurs@{nbJoueurs}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{nbJoueurs}{nbJoueurs}}
+{\footnotesize\ttfamily \label{class_master_a8033843e5758f31c8bb7f87f3070f11a} 
+int Master\+::nb\+Joueurs\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Nombre de joueurs. 
+
+\Hypertarget{class_master_a82da5574230b61352b5149079db226b0}\index{Master@{Master}!objectifCourant@{objectifCourant}}
+\index{objectifCourant@{objectifCourant}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{objectifCourant}{objectifCourant}}
+{\footnotesize\ttfamily \label{class_master_a82da5574230b61352b5149079db226b0} 
+\mbox{\hyperlink{class_objectif}{Objectif}}\texorpdfstring{$\ast$}{*} Master\+::objectif\+Courant\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxylink{class_objectif}{Objectif} actuel à atteindre. 
+
+\Hypertarget{class_master_a2843c18aa77583bd609430b097021f8c}\index{Master@{Master}!Plateau@{Plateau}}
+\index{Plateau@{Plateau}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{Plateau}{Plateau}}
+{\footnotesize\ttfamily \label{class_master_a2843c18aa77583bd609430b097021f8c} 
+\mbox{\hyperlink{classplateau_ricochet}{plateau\+Ricochet}}\texorpdfstring{$\ast$}{*} Master\+::\+Plateau\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Plateau de jeu. 
+
+\Hypertarget{class_master_ab9e2820636a8b5b77563be9d03f1d11a}\index{Master@{Master}!robotBlue@{robotBlue}}
+\index{robotBlue@{robotBlue}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{robotBlue}{robotBlue}}
+{\footnotesize\ttfamily \label{class_master_ab9e2820636a8b5b77563be9d03f1d11a} 
+\mbox{\hyperlink{class_robot}{Robot}}\texorpdfstring{$\ast$}{*} Master\+::robot\+Blue\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxylink{class_robot}{Robot} bleu. 
+
+\Hypertarget{class_master_a7654a99100d5958199630a4eec811add}\index{Master@{Master}!robotGreen@{robotGreen}}
+\index{robotGreen@{robotGreen}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{robotGreen}{robotGreen}}
+{\footnotesize\ttfamily \label{class_master_a7654a99100d5958199630a4eec811add} 
+\mbox{\hyperlink{class_robot}{Robot}}\texorpdfstring{$\ast$}{*} Master\+::robot\+Green\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxylink{class_robot}{Robot} vert. 
+
+\Hypertarget{class_master_a5d99011a4969e001027377e11b133bdd}\index{Master@{Master}!robotRed@{robotRed}}
+\index{robotRed@{robotRed}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{robotRed}{robotRed}}
+{\footnotesize\ttfamily \label{class_master_a5d99011a4969e001027377e11b133bdd} 
+\mbox{\hyperlink{class_robot}{Robot}}\texorpdfstring{$\ast$}{*} Master\+::robot\+Red\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxylink{class_robot}{Robot} rouge. 
+
+\Hypertarget{class_master_a3563d99ccc59203f37dcf51a36e84fe4}\index{Master@{Master}!robotYellow@{robotYellow}}
+\index{robotYellow@{robotYellow}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{robotYellow}{robotYellow}}
+{\footnotesize\ttfamily \label{class_master_a3563d99ccc59203f37dcf51a36e84fe4} 
+\mbox{\hyperlink{class_robot}{Robot}}\texorpdfstring{$\ast$}{*} Master\+::robot\+Yellow\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxylink{class_robot}{Robot} jaune. 
+
+\Hypertarget{class_master_a6a7512bca7054f727b738eeede9fa79a}\index{Master@{Master}!sablier@{sablier}}
+\index{sablier@{sablier}!Master@{Master}}
+\doxysubsubsection{\texorpdfstring{sablier}{sablier}}
+{\footnotesize\ttfamily \label{class_master_a6a7512bca7054f727b738eeede9fa79a} 
+\mbox{\hyperlink{class_sablier}{Sablier}}\texorpdfstring{$\ast$}{*} Master\+::sablier\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxylink{class_sablier}{Sablier} pour limiter le temps de réflexion. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_master_8h}{Master.\+h}}\item 
+\mbox{\hyperlink{_master_8cpp}{Master.\+cpp}}\end{DoxyCompactItemize}

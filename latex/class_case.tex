@@ -1,0 +1,515 @@
+\doxysection{Case Class Reference}
+\hypertarget{class_case}{}\label{class_case}\index{Case@{Case}}
+
+
+Représente une case du plateau de jeu.  
+
+
+
+
+{\ttfamily \#include $<$Case.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_case_ab15b6a517478c418e38bdbdd2b7dee98}{Case}} (int X, int Y)
+\begin{DoxyCompactList}\small\item\em Constructeur de base. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_case_a9fe9536b1e337b40300e9ce40316b3b0}{Case}} (int X, int Y, bool Haut, bool Bas, bool Gauche, bool Droit)
+\begin{DoxyCompactList}\small\item\em Constructeur avec murs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_case_aac21db270ecc5f6b5344d46eedb97402}{Case}} (int X, int Y, string Couleur)
+\begin{DoxyCompactList}\small\item\em Constructeur avec couleur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_case_a39b4f9ae721c734db421056b6190fca8}{Affichage\+Case}} (int X, int Y)
+\begin{DoxyCompactList}\small\item\em Affiche la case à la position donnée. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Accesseurs}\par
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_case_ade1e142f6a9f9167d5fb47cee2b3af4d}{get\+Robot\+Here}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie si un robot est présent sur la case. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_case_a2debc0159b920dfe202e63308d501243}{get\+Bord\+Haut}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie la présence d\textquotesingle{}un mur en haut. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_case_a15af60e2144de07598799c526dda64ce}{get\+Bord\+Bas}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie la présence d\textquotesingle{}un mur en bas. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_case_abf1ecb39c65c5646aef02fe864bf1b75}{get\+Bord\+Gauche}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie la présence d\textquotesingle{}un mur à gauche. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_case_ab14211a33889304564ff70f726fe0550}{get\+Bord\+Droit}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie la présence d\textquotesingle{}un mur à droite. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_case_a6de8f9cb96c18ae47238f0d93b70ee57}{get\+Couleur}} ()
+\begin{DoxyCompactList}\small\item\em Récupère la couleur de la case. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_case_ab5580b919199dd2ec379672d3390bbff}{getX}} ()
+\begin{DoxyCompactList}\small\item\em Récupère la coordonnée X. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_case_a824f612c5a660a1d55ac06931747c46d}{getY}} ()
+\begin{DoxyCompactList}\small\item\em Récupère la coordonnée Y. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Mutateurs}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_case_ad94d124cddc07e98c80d3176d43561ab}{set\+Robot\+Here}} (bool set\+Robot\+Here)
+\begin{DoxyCompactList}\small\item\em Définit la présence d\textquotesingle{}un robot sur la case. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_case_af79c54f7a5657c119d4b72293ad32bde}{set\+Bords\+Haut}} (bool set\+Haut)
+\begin{DoxyCompactList}\small\item\em Définit la présence d\textquotesingle{}un mur en haut. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_case_a085cbe42786c86a3613ae9de6bdde42d}{set\+Bords\+Bas}} (bool set\+Bas)
+\begin{DoxyCompactList}\small\item\em Définit la présence d\textquotesingle{}un mur en bas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_case_aa7925e8e17d291f6f53c522b9e1ab9cf}{set\+Bords\+Gauche}} (bool set\+Gauche)
+\begin{DoxyCompactList}\small\item\em Définit la présence d\textquotesingle{}un mur à gauche. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_case_a8574340b6bc466114cae9f899ea32c7c}{set\+Bords\+Droit}} (bool set\+Droit)
+\begin{DoxyCompactList}\small\item\em Définit la présence d\textquotesingle{}un mur à droite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_case_a8900c068f5980ea23d118c5b0bc8a843}{set\+Couleur}} (string set\+Couleur)
+\begin{DoxyCompactList}\small\item\em Définit la couleur de la case. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_case_a689af69e7f6ab59f78c170aee32a3fd6}{setX}} (int setX)
+\begin{DoxyCompactList}\small\item\em Définit la coordonnée X de la case. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_case_aac6a8cd10b6b48afe2ebe8c3ea852576}{setY}} (int setY)
+\begin{DoxyCompactList}\small\item\em Définit la coordonnée Y de la case. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_case_a6adfd5aa9d5888fbaa6b193f1211c254}{x}}
+\begin{DoxyCompactList}\small\item\em Coordonnée X de la case. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_case_a1cef8e765dd4a9eb3426f5608a3ef3d6}{y}}
+\begin{DoxyCompactList}\small\item\em Coordonnée Y de la case. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_case_a5f19f5a170c96152888d172bddc6820a}{robot\+Here}}
+\begin{DoxyCompactList}\small\item\em Indique si un robot est présent sur la case. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_case_ac880148ca30c4311955a6e66ae54fc03}{bas}}
+\begin{DoxyCompactList}\small\item\em Présence d\textquotesingle{}un mur en bas. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_case_aad6c729574e4035a42f92e7254c08949}{haut}}
+\begin{DoxyCompactList}\small\item\em Présence d\textquotesingle{}un mur en haut. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_case_a684b46719378e4b75f1198b9762331c8}{gauche}}
+\begin{DoxyCompactList}\small\item\em Présence d\textquotesingle{}un mur à gauche. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_case_a09268cae178c2a2af1739d08830f1df5}{droit}}
+\begin{DoxyCompactList}\small\item\em Présence d\textquotesingle{}un mur à droite. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_case_a906bee793ab62bfd7d17dd8d379f63bb}{couleur}}
+\begin{DoxyCompactList}\small\item\em Couleur de la case. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Représente une case du plateau de jeu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_case_ab15b6a517478c418e38bdbdd2b7dee98}\index{Case@{Case}!Case@{Case}}
+\index{Case@{Case}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{Case()}{Case()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_case_ab15b6a517478c418e38bdbdd2b7dee98} 
+Case\+::\+Case (\begin{DoxyParamCaption}\item[{int}]{X}{, }\item[{int}]{Y}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur de base. 
+
+Bibliothèques.
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Coordonnée X. \\
+\hline
+{\em Y} & Coordonnée Y.\\
+\hline
+\end{DoxyParams}
+Nécéssaires pour le bon focntionnement du projet. \Hypertarget{class_case_a9fe9536b1e337b40300e9ce40316b3b0}\index{Case@{Case}!Case@{Case}}
+\index{Case@{Case}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{Case()}{Case()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_case_a9fe9536b1e337b40300e9ce40316b3b0} 
+Case\+::\+Case (\begin{DoxyParamCaption}\item[{int}]{X}{, }\item[{int}]{Y}{, }\item[{bool}]{Haut}{, }\item[{bool}]{Bas}{, }\item[{bool}]{Gauche}{, }\item[{bool}]{Droit}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur avec murs. 
+
+Création d\textquotesingle{}une case en fonction des coordonnées X, Y et initialisation des bords.
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Coordonnée X. \\
+\hline
+{\em Y} & Coordonnée Y. \\
+\hline
+{\em Haut} & Mur en haut. \\
+\hline
+{\em Bas} & Mur en bas. \\
+\hline
+{\em Gauche} & Mur à gauche. \\
+\hline
+{\em Droit} & Mur à droite.\\
+\hline
+\end{DoxyParams}
+Création d\textquotesingle{}une case d\textquotesingle{}un tableau. on initialise les coordonnées ainsi que les bords de la case. L\textquotesingle{}utilisateur peut alors configurer manuellement les bords de la case. Cette dernière ne possède cependant pas de couleur 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em X,Y} & entier \\
+\hline
+\mbox{\texttt{ in}}  & {\em Haut,Bas,Gauche,Droit} & booléens \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_case_aac21db270ecc5f6b5344d46eedb97402}\index{Case@{Case}!Case@{Case}}
+\index{Case@{Case}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{Case()}{Case()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_case_aac21db270ecc5f6b5344d46eedb97402} 
+Case\+::\+Case (\begin{DoxyParamCaption}\item[{int}]{X}{, }\item[{int}]{Y}{, }\item[{string}]{Couleur}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur avec couleur. 
+
+Création d\textquotesingle{}une case en fonction des coordonnées X, Y et initialisation de la couleur.
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Coordonnée X. \\
+\hline
+{\em Y} & Coordonnée Y. \\
+\hline
+{\em Couleur} & Couleur de la case.\\
+\hline
+\end{DoxyParams}
+Création d\textquotesingle{}une case d\textquotesingle{}un tableau. on initialise les coordonnées ainsi que la couleur de la case. Les bords de la case sont par défaut à false (modifications nécéssaires à partir des accesseurs) 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em X,Y} & entier \\
+\hline
+\mbox{\texttt{ in}}  & {\em Couleur} & string \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_case_a39b4f9ae721c734db421056b6190fca8}\index{Case@{Case}!AffichageCase@{AffichageCase}}
+\index{AffichageCase@{AffichageCase}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{AffichageCase()}{AffichageCase()}}
+{\footnotesize\ttfamily \label{class_case_a39b4f9ae721c734db421056b6190fca8} 
+void Case\+::\+Affichage\+Case (\begin{DoxyParamCaption}\item[{int}]{X}{, }\item[{int}]{Y}{}\end{DoxyParamCaption})}
+
+
+
+Affiche la case à la position donnée. 
+
+Méthode, Affichage \doxylink{class_case}{Case}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Coordonnée X. \\
+\hline
+{\em Y} & Coordonnée Y.\\
+\hline
+\end{DoxyParams}
+Fonctions méthode permettant d\textquotesingle{}afficher sur le terminal une case particulière en fonction de ses coordonnées. On cherche à afficher le centre, le bord droit, ainsi que le bord bas de la case, afin de pouvoir les "{}encastrer"{} dans la gestion plateau 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em X,Y} & entier \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_case_a15af60e2144de07598799c526dda64ce}\index{Case@{Case}!getBordBas@{getBordBas}}
+\index{getBordBas@{getBordBas}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{getBordBas()}{getBordBas()}}
+{\footnotesize\ttfamily \label{class_case_a15af60e2144de07598799c526dda64ce} 
+bool Case\+::get\+Bord\+Bas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Vérifie la présence d\textquotesingle{}un mur en bas. 
+
+\begin{DoxyReturn}{Returns}
+true si un mur est présent en bas, false sinon. 
+\end{DoxyReturn}
+\Hypertarget{class_case_ab14211a33889304564ff70f726fe0550}\index{Case@{Case}!getBordDroit@{getBordDroit}}
+\index{getBordDroit@{getBordDroit}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{getBordDroit()}{getBordDroit()}}
+{\footnotesize\ttfamily \label{class_case_ab14211a33889304564ff70f726fe0550} 
+bool Case\+::get\+Bord\+Droit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Vérifie la présence d\textquotesingle{}un mur à droite. 
+
+\begin{DoxyReturn}{Returns}
+true si un mur est présent à droite, false sinon. 
+\end{DoxyReturn}
+\Hypertarget{class_case_abf1ecb39c65c5646aef02fe864bf1b75}\index{Case@{Case}!getBordGauche@{getBordGauche}}
+\index{getBordGauche@{getBordGauche}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{getBordGauche()}{getBordGauche()}}
+{\footnotesize\ttfamily \label{class_case_abf1ecb39c65c5646aef02fe864bf1b75} 
+bool Case\+::get\+Bord\+Gauche (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Vérifie la présence d\textquotesingle{}un mur à gauche. 
+
+\begin{DoxyReturn}{Returns}
+true si un mur est présent à gauche, false sinon. 
+\end{DoxyReturn}
+\Hypertarget{class_case_a2debc0159b920dfe202e63308d501243}\index{Case@{Case}!getBordHaut@{getBordHaut}}
+\index{getBordHaut@{getBordHaut}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{getBordHaut()}{getBordHaut()}}
+{\footnotesize\ttfamily \label{class_case_a2debc0159b920dfe202e63308d501243} 
+bool Case\+::get\+Bord\+Haut (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Vérifie la présence d\textquotesingle{}un mur en haut. 
+
+Accesseurs.
+
+\begin{DoxyReturn}{Returns}
+true si un mur est présent en haut, false sinon.
+\end{DoxyReturn}
+Fonctions permettant l\textquotesingle{}accès aux différents paramètres d\textquotesingle{}une case. L\textquotesingle{}utilisateur récupère alors les informaions nécéssaires au bon fonctionnement du programme. \Hypertarget{class_case_a6de8f9cb96c18ae47238f0d93b70ee57}\index{Case@{Case}!getCouleur@{getCouleur}}
+\index{getCouleur@{getCouleur}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{getCouleur()}{getCouleur()}}
+{\footnotesize\ttfamily \label{class_case_a6de8f9cb96c18ae47238f0d93b70ee57} 
+string Case\+::get\+Couleur (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Récupère la couleur de la case. 
+
+\begin{DoxyReturn}{Returns}
+Couleur de la case. 
+\end{DoxyReturn}
+\Hypertarget{class_case_ade1e142f6a9f9167d5fb47cee2b3af4d}\index{Case@{Case}!getRobotHere@{getRobotHere}}
+\index{getRobotHere@{getRobotHere}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{getRobotHere()}{getRobotHere()}}
+{\footnotesize\ttfamily \label{class_case_ade1e142f6a9f9167d5fb47cee2b3af4d} 
+bool Case\+::get\+Robot\+Here (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Vérifie si un robot est présent sur la case. 
+
+\begin{DoxyReturn}{Returns}
+true si un robot est présent, false sinon. 
+\end{DoxyReturn}
+\Hypertarget{class_case_ab5580b919199dd2ec379672d3390bbff}\index{Case@{Case}!getX@{getX}}
+\index{getX@{getX}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily \label{class_case_ab5580b919199dd2ec379672d3390bbff} 
+int Case\+::getX (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Récupère la coordonnée X. 
+
+\begin{DoxyReturn}{Returns}
+Coordonnée X. 
+\end{DoxyReturn}
+\Hypertarget{class_case_a824f612c5a660a1d55ac06931747c46d}\index{Case@{Case}!getY@{getY}}
+\index{getY@{getY}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily \label{class_case_a824f612c5a660a1d55ac06931747c46d} 
+int Case\+::getY (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Récupère la coordonnée Y. 
+
+\begin{DoxyReturn}{Returns}
+Coordonnée Y. 
+\end{DoxyReturn}
+\Hypertarget{class_case_a085cbe42786c86a3613ae9de6bdde42d}\index{Case@{Case}!setBordsBas@{setBordsBas}}
+\index{setBordsBas@{setBordsBas}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{setBordsBas()}{setBordsBas()}}
+{\footnotesize\ttfamily \label{class_case_a085cbe42786c86a3613ae9de6bdde42d} 
+void Case\+::set\+Bords\+Bas (\begin{DoxyParamCaption}\item[{bool}]{set\+Bas}{}\end{DoxyParamCaption})}
+
+
+
+Définit la présence d\textquotesingle{}un mur en bas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Bas} & true si un mur est présent en bas, false sinon. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_case_a8574340b6bc466114cae9f899ea32c7c}\index{Case@{Case}!setBordsDroit@{setBordsDroit}}
+\index{setBordsDroit@{setBordsDroit}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{setBordsDroit()}{setBordsDroit()}}
+{\footnotesize\ttfamily \label{class_case_a8574340b6bc466114cae9f899ea32c7c} 
+void Case\+::set\+Bords\+Droit (\begin{DoxyParamCaption}\item[{bool}]{set\+Droit}{}\end{DoxyParamCaption})}
+
+
+
+Définit la présence d\textquotesingle{}un mur à droite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Droit} & true si un mur est présent à droite, false sinon. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_case_aa7925e8e17d291f6f53c522b9e1ab9cf}\index{Case@{Case}!setBordsGauche@{setBordsGauche}}
+\index{setBordsGauche@{setBordsGauche}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{setBordsGauche()}{setBordsGauche()}}
+{\footnotesize\ttfamily \label{class_case_aa7925e8e17d291f6f53c522b9e1ab9cf} 
+void Case\+::set\+Bords\+Gauche (\begin{DoxyParamCaption}\item[{bool}]{set\+Gauche}{}\end{DoxyParamCaption})}
+
+
+
+Définit la présence d\textquotesingle{}un mur à gauche. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Gauche} & true si un mur est présent à gauche, false sinon. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_case_af79c54f7a5657c119d4b72293ad32bde}\index{Case@{Case}!setBordsHaut@{setBordsHaut}}
+\index{setBordsHaut@{setBordsHaut}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{setBordsHaut()}{setBordsHaut()}}
+{\footnotesize\ttfamily \label{class_case_af79c54f7a5657c119d4b72293ad32bde} 
+void Case\+::set\+Bords\+Haut (\begin{DoxyParamCaption}\item[{bool}]{set\+Haut}{}\end{DoxyParamCaption})}
+
+
+
+Définit la présence d\textquotesingle{}un mur en haut. 
+
+Mutateurs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Haut} & true si un mur est présent en haut, false sinon.\\
+\hline
+\end{DoxyParams}
+Fonctions permettant la modification des différents paramètres d\textquotesingle{}une case. Permet de configurer et de modifier les paramètres spécifiques d\textquotesingle{}une case. \Hypertarget{class_case_a8900c068f5980ea23d118c5b0bc8a843}\index{Case@{Case}!setCouleur@{setCouleur}}
+\index{setCouleur@{setCouleur}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{setCouleur()}{setCouleur()}}
+{\footnotesize\ttfamily \label{class_case_a8900c068f5980ea23d118c5b0bc8a843} 
+void Case\+::set\+Couleur (\begin{DoxyParamCaption}\item[{string}]{set\+Couleur}{}\end{DoxyParamCaption})}
+
+
+
+Définit la couleur de la case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Couleur} & Nouvelle couleur. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_case_ad94d124cddc07e98c80d3176d43561ab}\index{Case@{Case}!setRobotHere@{setRobotHere}}
+\index{setRobotHere@{setRobotHere}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{setRobotHere()}{setRobotHere()}}
+{\footnotesize\ttfamily \label{class_case_ad94d124cddc07e98c80d3176d43561ab} 
+void Case\+::set\+Robot\+Here (\begin{DoxyParamCaption}\item[{bool}]{set\+Robot\+Here}{}\end{DoxyParamCaption})}
+
+
+
+Définit la présence d\textquotesingle{}un robot sur la case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Robot\+Here} & true si un robot est présent, false sinon. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_case_a689af69e7f6ab59f78c170aee32a3fd6}\index{Case@{Case}!setX@{setX}}
+\index{setX@{setX}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{setX()}{setX()}}
+{\footnotesize\ttfamily \label{class_case_a689af69e7f6ab59f78c170aee32a3fd6} 
+void Case\+::setX (\begin{DoxyParamCaption}\item[{int}]{setX}{}\end{DoxyParamCaption})}
+
+
+
+Définit la coordonnée X de la case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setX} & Nouvelle coordonnée X. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_case_aac6a8cd10b6b48afe2ebe8c3ea852576}\index{Case@{Case}!setY@{setY}}
+\index{setY@{setY}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{setY()}{setY()}}
+{\footnotesize\ttfamily \label{class_case_aac6a8cd10b6b48afe2ebe8c3ea852576} 
+void Case\+::setY (\begin{DoxyParamCaption}\item[{int}]{setY}{}\end{DoxyParamCaption})}
+
+
+
+Définit la coordonnée Y de la case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setY} & Nouvelle coordonnée Y. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_case_ac880148ca30c4311955a6e66ae54fc03}\index{Case@{Case}!bas@{bas}}
+\index{bas@{bas}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{bas}{bas}}
+{\footnotesize\ttfamily \label{class_case_ac880148ca30c4311955a6e66ae54fc03} 
+bool Case\+::bas\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Présence d\textquotesingle{}un mur en bas. 
+
+\Hypertarget{class_case_a906bee793ab62bfd7d17dd8d379f63bb}\index{Case@{Case}!couleur@{couleur}}
+\index{couleur@{couleur}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{couleur}{couleur}}
+{\footnotesize\ttfamily \label{class_case_a906bee793ab62bfd7d17dd8d379f63bb} 
+string Case\+::couleur\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Couleur de la case. 
+
+\Hypertarget{class_case_a09268cae178c2a2af1739d08830f1df5}\index{Case@{Case}!droit@{droit}}
+\index{droit@{droit}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{droit}{droit}}
+{\footnotesize\ttfamily \label{class_case_a09268cae178c2a2af1739d08830f1df5} 
+bool Case\+::droit\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Présence d\textquotesingle{}un mur à droite. 
+
+\Hypertarget{class_case_a684b46719378e4b75f1198b9762331c8}\index{Case@{Case}!gauche@{gauche}}
+\index{gauche@{gauche}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{gauche}{gauche}}
+{\footnotesize\ttfamily \label{class_case_a684b46719378e4b75f1198b9762331c8} 
+bool Case\+::gauche\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Présence d\textquotesingle{}un mur à gauche. 
+
+\Hypertarget{class_case_aad6c729574e4035a42f92e7254c08949}\index{Case@{Case}!haut@{haut}}
+\index{haut@{haut}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{haut}{haut}}
+{\footnotesize\ttfamily \label{class_case_aad6c729574e4035a42f92e7254c08949} 
+bool Case\+::haut\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Présence d\textquotesingle{}un mur en haut. 
+
+\Hypertarget{class_case_a5f19f5a170c96152888d172bddc6820a}\index{Case@{Case}!robotHere@{robotHere}}
+\index{robotHere@{robotHere}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{robotHere}{robotHere}}
+{\footnotesize\ttfamily \label{class_case_a5f19f5a170c96152888d172bddc6820a} 
+bool Case\+::robot\+Here\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Indique si un robot est présent sur la case. 
+
+\Hypertarget{class_case_a6adfd5aa9d5888fbaa6b193f1211c254}\index{Case@{Case}!x@{x}}
+\index{x@{x}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{class_case_a6adfd5aa9d5888fbaa6b193f1211c254} 
+int Case\+::x}
+
+
+
+Coordonnée X de la case. 
+
+\Hypertarget{class_case_a1cef8e765dd4a9eb3426f5608a3ef3d6}\index{Case@{Case}!y@{y}}
+\index{y@{y}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \label{class_case_a1cef8e765dd4a9eb3426f5608a3ef3d6} 
+int Case\+::y}
+
+
+
+Coordonnée Y de la case. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_case_8h}{Case.\+h}}\item 
+\mbox{\hyperlink{_case_8cpp}{Case.\+cpp}}\end{DoxyCompactItemize}

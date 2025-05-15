@@ -1,0 +1,310 @@
+\doxysection{Robot Class Reference}
+\hypertarget{class_robot}{}\label{class_robot}\index{Robot@{Robot}}
+
+
+Représente un robot sur le plateau de jeu.  
+
+
+
+
+{\ttfamily \#include $<$Robot.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_robot_a4dc8d82f9d8217e95be901029cfb76af}{Robot}} (std\+::string c, int posX, int posY)
+\begin{DoxyCompactList}\small\item\em Constructeur du robot avec couleur et position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_robot_ad196ebbc802fa10b022e3eb3fd59903e}{Robot}} (std\+::string c)
+\begin{DoxyCompactList}\small\item\em Constructeur du robot avec couleur uniquement. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_robot_a41842a71b67ad7aa142ee752409b45ea}{Recupere\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Récupère la direction choisie pour le déplacement du robot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_a946ad0bbb2fcd30818af039659b1e291}{Deplacement}} (char direction)
+\begin{DoxyCompactList}\small\item\em Déplace le robot dans la direction indiquée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_aba2730275bdc101d62d2e46fa7227410}{Genere\+Robot}} ()
+\begin{DoxyCompactList}\small\item\em Génère un robot avec des paramètres aléatoires ou par défaut. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_a8af87935c66f141c151871f0f91b69fb}{GetX}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la position X du robot. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_a870c08e336fb2812b464188e802a5f65}{GetY}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la position Y du robot. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_robot_aff93d649adba5c201fb9d5747bb3c926}{get\+Couleur}} ()
+\begin{DoxyCompactList}\small\item\em Récupère la couleur du robot. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_ade6a33dda6cf2d0036abec61a0ef50e2}{Get\+Nb\+Deplacement}} () const
+\begin{DoxyCompactList}\small\item\em Récupère le nombre de déplacements effectués par le robot. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{class_robot_a02f9f19607fb0a40e2c122c645d33a4d}{Get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la position du robot sous forme de vecteur \mbox{[}x, y\mbox{]}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_a945afe0d07acb22905ad71fe16029381}{SetX}} (int posX)
+\begin{DoxyCompactList}\small\item\em Définit la position X du robot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_af3496d9ee73d0a066ede1c52855bb84b}{SetY}} (int posY)
+\begin{DoxyCompactList}\small\item\em Définit la position Y du robot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_a7224f4a5f8c572ce7874c87913cd458b}{Set\+Nb\+Deplacement}} (int nb)
+\begin{DoxyCompactList}\small\item\em Définit le nombre de déplacements du robot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_a56ea9d7e7fa798c22d93777150956df9}{Set\+Position}} (int xpos, int ypos)
+\begin{DoxyCompactList}\small\item\em Définit la position du robot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_robot_ae6c12f642b8ab103effde3702f1d20af}{nb\+Deplacements}}
+\begin{DoxyCompactList}\small\item\em Nombre de déplacements effectués par le robot. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_robot_ae1ebc022673cdf06a9ea0d398166e367}{OK}}
+\begin{DoxyCompactList}\small\item\em Statut du robot (OK ou non) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_a32c50e8f8352da3601c34c54f32649fa}{x}}
+\begin{DoxyCompactList}\small\item\em Position X du robot sur le plateau. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_aa9d4cd428042e1f5dd4723dd383e38d7}{y}}
+\begin{DoxyCompactList}\small\item\em Position Y du robot sur le plateau. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Représente un robot sur le plateau de jeu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_robot_a4dc8d82f9d8217e95be901029cfb76af}\index{Robot@{Robot}!Robot@{Robot}}
+\index{Robot@{Robot}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{Robot()}{Robot()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_robot_a4dc8d82f9d8217e95be901029cfb76af} 
+Robot\+::\+Robot (\begin{DoxyParamCaption}\item[{std\+::string}]{c}{, }\item[{int}]{posX}{, }\item[{int}]{posY}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur du robot avec couleur et position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Couleur du robot. \\
+\hline
+{\em posX} & Position X initiale. \\
+\hline
+{\em posY} & Position Y initiale. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_robot_ad196ebbc802fa10b022e3eb3fd59903e}\index{Robot@{Robot}!Robot@{Robot}}
+\index{Robot@{Robot}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{Robot()}{Robot()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_robot_ad196ebbc802fa10b022e3eb3fd59903e} 
+Robot\+::\+Robot (\begin{DoxyParamCaption}\item[{std\+::string}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur du robot avec couleur uniquement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Couleur du robot. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_robot_a946ad0bbb2fcd30818af039659b1e291}\index{Robot@{Robot}!Deplacement@{Deplacement}}
+\index{Deplacement@{Deplacement}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{Deplacement()}{Deplacement()}}
+{\footnotesize\ttfamily \label{class_robot_a946ad0bbb2fcd30818af039659b1e291} 
+void Robot\+::\+Deplacement (\begin{DoxyParamCaption}\item[{char}]{direction}{}\end{DoxyParamCaption})}
+
+
+
+Déplace le robot dans la direction indiquée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & Direction du déplacement (\textquotesingle{}N\textquotesingle{}, \textquotesingle{}S\textquotesingle{}, \textquotesingle{}E\textquotesingle{}, \textquotesingle{}O\textquotesingle{}, etc.). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_robot_aba2730275bdc101d62d2e46fa7227410}\index{Robot@{Robot}!GenereRobot@{GenereRobot}}
+\index{GenereRobot@{GenereRobot}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{GenereRobot()}{GenereRobot()}}
+{\footnotesize\ttfamily \label{class_robot_aba2730275bdc101d62d2e46fa7227410} 
+void Robot\+::\+Genere\+Robot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Génère un robot avec des paramètres aléatoires ou par défaut. 
+
+\Hypertarget{class_robot_aff93d649adba5c201fb9d5747bb3c926}\index{Robot@{Robot}!getCouleur@{getCouleur}}
+\index{getCouleur@{getCouleur}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getCouleur()}{getCouleur()}}
+{\footnotesize\ttfamily \label{class_robot_aff93d649adba5c201fb9d5747bb3c926} 
+string Robot\+::get\+Couleur (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Récupère la couleur du robot. 
+
+\begin{DoxyReturn}{Returns}
+Couleur du robot. 
+\end{DoxyReturn}
+\Hypertarget{class_robot_ade6a33dda6cf2d0036abec61a0ef50e2}\index{Robot@{Robot}!GetNbDeplacement@{GetNbDeplacement}}
+\index{GetNbDeplacement@{GetNbDeplacement}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{GetNbDeplacement()}{GetNbDeplacement()}}
+{\footnotesize\ttfamily \label{class_robot_ade6a33dda6cf2d0036abec61a0ef50e2} 
+int Robot\+::\+Get\+Nb\+Deplacement (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère le nombre de déplacements effectués par le robot. 
+
+\begin{DoxyReturn}{Returns}
+Nombre de déplacements. 
+\end{DoxyReturn}
+\Hypertarget{class_robot_a02f9f19607fb0a40e2c122c645d33a4d}\index{Robot@{Robot}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily \label{class_robot_a02f9f19607fb0a40e2c122c645d33a4d} 
+std\+::vector$<$ int $>$ Robot\+::\+Get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère la position du robot sous forme de vecteur \mbox{[}x, y\mbox{]}. 
+
+\begin{DoxyReturn}{Returns}
+Vecteur contenant la position. 
+\end{DoxyReturn}
+\Hypertarget{class_robot_a8af87935c66f141c151871f0f91b69fb}\index{Robot@{Robot}!GetX@{GetX}}
+\index{GetX@{GetX}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{GetX()}{GetX()}}
+{\footnotesize\ttfamily \label{class_robot_a8af87935c66f141c151871f0f91b69fb} 
+int Robot\+::\+GetX (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère la position X du robot. 
+
+\begin{DoxyReturn}{Returns}
+Position X. 
+\end{DoxyReturn}
+\Hypertarget{class_robot_a870c08e336fb2812b464188e802a5f65}\index{Robot@{Robot}!GetY@{GetY}}
+\index{GetY@{GetY}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{GetY()}{GetY()}}
+{\footnotesize\ttfamily \label{class_robot_a870c08e336fb2812b464188e802a5f65} 
+int Robot\+::\+GetY (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère la position Y du robot. 
+
+\begin{DoxyReturn}{Returns}
+Position Y. 
+\end{DoxyReturn}
+\Hypertarget{class_robot_a41842a71b67ad7aa142ee752409b45ea}\index{Robot@{Robot}!RecupereInfo@{RecupereInfo}}
+\index{RecupereInfo@{RecupereInfo}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{RecupereInfo()}{RecupereInfo()}}
+{\footnotesize\ttfamily \label{class_robot_a41842a71b67ad7aa142ee752409b45ea} 
+char Robot\+::\+Recupere\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Récupère la direction choisie pour le déplacement du robot. 
+
+\begin{DoxyReturn}{Returns}
+Caractère représentant la direction. 
+\end{DoxyReturn}
+\Hypertarget{class_robot_a7224f4a5f8c572ce7874c87913cd458b}\index{Robot@{Robot}!SetNbDeplacement@{SetNbDeplacement}}
+\index{SetNbDeplacement@{SetNbDeplacement}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{SetNbDeplacement()}{SetNbDeplacement()}}
+{\footnotesize\ttfamily \label{class_robot_a7224f4a5f8c572ce7874c87913cd458b} 
+void Robot\+::\+Set\+Nb\+Deplacement (\begin{DoxyParamCaption}\item[{int}]{nb}{}\end{DoxyParamCaption})}
+
+
+
+Définit le nombre de déplacements du robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb} & Nouveau nombre de déplacements. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_robot_a56ea9d7e7fa798c22d93777150956df9}\index{Robot@{Robot}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily \label{class_robot_a56ea9d7e7fa798c22d93777150956df9} 
+void Robot\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{int}]{xpos}{, }\item[{int}]{ypos}{}\end{DoxyParamCaption})}
+
+
+
+Définit la position du robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xpos} & Nouvelle position X. \\
+\hline
+{\em ypos} & Nouvelle position Y. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_robot_a945afe0d07acb22905ad71fe16029381}\index{Robot@{Robot}!SetX@{SetX}}
+\index{SetX@{SetX}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{SetX()}{SetX()}}
+{\footnotesize\ttfamily \label{class_robot_a945afe0d07acb22905ad71fe16029381} 
+void Robot\+::\+SetX (\begin{DoxyParamCaption}\item[{int}]{posX}{}\end{DoxyParamCaption})}
+
+
+
+Définit la position X du robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em posX} & Nouvelle position X. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_robot_af3496d9ee73d0a066ede1c52855bb84b}\index{Robot@{Robot}!SetY@{SetY}}
+\index{SetY@{SetY}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{SetY()}{SetY()}}
+{\footnotesize\ttfamily \label{class_robot_af3496d9ee73d0a066ede1c52855bb84b} 
+void Robot\+::\+SetY (\begin{DoxyParamCaption}\item[{int}]{posY}{}\end{DoxyParamCaption})}
+
+
+
+Définit la position Y du robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em posY} & Nouvelle position Y. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_robot_ae6c12f642b8ab103effde3702f1d20af}\index{Robot@{Robot}!nbDeplacements@{nbDeplacements}}
+\index{nbDeplacements@{nbDeplacements}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{nbDeplacements}{nbDeplacements}}
+{\footnotesize\ttfamily \label{class_robot_ae6c12f642b8ab103effde3702f1d20af} 
+int Robot\+::nb\+Deplacements}
+
+
+
+Nombre de déplacements effectués par le robot. 
+
+\Hypertarget{class_robot_ae1ebc022673cdf06a9ea0d398166e367}\index{Robot@{Robot}!OK@{OK}}
+\index{OK@{OK}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{OK}{OK}}
+{\footnotesize\ttfamily \label{class_robot_ae1ebc022673cdf06a9ea0d398166e367} 
+bool Robot\+::\+OK}
+
+
+
+Statut du robot (OK ou non) 
+
+\Hypertarget{class_robot_a32c50e8f8352da3601c34c54f32649fa}\index{Robot@{Robot}!x@{x}}
+\index{x@{x}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{class_robot_a32c50e8f8352da3601c34c54f32649fa} 
+int Robot\+::x}
+
+
+
+Position X du robot sur le plateau. 
+
+\Hypertarget{class_robot_aa9d4cd428042e1f5dd4723dd383e38d7}\index{Robot@{Robot}!y@{y}}
+\index{y@{y}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \label{class_robot_aa9d4cd428042e1f5dd4723dd383e38d7} 
+int Robot\+::y}
+
+
+
+Position Y du robot sur le plateau. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_robot_8h}{Robot.\+h}}\item 
+\mbox{\hyperlink{_robot_8cpp}{Robot.\+cpp}}\end{DoxyCompactItemize}

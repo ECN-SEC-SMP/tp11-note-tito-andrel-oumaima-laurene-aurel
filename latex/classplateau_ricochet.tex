@@ -1,0 +1,280 @@
+\doxysection{plateau\+Ricochet Class Reference}
+\hypertarget{classplateau_ricochet}{}\label{classplateau_ricochet}\index{plateauRicochet@{plateauRicochet}}
+
+
+Gestion du plateau de jeu et des déplacements des robots.  
+
+
+
+
+{\ttfamily \#include $<$plateau\+Ricochet.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classplateau_ricochet_a86852e8a9c9883aaad062169b694721e}{plateau\+Ricochet}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Constructeur initialisant le plateau. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_case}{Case}} \texorpdfstring{$\ast$}{*} $>$ $>$ \mbox{\hyperlink{classplateau_ricochet_a59aaa6981469b75af73939a34acf1a71}{get\+Plateau}} ()
+\begin{DoxyCompactList}\small\item\em Récupère la grille 2D du plateau. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classplateau_ricochet_a65ebb4ed858a6e79ebe2d8b2b66768bb}{\texorpdfstring{$\sim$}{\string~}plateau\+Ricochet}} ()
+\begin{DoxyCompactList}\small\item\em Destructeur libérant la mémoire du plateau. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classplateau_ricochet_a1ccee570447fa7efb82fc83204a7ef4a}{Init\+Robot}} (\mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*}robot\+Red, \mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*}robot\+Green, \mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*}robot\+Blue, \mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*}robot\+Yellow)
+\begin{DoxyCompactList}\small\item\em Initialise les robots sur le plateau. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classplateau_ricochet_aa55e8f50beeec6bb04a34634db505bd1}{set\+Obstacle}} (int x1, int x2, int y1, int y2, string forme)
+\begin{DoxyCompactList}\small\item\em Crée un obstacle dans la zone spécifiée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classplateau_ricochet_a51739585033dbb19e0a5ce2f0d2d430a}{set\+Bords\+Bas}} (int X, int Y)
+\begin{DoxyCompactList}\small\item\em Ajoute un bord en bas d\textquotesingle{}une case. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classplateau_ricochet_ab897a30adc117df355505090337ebb6f}{set\+Bords\+Haut}} (int X, int Y)
+\begin{DoxyCompactList}\small\item\em Ajoute un bord en haut d\textquotesingle{}une case. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classplateau_ricochet_a397881e5da3372ab2bb4d21c7629fdec}{set\+Bords\+Gauche}} (int X, int Y)
+\begin{DoxyCompactList}\small\item\em Ajoute un bord à gauche d\textquotesingle{}une case. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classplateau_ricochet_a18496124c80f5c17f1686c3c100e30cf}{set\+Bords\+Droit}} (int X, int Y)
+\begin{DoxyCompactList}\small\item\em Ajoute un bord à droite d\textquotesingle{}une case. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classplateau_ricochet_a9aa5e28b2380bc18acfc9d162ccb196b}{Deplacer\+Robot}} (\mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*}robot, char direction)
+\begin{DoxyCompactList}\small\item\em Déplace un robot dans une direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classplateau_ricochet_a6052e29ba3c4a820da533c296559354d}{Deplacer\+Robot\+Pos}} (\mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*}robot, int Pos\+\_\+X, int Pos\+\_\+Y)
+\begin{DoxyCompactList}\small\item\em Déplace un robot à une position spécifique. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_objectif}{Objectif}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classplateau_ricochet_a9a6fce834ed95153b17c62fade148438}{get\+Objectifs}} ()
+\begin{DoxyCompactList}\small\item\em Obtient la liste des objectifs. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classplateau_ricochet_add114b8788b4c0c9ab49a371050b54a2}{est\+Deplacement\+Valide}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Vérifie si un déplacement est valide. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestion du plateau de jeu et des déplacements des robots. 
+
+Cette classe gère l\textquotesingle{}ensemble du plateau de jeu, les obstacles, les objectifs et les mouvements des robots sur le plateau. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classplateau_ricochet_a86852e8a9c9883aaad062169b694721e}\index{plateauRicochet@{plateauRicochet}!plateauRicochet@{plateauRicochet}}
+\index{plateauRicochet@{plateauRicochet}!plateauRicochet@{plateauRicochet}}
+\doxysubsubsection{\texorpdfstring{plateauRicochet()}{plateauRicochet()}}
+{\footnotesize\ttfamily \label{classplateau_ricochet_a86852e8a9c9883aaad062169b694721e} 
+plateau\+Ricochet\+::plateau\+Ricochet (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur initialisant le plateau. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Largeur du plateau \\
+\hline
+{\em y} & Hauteur du plateau \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classplateau_ricochet_a65ebb4ed858a6e79ebe2d8b2b66768bb}\index{plateauRicochet@{plateauRicochet}!````~plateauRicochet@{\texorpdfstring{$\sim$}{\string~}plateauRicochet}}
+\index{````~plateauRicochet@{\texorpdfstring{$\sim$}{\string~}plateauRicochet}!plateauRicochet@{plateauRicochet}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}plateauRicochet()}{\string~plateauRicochet()}}
+{\footnotesize\ttfamily \label{classplateau_ricochet_a65ebb4ed858a6e79ebe2d8b2b66768bb} 
+plateau\+Ricochet\+::\texorpdfstring{$\sim$}{\string~}plateau\+Ricochet (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructeur libérant la mémoire du plateau. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classplateau_ricochet_a9aa5e28b2380bc18acfc9d162ccb196b}\index{plateauRicochet@{plateauRicochet}!DeplacerRobot@{DeplacerRobot}}
+\index{DeplacerRobot@{DeplacerRobot}!plateauRicochet@{plateauRicochet}}
+\doxysubsubsection{\texorpdfstring{DeplacerRobot()}{DeplacerRobot()}}
+{\footnotesize\ttfamily \label{classplateau_ricochet_a9aa5e28b2380bc18acfc9d162ccb196b} 
+void plateau\+Ricochet\+::\+Deplacer\+Robot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*}}]{robot}{, }\item[{char}]{direction}{}\end{DoxyParamCaption})}
+
+
+
+Déplace un robot dans une direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em robot} & Pointeur vers le robot à déplacer \\
+\hline
+{\em direction} & Direction (\textquotesingle{}U\textquotesingle{},\textquotesingle{}D\textquotesingle{},\textquotesingle{}L\textquotesingle{},\textquotesingle{}R\textquotesingle{}) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classplateau_ricochet_a6052e29ba3c4a820da533c296559354d}\index{plateauRicochet@{plateauRicochet}!DeplacerRobotPos@{DeplacerRobotPos}}
+\index{DeplacerRobotPos@{DeplacerRobotPos}!plateauRicochet@{plateauRicochet}}
+\doxysubsubsection{\texorpdfstring{DeplacerRobotPos()}{DeplacerRobotPos()}}
+{\footnotesize\ttfamily \label{classplateau_ricochet_a6052e29ba3c4a820da533c296559354d} 
+void plateau\+Ricochet\+::\+Deplacer\+Robot\+Pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*}}]{robot}{, }\item[{int}]{Pos\+\_\+X}{, }\item[{int}]{Pos\+\_\+Y}{}\end{DoxyParamCaption})}
+
+
+
+Déplace un robot à une position spécifique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em robot} & Pointeur vers le robot à déplacer \\
+\hline
+{\em Pos\+\_\+X} & Nouvelle coordonnée X \\
+\hline
+{\em Pos\+\_\+Y} & Nouvelle coordonnée Y \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classplateau_ricochet_add114b8788b4c0c9ab49a371050b54a2}\index{plateauRicochet@{plateauRicochet}!estDeplacementValide@{estDeplacementValide}}
+\index{estDeplacementValide@{estDeplacementValide}!plateauRicochet@{plateauRicochet}}
+\doxysubsubsection{\texorpdfstring{estDeplacementValide()}{estDeplacementValide()}}
+{\footnotesize\ttfamily \label{classplateau_ricochet_add114b8788b4c0c9ab49a371050b54a2} 
+bool plateau\+Ricochet\+::est\+Deplacement\+Valide (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Vérifie si un déplacement est valide. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée X de destination \\
+\hline
+{\em y} & Coordonnée Y de destination \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si le déplacement est valide, false sinon 
+\end{DoxyReturn}
+\Hypertarget{classplateau_ricochet_a9a6fce834ed95153b17c62fade148438}\index{plateauRicochet@{plateauRicochet}!getObjectifs@{getObjectifs}}
+\index{getObjectifs@{getObjectifs}!plateauRicochet@{plateauRicochet}}
+\doxysubsubsection{\texorpdfstring{getObjectifs()}{getObjectifs()}}
+{\footnotesize\ttfamily \label{classplateau_ricochet_a9a6fce834ed95153b17c62fade148438} 
+std\+::vector$<$ \mbox{\hyperlink{class_objectif}{Objectif}} \texorpdfstring{$\ast$}{*} $>$ plateau\+Ricochet\+::get\+Objectifs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtient la liste des objectifs. 
+
+\begin{DoxyReturn}{Returns}
+Vecteur d\textquotesingle{}objectifs 
+\end{DoxyReturn}
+\Hypertarget{classplateau_ricochet_a59aaa6981469b75af73939a34acf1a71}\index{plateauRicochet@{plateauRicochet}!getPlateau@{getPlateau}}
+\index{getPlateau@{getPlateau}!plateauRicochet@{plateauRicochet}}
+\doxysubsubsection{\texorpdfstring{getPlateau()}{getPlateau()}}
+{\footnotesize\ttfamily \label{classplateau_ricochet_a59aaa6981469b75af73939a34acf1a71} 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_case}{Case}} \texorpdfstring{$\ast$}{*} $>$ $>$ plateau\+Ricochet\+::get\+Plateau (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Récupère la grille 2D du plateau. 
+
+Constructeur de la classe Plateau.
+
+\begin{DoxyReturn}{Returns}
+Référence vers la grille de jeu 
+\end{DoxyReturn}
+\Hypertarget{classplateau_ricochet_a1ccee570447fa7efb82fc83204a7ef4a}\index{plateauRicochet@{plateauRicochet}!InitRobot@{InitRobot}}
+\index{InitRobot@{InitRobot}!plateauRicochet@{plateauRicochet}}
+\doxysubsubsection{\texorpdfstring{InitRobot()}{InitRobot()}}
+{\footnotesize\ttfamily \label{classplateau_ricochet_a1ccee570447fa7efb82fc83204a7ef4a} 
+void plateau\+Ricochet\+::\+Init\+Robot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*}}]{robot\+Red}{, }\item[{\mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*}}]{robot\+Green}{, }\item[{\mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*}}]{robot\+Blue}{, }\item[{\mbox{\hyperlink{class_robot}{Robot}} \texorpdfstring{$\ast$}{*}}]{robot\+Yellow}{}\end{DoxyParamCaption})}
+
+
+
+Initialise les robots sur le plateau. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em robot\+Red} & \doxylink{class_robot}{Robot} rouge \\
+\hline
+{\em robot\+Green} & \doxylink{class_robot}{Robot} vert \\
+\hline
+{\em robot\+Blue} & \doxylink{class_robot}{Robot} bleu \\
+\hline
+{\em robot\+Yellow} & \doxylink{class_robot}{Robot} jaune \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classplateau_ricochet_a51739585033dbb19e0a5ce2f0d2d430a}\index{plateauRicochet@{plateauRicochet}!setBordsBas@{setBordsBas}}
+\index{setBordsBas@{setBordsBas}!plateauRicochet@{plateauRicochet}}
+\doxysubsubsection{\texorpdfstring{setBordsBas()}{setBordsBas()}}
+{\footnotesize\ttfamily \label{classplateau_ricochet_a51739585033dbb19e0a5ce2f0d2d430a} 
+void plateau\+Ricochet\+::set\+Bords\+Bas (\begin{DoxyParamCaption}\item[{int}]{X}{, }\item[{int}]{Y}{}\end{DoxyParamCaption})}
+
+
+
+Ajoute un bord en bas d\textquotesingle{}une case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Coordonnée X de la case \\
+\hline
+{\em Y} & Coordonnée Y de la case \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classplateau_ricochet_a18496124c80f5c17f1686c3c100e30cf}\index{plateauRicochet@{plateauRicochet}!setBordsDroit@{setBordsDroit}}
+\index{setBordsDroit@{setBordsDroit}!plateauRicochet@{plateauRicochet}}
+\doxysubsubsection{\texorpdfstring{setBordsDroit()}{setBordsDroit()}}
+{\footnotesize\ttfamily \label{classplateau_ricochet_a18496124c80f5c17f1686c3c100e30cf} 
+void plateau\+Ricochet\+::set\+Bords\+Droit (\begin{DoxyParamCaption}\item[{int}]{X}{, }\item[{int}]{Y}{}\end{DoxyParamCaption})}
+
+
+
+Ajoute un bord à droite d\textquotesingle{}une case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Coordonnée X de la case \\
+\hline
+{\em Y} & Coordonnée Y de la case \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classplateau_ricochet_a397881e5da3372ab2bb4d21c7629fdec}\index{plateauRicochet@{plateauRicochet}!setBordsGauche@{setBordsGauche}}
+\index{setBordsGauche@{setBordsGauche}!plateauRicochet@{plateauRicochet}}
+\doxysubsubsection{\texorpdfstring{setBordsGauche()}{setBordsGauche()}}
+{\footnotesize\ttfamily \label{classplateau_ricochet_a397881e5da3372ab2bb4d21c7629fdec} 
+void plateau\+Ricochet\+::set\+Bords\+Gauche (\begin{DoxyParamCaption}\item[{int}]{X}{, }\item[{int}]{Y}{}\end{DoxyParamCaption})}
+
+
+
+Ajoute un bord à gauche d\textquotesingle{}une case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Coordonnée X de la case \\
+\hline
+{\em Y} & Coordonnée Y de la case \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classplateau_ricochet_ab897a30adc117df355505090337ebb6f}\index{plateauRicochet@{plateauRicochet}!setBordsHaut@{setBordsHaut}}
+\index{setBordsHaut@{setBordsHaut}!plateauRicochet@{plateauRicochet}}
+\doxysubsubsection{\texorpdfstring{setBordsHaut()}{setBordsHaut()}}
+{\footnotesize\ttfamily \label{classplateau_ricochet_ab897a30adc117df355505090337ebb6f} 
+void plateau\+Ricochet\+::set\+Bords\+Haut (\begin{DoxyParamCaption}\item[{int}]{X}{, }\item[{int}]{Y}{}\end{DoxyParamCaption})}
+
+
+
+Ajoute un bord en haut d\textquotesingle{}une case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Coordonnée X de la case \\
+\hline
+{\em Y} & Coordonnée Y de la case \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classplateau_ricochet_aa55e8f50beeec6bb04a34634db505bd1}\index{plateauRicochet@{plateauRicochet}!setObstacle@{setObstacle}}
+\index{setObstacle@{setObstacle}!plateauRicochet@{plateauRicochet}}
+\doxysubsubsection{\texorpdfstring{setObstacle()}{setObstacle()}}
+{\footnotesize\ttfamily \label{classplateau_ricochet_aa55e8f50beeec6bb04a34634db505bd1} 
+void plateau\+Ricochet\+::set\+Obstacle (\begin{DoxyParamCaption}\item[{int}]{x1}{, }\item[{int}]{x2}{, }\item[{int}]{y1}{, }\item[{int}]{y2}{, }\item[{string}]{forme}{}\end{DoxyParamCaption})}
+
+
+
+Crée un obstacle dans la zone spécifiée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x1} & Coordonnée X minimum \\
+\hline
+{\em x2} & Coordonnée X maximum \\
+\hline
+{\em y1} & Coordonnée Y minimum \\
+\hline
+{\em y2} & Coordonnée Y maximum \\
+\hline
+{\em forme} & Type de forme pour l\textquotesingle{}objectif ("{}cercle"{}, "{}carre"{}, etc.) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{plateau_ricochet_8h}{plateau\+Ricochet.\+h}}\item 
+\mbox{\hyperlink{plateau_ricochet_8cpp}{plateau\+Ricochet.\+cpp}}\end{DoxyCompactItemize}

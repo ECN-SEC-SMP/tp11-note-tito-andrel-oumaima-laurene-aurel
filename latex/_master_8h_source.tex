@@ -1,0 +1,71 @@
+\doxysection{Master.\+h}
+\hypertarget{_master_8h_source}{}\label{_master_8h_source}\mbox{\hyperlink{_master_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ MASTER\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ MASTER\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}stdlib.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_case_8h}{Case.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sablier_8h}{Sablier.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{plateau_ricochet_8h}{plateauRicochet.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_robot_8h}{Robot.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_joueur_8h}{Joueur.h}}"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_master_a454cc0f9654a0d43759cd917dcc2c8e6}{Master}}\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_master_af338a778a95d3b242d9ee6869348db44}{Max\_X}};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_master_ae505e07d8e1e6eabe62886ff814b3c26}{Max\_Y}};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classplateau_ricochet}{plateauRicochet}}*\ \mbox{\hyperlink{class_master_a2843c18aa77583bd609430b097021f8c}{Plateau}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_objectif}{Objectif}}*\ \mbox{\hyperlink{class_master_a82da5574230b61352b5149079db226b0}{objectifCourant}};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_master_a40445a914a27c706f39b3989a51b351f}{indiceObjectifCourant}}\ =\ 0;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_robot}{Robot}}*\ \mbox{\hyperlink{class_master_a5d99011a4969e001027377e11b133bdd}{robotRed}};\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_robot}{Robot}}*\ \mbox{\hyperlink{class_master_a7654a99100d5958199630a4eec811add}{robotGreen}};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_robot}{Robot}}*\ \mbox{\hyperlink{class_master_ab9e2820636a8b5b77563be9d03f1d11a}{robotBlue}};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_robot}{Robot}}*\ \mbox{\hyperlink{class_master_a3563d99ccc59203f37dcf51a36e84fe4}{robotYellow}};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ std::vector<Joueur*>\ \mbox{\hyperlink{class_master_aca22ef2fec511408b028ceb508834556}{Joueurs}};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_master_a8033843e5758f31c8bb7f87f3070f11a}{nbJoueurs}};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sablier}{Sablier}}*\ \mbox{\hyperlink{class_master_a6a7512bca7054f727b738eeede9fa79a}{sablier}};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_master_a454cc0f9654a0d43759cd917dcc2c8e6}{Master}}(\textcolor{keywordtype}{int}\ X,\ \textcolor{keywordtype}{int}\ Y);}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_master_a20f70958ed75532ba672af1b780f59eb}{\string~Master}}();}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_master_a512ae771d470322e9098275aacf5bb53}{Tour}}();}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_master_abd03ebaf01e0e5072f507a3dfb19dffe}{TourdeJeu}}();}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{class_master_a5d630e2e7c14577d7bb5cfad1dcb3a04}{select\_Robot}}();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_master_ac3384a85f67e8c4a1ef7429cbb9cb7cc}{Afficher}}();}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_master_adaf24bf2d7308c644d80371a2d46beb2}{tirerObjectif}}();}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_master_a1bcfc48640464e65bb501af03c239034}{getObjectifAtteint}}();}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_master_ab198fbb1645f287acf48c411bea94a55}{afficherObjectif}}();}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_master_a5a5d63f725769c18185418f101b1cf44}{SelectionRobot}}(\textcolor{keywordtype}{char}\ Rob,\ \textcolor{keywordtype}{int}\ nbCoups);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_master_ac93bf4a063addee6ed532e402354e222}{initJoueurs}}();}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_joueur}{Joueur}}*\ \mbox{\hyperlink{class_master_a16595b310107a2d903463e96b65c15e0}{selectJoueur}}();}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_master_aa79d4d9ea0fc2013c45dd05c0a99fd41}{AfficherScores}}();}
+\DoxyCodeLine{00136\ \};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

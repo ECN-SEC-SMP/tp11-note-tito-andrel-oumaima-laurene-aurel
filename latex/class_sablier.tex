@@ -1,0 +1,158 @@
+\doxysection{Sablier Class Reference}
+\hypertarget{class_sablier}{}\label{class_sablier}\index{Sablier@{Sablier}}
+
+
+Représente un sablier pour gérer le temps imparti à un joueur.  
+
+
+
+
+{\ttfamily \#include $<$Sablier.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sablier_a2ddcc750aa5c4a02fe0a86df11d46b62}{Sablier}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut du sablier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sablier_a6e166e6944ea1164760a9a85a8c8a7e1}{Sablier}} (int temps)
+\begin{DoxyCompactList}\small\item\em Constructeur du sablier avec temps initial. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sablier_a6bc5bff65f6e6e48a563cdad18162062}{get\+Temps}} ()
+\begin{DoxyCompactList}\small\item\em Récupère le temps restant. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sablier_a0c04ed54de8d5893dfde7e59d9e12410}{get\+Fini}} ()
+\begin{DoxyCompactList}\small\item\em Indique si le sablier est fini. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sablier_a514f95e6e99e9f16afb9eed5dc91b4e3}{set\+Temps}} (int temps)
+\begin{DoxyCompactList}\small\item\em Définit le temps restant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sablier_af4f5cefa19719d0beae3fb76b3c0c2c6}{set\+Fini}} ()
+\begin{DoxyCompactList}\small\item\em Définit l\textquotesingle{}état du sablier à fini. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sablier_a7edbdcdd9dd8d66706a6cab11311cac5}{set\+Fini}} (bool etat)
+\begin{DoxyCompactList}\small\item\em Définit l\textquotesingle{}état du sablier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sablier_a06b4b910f98355446ad40647174e82ce}{start\+Decompte}} ()
+\begin{DoxyCompactList}\small\item\em Lance le décompte du sablier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sablier_a32268086da4271ca4c56f816420512e1}{decompte}} ()
+\begin{DoxyCompactList}\small\item\em Effectue le décompte du sablier (diminution du temps). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Représente un sablier pour gérer le temps imparti à un joueur. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_sablier_a2ddcc750aa5c4a02fe0a86df11d46b62}\index{Sablier@{Sablier}!Sablier@{Sablier}}
+\index{Sablier@{Sablier}!Sablier@{Sablier}}
+\doxysubsubsection{\texorpdfstring{Sablier()}{Sablier()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_sablier_a2ddcc750aa5c4a02fe0a86df11d46b62} 
+Sablier\+::\+Sablier (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur par défaut du sablier. 
+
+\Hypertarget{class_sablier_a6e166e6944ea1164760a9a85a8c8a7e1}\index{Sablier@{Sablier}!Sablier@{Sablier}}
+\index{Sablier@{Sablier}!Sablier@{Sablier}}
+\doxysubsubsection{\texorpdfstring{Sablier()}{Sablier()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_sablier_a6e166e6944ea1164760a9a85a8c8a7e1} 
+Sablier\+::\+Sablier (\begin{DoxyParamCaption}\item[{int}]{temps}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur du sablier avec temps initial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em temps} & Temps initial en secondes. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sablier_a32268086da4271ca4c56f816420512e1}\index{Sablier@{Sablier}!decompte@{decompte}}
+\index{decompte@{decompte}!Sablier@{Sablier}}
+\doxysubsubsection{\texorpdfstring{decompte()}{decompte()}}
+{\footnotesize\ttfamily \label{class_sablier_a32268086da4271ca4c56f816420512e1} 
+void Sablier\+::decompte (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Effectue le décompte du sablier (diminution du temps). 
+
+\Hypertarget{class_sablier_a0c04ed54de8d5893dfde7e59d9e12410}\index{Sablier@{Sablier}!getFini@{getFini}}
+\index{getFini@{getFini}!Sablier@{Sablier}}
+\doxysubsubsection{\texorpdfstring{getFini()}{getFini()}}
+{\footnotesize\ttfamily \label{class_sablier_a0c04ed54de8d5893dfde7e59d9e12410} 
+bool Sablier\+::get\+Fini (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Indique si le sablier est fini. 
+
+\begin{DoxyReturn}{Returns}
+true si le sablier est fini, false sinon. 
+\end{DoxyReturn}
+\Hypertarget{class_sablier_a6bc5bff65f6e6e48a563cdad18162062}\index{Sablier@{Sablier}!getTemps@{getTemps}}
+\index{getTemps@{getTemps}!Sablier@{Sablier}}
+\doxysubsubsection{\texorpdfstring{getTemps()}{getTemps()}}
+{\footnotesize\ttfamily \label{class_sablier_a6bc5bff65f6e6e48a563cdad18162062} 
+int Sablier\+::get\+Temps (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Récupère le temps restant. 
+
+\begin{DoxyReturn}{Returns}
+Temps restant en secondes. 
+\end{DoxyReturn}
+\Hypertarget{class_sablier_af4f5cefa19719d0beae3fb76b3c0c2c6}\index{Sablier@{Sablier}!setFini@{setFini}}
+\index{setFini@{setFini}!Sablier@{Sablier}}
+\doxysubsubsection{\texorpdfstring{setFini()}{setFini()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_sablier_af4f5cefa19719d0beae3fb76b3c0c2c6} 
+void Sablier\+::set\+Fini (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Définit l\textquotesingle{}état du sablier à fini. 
+
+\Hypertarget{class_sablier_a7edbdcdd9dd8d66706a6cab11311cac5}\index{Sablier@{Sablier}!setFini@{setFini}}
+\index{setFini@{setFini}!Sablier@{Sablier}}
+\doxysubsubsection{\texorpdfstring{setFini()}{setFini()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_sablier_a7edbdcdd9dd8d66706a6cab11311cac5} 
+void Sablier\+::set\+Fini (\begin{DoxyParamCaption}\item[{bool}]{etat}{}\end{DoxyParamCaption})}
+
+
+
+Définit l\textquotesingle{}état du sablier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em etat} & Nouvel état (true = fini, false = en cours). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_sablier_a514f95e6e99e9f16afb9eed5dc91b4e3}\index{Sablier@{Sablier}!setTemps@{setTemps}}
+\index{setTemps@{setTemps}!Sablier@{Sablier}}
+\doxysubsubsection{\texorpdfstring{setTemps()}{setTemps()}}
+{\footnotesize\ttfamily \label{class_sablier_a514f95e6e99e9f16afb9eed5dc91b4e3} 
+void Sablier\+::set\+Temps (\begin{DoxyParamCaption}\item[{int}]{temps}{}\end{DoxyParamCaption})}
+
+
+
+Définit le temps restant. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em temps} & Nouveau temps en secondes. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_sablier_a06b4b910f98355446ad40647174e82ce}\index{Sablier@{Sablier}!startDecompte@{startDecompte}}
+\index{startDecompte@{startDecompte}!Sablier@{Sablier}}
+\doxysubsubsection{\texorpdfstring{startDecompte()}{startDecompte()}}
+{\footnotesize\ttfamily \label{class_sablier_a06b4b910f98355446ad40647174e82ce} 
+void Sablier\+::start\+Decompte (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Lance le décompte du sablier. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_sablier_8h}{Sablier.\+h}}\item 
+\mbox{\hyperlink{_sablier_8cpp}{Sablier.\+cpp}}\end{DoxyCompactItemize}
