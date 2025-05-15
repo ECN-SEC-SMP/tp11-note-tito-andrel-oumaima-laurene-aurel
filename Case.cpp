@@ -8,12 +8,6 @@
 #include "stdlib.h"
 #include "Case.h"
 
-///
-/// @brief Création d'une case en fonction des coordonnées X, Y
-/// @details Création d'une case d'un tableau. on initialise uniquement les coordonnées.
-/// Les bords de la case sont automatiquement mit à 0, et elle ne possède pas de couleur.
-/// @param[in]  X, Y entier
-///
 Case::Case(int X, int Y)
 {
     this->x = X;

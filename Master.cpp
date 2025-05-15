@@ -215,16 +215,6 @@ void Master::Tour()
         }
     }
 
-    // // On lance le sablier pendant 60 secondes
-    // sablier->startDecompte();
-    // while (!sablier->getFini())
-    // {
-    //     // this_thread::sleep_for(chrono::seconds(1));
-    //     // Affichage du sablier
-    //     //cout << "Sablier : " << sablier->getTemps() << endl;
-    // }
-    // cout << "Temps écoulé !" << endl;
-
     TourdeJeu(); // Appel de la fonction de jeu
 }
 
